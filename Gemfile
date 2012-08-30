@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'levenshtein-ffi', :require => 'levenshtein'
 
 group :development do
   gem 'sqlite3'
