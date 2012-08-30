@@ -1,0 +1,21 @@
+%h1 Listing abstracts
+
+%table
+  %tr
+    %th User
+    %th Body
+    %th
+    %th
+    %th
+
+  - @abstracts.each do |abstract|
+    %tr
+      %td= abstract.user_id
+      %td= abstract.body
+      %td= link_to 'Show', abstract
+      %td= link_to 'Edit', edit_abstract_path(abstract)
+      %td= link_to 'Destroy', abstract, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Abstract', new_abstract_path

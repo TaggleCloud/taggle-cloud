@@ -1,0 +1,23 @@
+%h1 Listing attendances
+
+%table
+  %tr
+    %th User
+    %th Conference
+    %th Registered email
+    %th
+    %th
+    %th
+
+  - @attendances.each do |attendance|
+    %tr
+      %td= attendance.user_id
+      %td= attendance.conference_id
+      %td= attendance.registered_email
+      %td= link_to 'Show', attendance
+      %td= link_to 'Edit', edit_attendance_path(attendance)
+      %td= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Attendance', new_attendance_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @abstract.user_id
+%p
+  %b Body:
+  = @abstract.body
+
+= link_to 'Edit', edit_abstract_path(@abstract)
+\|
+= link_to 'Back', abstracts_path

@@ -1,0 +1,16 @@
+= form_for @abstract do |f|
+  - if @abstract.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this abstract from being saved:"
+      %ul
+        - @abstract.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :body
+    = f.text_area :body
+  .actions
+    = f.submit 'Save'

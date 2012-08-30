@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @attendance.user_id
+%p
+  %b Conference:
+  = @attendance.conference_id
+%p
+  %b Registered email:
+  = @attendance.registered_email
+
+= link_to 'Edit', edit_attendance_path(@attendance)
+\|
+= link_to 'Back', attendances_path

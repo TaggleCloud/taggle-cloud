@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 group :development do
   gem 'sqlite3'

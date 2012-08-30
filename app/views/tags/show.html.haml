@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Abstract:
+  = @tag.abstract_id
+%p
+  %b Value:
+  = @tag.value
+
+= link_to 'Edit', edit_tag_path(@tag)
+\|
+= link_to 'Back', tags_path

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User1:
+  = @connection.user1_id
+%p
+  %b User2 int:
+  = @connection.user2_int
+%p
+  %b Conference:
+  = @connection.conference_id
+
+= link_to 'Edit', edit_connection_path(@connection)
+\|
+= link_to 'Back', connections_path
