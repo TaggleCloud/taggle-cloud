@@ -1,5 +1,7 @@
 # Taggle Cloud
 
+[![Dependency Status](https://gemnasium.com/jbender/taggle-cloud.png)](https://gemnasium.com/jbender/taggle-cloud)
+
 ## Introduction
 More coming soon
 
