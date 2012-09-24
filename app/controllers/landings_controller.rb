@@ -1,0 +1,3 @@
+class LandingsController < ApplicationController
+
+end

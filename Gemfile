@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'thin'
+
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'zurb-foundation'
+
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'levenshtein-ffi', :require => 'levenshtein'
