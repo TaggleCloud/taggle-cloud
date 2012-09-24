@@ -42,6 +42,8 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -147,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  compass-rails (~> 1.0.3)
   haml-rails
   jquery-rails
   levenshtein-ffi
@@ -158,4 +161,4 @@ DEPENDENCIES
   sqlite3
   thin
   uglifier (>= 1.0.3)
-  zurb-foundation
+  zurb-foundation (~> 3.1.1)
