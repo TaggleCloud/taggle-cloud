@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :abstracts
   has_many :connections
   has_many :attendances
+  has_many :emails
 
   def self.create_with_omniauth(auth)
     create! do |user|
