@@ -2,10 +2,10 @@ require 'levenshtein'
 
 class Abstract < ActiveRecord::Base
   after_create :create_tags
-  attr_accessible :body, :user_id
+  attr_accessible :body, :user_id, :attendance_id
 
   belongs_to :user
-  belongs_to :conference
+  belongs_to :attendance
   has_many :tags
   
   #http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Ruby
@@ -19,7 +19,12 @@ class Abstract < ActiveRecord::Base
   def create_tags
     tags.each do |tag|
       if !tags.include?(tag)
-        Tag.create :value => tag
+        # Create tag if it doesn't already exist
+        tag_entity = Tag.find_or_create_by_value(tag)
+        # Then connect it to a new AbstractTag associated with this Abstract
+        abstract_tag_temp = AbstractTag.create :abstract_id => self.id, :tag_id => tag_entity.id
+        tag_entity.abstract_tag_id = abstract_tag_temp.id
+      end
   end
   
   def create_connections
