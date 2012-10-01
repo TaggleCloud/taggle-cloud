@@ -21,4 +21,8 @@ class Abstract < ActiveRecord::Base
       if !tags.include?(tag)
         Tag.create :value => tag
   end
+  
+  def create_connections
+    
+  end
 end
