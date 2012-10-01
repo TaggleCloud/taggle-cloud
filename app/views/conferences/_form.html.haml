@@ -10,6 +10,7 @@
     = f.label :location
     = f.text_field :location
   .file_field
-    = f.label :csv
+    = f.label :"Attendee list (csv file)"
+    = f.file_field :csv
   .actions
-    = f.submit 'Save'
+    = f.submit 'Upload'
