@@ -1,5 +1,5 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :abstract_tag_id, :value
+  attr_accessible :value
   
-  belongs_to :abstract_tag
+  has_many :abstract_tags
 end
