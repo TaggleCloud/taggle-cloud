@@ -40,7 +40,8 @@ class ConferencesController < ApplicationController
   # POST /conferences
   # POST /conferences.json
   def create
-    @conference = Conference.new(params[:conference])
+    @conference = Conference.create(:location => params[:conference][:location])
+    @conference.upload(params[:conference][:csv])
 
     respond_to do |format|
       if @conference.save

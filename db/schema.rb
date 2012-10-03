@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830025318) do
+ActiveRecord::Schema.define(:version => 20121003011231) do
+
+  create_table "abstract_tags", :force => true do |t|
+    t.integer  "abstract_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "abstracts", :force => true do |t|
     t.integer  "user_id"
@@ -36,11 +43,11 @@ ActiveRecord::Schema.define(:version => 20120830025318) do
   end
 
   create_table "connections", :force => true do |t|
-    t.integer  "user1_id"
-    t.integer  "user2_id"
+    t.integer  "attendance1_id"
+    t.integer  "attendance2_id"
     t.integer  "conference_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "emails", :force => true do |t|
