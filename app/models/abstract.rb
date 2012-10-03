@@ -23,7 +23,7 @@ class Abstract < ActiveRecord::Base
         # Then connect it to a new AbstractTag associated with this Abstract
         abstract_tag_temp = AbstractTag.create(:abstract_id => self.id, :tag_id => tag_entity.id)
         tag_entity.abstract_tag_id = abstract_tag_temp.id
-        tag_entity.save
+        
       end
     end
   end
