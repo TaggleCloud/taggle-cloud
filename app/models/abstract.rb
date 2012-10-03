@@ -27,7 +27,4 @@ class Abstract < ActiveRecord::Base
       end
   end
   
-  def create_connections
-    
-  end
 end

@@ -6,13 +6,12 @@ class Conference < ActiveRecord::Base
   has_many :attendances
   has_many :abstracts
   
-  def upload
-    uploaded_io = params[:conference][:csv]
-    CSV.foreach(uploaded_io) do |row| 
+  def upload(uploaded_io)
+    CSV.parse(uploaded_io.read).each do |row| 
       at = nil
       if row[5] != nil
         at = Attendance.new(:registered_email => row[5], :conference_id => self.id)
-        e = Email.where(:email_address => row[5]).first
+        e = Email.where(:mail_address => row[5]).first
         if e
           at.user_id = e.user_id
         end
