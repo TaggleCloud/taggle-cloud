@@ -1,10 +1,16 @@
 %nav.top-bar
   %ul
     %li.name
-      %h1= link_to "TaggleCloud", :root
+      %h1= link_to "TaggleCloud", "#"
     %li.toggle-topbar= link_to "", "#"
   %section
     %ul.left
+      %li.divider
       %li= link_to "Conferences", "/conferences"
+      %li.divider.hide-for-small
     %ul.right
-      %li= link_to "UserNav Goes Here", "#"
+      %li.divider
+      %li.has-dropdown
+        = link_to "UserNav Goes Here", "#"
+        %ul.dropdown
+          %li= link_to "test1", "#"
