@@ -1,0 +1,1657 @@
+# Logfile created on 2012-10-03 15:17:09 -0400 by logger.rb/25413
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comparing project,summary,project,summary
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 2, since compare returned 0
+comparing project,summary,project,summary
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 3, since compare returned 0.0
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 4, since compare returned 0.0
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing project,summary,project,summary
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 5, since compare returned 0.0
+comparing project,summary,project,summary
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing 
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 1, since compare returned 0
+comparing 
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 3, since compare returned 0
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 4, since compare returned 0
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing 
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 5, since compare returned 0
+comparing 
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 3, 1, since compare returned 0.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 3, 2, since compare returned 0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+comparing tag for 3, 4, since compare returned 50.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+comparing tag for 3, 5, since compare returned 16.666666666666664
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 4, 1, since compare returned 0.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 4, 2, since compare returned 0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+comparing tag for 4, 3, since compare returned 50.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+comparing tag for 4, 5, since compare returned 16.666666666666664
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 5, 1, since compare returned 0.0
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 5, 2, since compare returned 0
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+comparing tag for 5, 3, since compare returned 16.666666666666664
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+comparing tag for 5, 4, since compare returned 16.666666666666664
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comparing project,summary,project,summary
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 2, since compare returned 0
+comparing project,summary,project,summary
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 3, since compare returned 0.0
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 4, since compare returned 0.0
+comparing project,summary,project,summary
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+orig atnd has project
+orig atnd has summary
+orig atnd has project
+orig atnd has summary
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing project,summary,project,summary
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comparing tag for 1, 5, since compare returned 0.0
+comparing project,summary,project,summary
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing 
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 1, since compare returned 0
+comparing 
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 3, since compare returned 0
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 4, since compare returned 0
+comparing 
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 
+, shorter = 8
+
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing 
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+comparing tag for 2, 5, since compare returned 0
+comparing 
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 3, 1, since compare returned 0.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 3, 2, since compare returned 0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+comparing tag for 3, 4, since compare returned 50.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has zxcvzxcv
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+comparing tag for 3, 5, since compare returned 16.666666666666664
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 4, 1, since compare returned 0.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 4, 2, since compare returned 0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+comparing tag for 4, 3, since compare returned 50.0
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, shorter = 8
+
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+orig atnd has asdf
+orig atnd has qwer
+orig atnd has zxcv
+orig atnd has asdfasdf
+orig atnd has qwerqwer
+orig atnd has abcd
+orig atnd has jkl;
+orig atnd has uiop
+orig atnd has nm,.
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has 3456
+orig atnd has 4567
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comp atnd has jfdk
+comp atnd has djaf
+comp atnd has da
+comp atnd has adfja
+comp atnd has aa
+comp atnd has dja
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has asdf
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+comparing tag for 4, 5, since compare returned 16.666666666666664
+comparing asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, against jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, intersection = asdf,1234,2345
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has project
+comp atnd has summary
+comp atnd has project
+comp atnd has summary
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+comparing tag for 5, 1, since compare returned 0.0
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against project,summary,project,summary
+, intersection = 
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against 
+, intersection = 
+, shorter = 8
+
+comparing tag for 5, 2, since compare returned 0
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against 
+, intersection = 
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has zxcvzxcv
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+comparing tag for 5, 3, since compare returned 16.666666666666664
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,zxcvzxcv,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+orig atnd has jfdk
+orig atnd has djaf
+orig atnd has da
+orig atnd has adfja
+orig atnd has aa
+orig atnd has dja
+orig atnd has 1234
+orig atnd has 2345
+orig atnd has asdf
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comp atnd has asdf
+comp atnd has qwer
+comp atnd has zxcv
+comp atnd has asdfasdf
+comp atnd has qwerqwer
+comp atnd has abcd
+comp atnd has jkl;
+comp atnd has uiop
+comp atnd has nm,.
+comp atnd has 1234
+comp atnd has 2345
+comp atnd has 3456
+comp atnd has 4567
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
+comparing tag for 5, 4, since compare returned 16.666666666666664
+comparing jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf,jfdk,djaf,da,adfja,aa,dja,1234,2345,asdf
+, against asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567,asdf,qwer,zxcv,asdfasdf,qwerqwer,abcd,jkl;,uiop,nm,.,1234,2345,3456,4567
+, intersection = 1234,2345,asdf
+, shorter = 8
+
