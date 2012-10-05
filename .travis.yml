@@ -9,3 +9,5 @@ script:
 before_script:
   - mysql -e 'create database tagglecloud_test'
   - psql -c 'create database tagglecloud_test' -U postgres
+notifications:
+  email: false
