@@ -9,6 +9,7 @@ gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'levenshtein-ffi', :require => 'levenshtein'
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'sqlite3'
