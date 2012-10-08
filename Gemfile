@@ -10,10 +10,9 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'levenshtein-ffi', :require => 'levenshtein'
 
-gem 'rails-erd'
-
 group :development do
   gem 'sqlite3'
+  gem 'rails-erd'
 end
 
 group :production do
