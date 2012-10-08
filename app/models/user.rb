@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :provider, :uid
 
   has_many :abstracts
-  has_many :connections
   has_many :attendances
   has_many :emails
 

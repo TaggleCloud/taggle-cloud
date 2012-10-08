@@ -12,6 +12,7 @@ gem 'levenshtein-ffi', :require => 'levenshtein'
 
 group :development do
   gem 'sqlite3'
+  gem 'rails-erd'
 end
 
 group :production do
