@@ -2,7 +2,7 @@ require 'csv'
 require 'iconv'
 
 class Conference < ActiveRecord::Base
-  attr_accessible :location
+  attr_accessible :name, :location
 
   has_many :attendances
   

@@ -14,6 +14,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @conference = Conference.find(params[:id])
+    @attendees = @conference.attendances.last(10)
 
     respond_to do |format|
       format.html # show.html.erb

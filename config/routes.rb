@@ -2,7 +2,7 @@ TaggleCloud::Application.routes.draw do
 
   resources :conferences do
     resources :connections, :only => :index, :on => :member
-    resources :attendances, :on => :member
+    resources :attendances, :on => :member, :as => :attendees, :path => 'attendees'
   end
 
   match "/auth/:provider/callback" => "sessions#create"
