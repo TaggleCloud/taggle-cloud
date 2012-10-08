@@ -18,7 +18,7 @@ class Connection < ActiveRecord::Base
         atnd.abstracts.all.each do |abstract|
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset1 << abstract_tag.tag if abstract_tag.tag
-            self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag # Why is it running both of these twice???
+            self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
           end
         end
         comp_atnd.abstracts.all.each do |abstract|
