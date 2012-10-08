@@ -8,7 +8,7 @@ class Conference < ActiveRecord::Base
   
   def upload(uploaded_io)
     CSV.parse(uploaded_io.read) do |row|
-      if row[5]
+      if row[5] && row[5] != "PI Email"
         at = Attendance.new(:registered_email => row[5], :conference_id => self.id)
         e = Email.where(:mail_address => row[5]).first
         if e
