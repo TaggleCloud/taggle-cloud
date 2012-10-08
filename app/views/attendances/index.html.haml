@@ -1,23 +1,10 @@
-%h1 Listing attendances
+.row
+  %h1= "Attendees at " + @conference.name
 
-%table
-  %tr
-    %th User
-    %th Conference
-    %th Registered email
-    %th
-    %th
-    %th
-
-  - @attendances.each do |attendance|
-    %tr
-      %td= attendance.user_id
-      %td= attendance.conference_id
-      %td= attendance.registered_email
-      %td= link_to 'Show', attendance
-      %td= link_to 'Edit', edit_attendance_path(attendance)
-      %td= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Attendance', new_attendance_path
+%ul.row.attendees
+  - @attendees.each do |attendee|
+    %li.three.columns
+      - if attendee.user_id?
+        = link_to "User Name", user_path(attendee.user_id)
+      = attendee.registered_email
+      = link_to '&times;', conference_attendee_path, method: :delete, data: { confirm: 'Are you sure?' }
