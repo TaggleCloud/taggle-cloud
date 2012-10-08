@@ -19,7 +19,6 @@ class Conference < ActiveRecord::Base
         if abstract
           ab = Abstract.new(:body => abstract, :attendance_id => at.id, :user_id => at.user_id)
           ab.save
-          # ab.create_tags
         end
       end
     end
