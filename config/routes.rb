@@ -1,8 +1,8 @@
 TaggleCloud::Application.routes.draw do
 
   resources :conferences do
-    resources :connections, :only => :index, :on => :member
-    resources :attendances, :on => :member, :as => :attendees, :path => 'attendees'
+    match "connections" => "conferences#connections"
+    resources :attendances, :as => :attendees, :path => 'attendees', :on => :member
   end
 
   resources :users, :only => :show
@@ -11,7 +11,7 @@ TaggleCloud::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
 
   scope :constraints => lambda{ |req| !req.session[:user_id].blank? } do
-    root :to => "users#profile", :as => :profile
+    root :to => "users#dashboard", :as => :dashboard
   end
 
   root :to => "landings#home"
