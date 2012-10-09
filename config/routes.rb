@@ -5,6 +5,8 @@ TaggleCloud::Application.routes.draw do
     resources :attendances, :on => :member, :as => :attendees, :path => 'attendees'
   end
 
+  resources :users, :only => :show
+
   match "/auth/:provider/callback" => "sessions#create"
 
   scope :constraints => lambda{|req| !req.session[:user_id].blank? } do

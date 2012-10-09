@@ -8,7 +8,7 @@
     \|
     = link_to 'Back', conferences_path
 
-%h2= link_to "Attendees", conference_attendances_path(@conference)
+%h2= link_to "Attendees", conference_attendees_path(@conference)
 %hr
 %ul.row.attendees
   - @attendees.each do |attendee|
