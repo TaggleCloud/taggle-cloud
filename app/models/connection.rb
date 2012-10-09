@@ -4,6 +4,10 @@ class Connection < ActiveRecord::Base
   belongs_to :attendance
   has_one :attendance
   
+  def self.includes_user(user)
+    return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
+  end
+
   def self.my_logger
     @@my_logger ||= Logger.new("#{Rails.root}/log/logfile.log")
   end

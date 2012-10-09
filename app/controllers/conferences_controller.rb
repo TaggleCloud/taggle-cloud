@@ -22,6 +22,11 @@ class ConferencesController < ApplicationController
     end
   end
 
+  def connections
+    @conference = Conference.find(params[:conference_id])
+    @connections = @conference.attendances.connections_for_user(current_user)
+  end
+
   # GET /conferences/new
   # GET /conferences/new.json
   def new
