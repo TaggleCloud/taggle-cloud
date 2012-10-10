@@ -15,7 +15,7 @@ class Connection < ActiveRecord::Base
   def self.csv_upload_builder(conf)
     atts = conf.attendances
     atts.each_with_index do |atnd, index|
-      atts.to_enum.with_index(index).each do |comp_atnd, comp_index|
+      atts.drop(index).each do |comp_atnd|
         next if atnd.id == comp_atnd.id
         tagset1 = Array.new
         tagset2 = Array.new
