@@ -1,5 +1,5 @@
 class Connection < ActiveRecord::Base
-  attr_accessible :conference_id, :attendance1_id, :attendance2_id, :strength
+  attr_accessible :attendance1_id, :attendance2_id, :strength
 
   belongs_to :attendance
   has_one :attendance
