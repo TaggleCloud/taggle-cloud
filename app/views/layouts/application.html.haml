@@ -9,6 +9,7 @@
   %body
     .fixed.contain-to-grid
       = render "layouts/nav"
-    .container-fluid
+    .container
       .row-fluid
-        = yield
+        .span12
+          = yield
