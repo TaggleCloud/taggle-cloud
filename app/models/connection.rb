@@ -1,5 +1,5 @@
 class Connection < ActiveRecord::Base
-  attr_accessible :conference_id, :attendance1_id, :attendance2_id, :strength
+  attr_accessible :attendance1_id, :attendance2_id, :strength
 
   belongs_to :attendance
   has_one :attendance
@@ -32,7 +32,7 @@ class Connection < ActiveRecord::Base
           end
         end
         self.my_logger.info("Comparing tag for #{atnd.id}, #{comp_atnd.id}, since compare returned #{self.compare(tagset1, tagset2)}")
-        self.create(:conference_id => conf.id, :attendance1_id => atnd.id, :attendance2_id => comp_atnd.id, :strength => self.compare(tagset1, tagset2))
+        self.create(:attendance1_id => atnd.id, :attendance2_id => comp_atnd.id, :strength => self.compare(tagset1, tagset2))
       end
     end
   end
