@@ -10,6 +10,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'levenshtein-ffi', :require => 'levenshtein'
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   gem 'sqlite3'
@@ -25,5 +26,5 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails', '~> 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
 end
