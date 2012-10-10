@@ -1,9 +1,9 @@
 %p#notice= notice
-.row
-  .nine.columns
+.row-fluid
+  .span9
     %h1= @conference.name
     %h3= @conference.location
-  .three.columns
+  .span3
     = link_to 'Edit', edit_conference_path(@conference)
     \|
     = link_to 'Back', conferences_path
