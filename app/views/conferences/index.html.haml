@@ -1,19 +1,9 @@
-%h1 Listing conferences
+%h1 Current conferences
 
-%table
-  %tr
-    %th Location
-    %th
-    %th
-    %th
-
+%ul.no-bullets
   - @conferences.each do |conference|
-    %tr
-      %td= conference.location
-      %td= link_to 'Show', conference
-      %td= link_to 'Edit', edit_conference_path(conference)
-      %td= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+    %li
+      = link_to conference do
+        %h3= conference.location
 
 = link_to 'New Conference', new_conference_path
