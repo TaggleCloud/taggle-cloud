@@ -6,6 +6,6 @@
     %ul.nav.pull-right
       %li
         - if current_user.nil?
-          = link_to "Sign In", "auth/linkedin"
+          = link_to "Sign In", signin_path
         - else
-          = link_to "Sign Out", "signout"
+          = link_to "Sign Out", signout_path
