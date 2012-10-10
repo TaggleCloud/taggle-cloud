@@ -3,4 +3,9 @@
     %ul.nav
       %li.brand=link_to "TaggleCloud", :root
       %li= link_to "Conferences", conferences_path
-      %li= link_to "UserNav", "#"
+    %ul.nav.pull-right
+      %li
+        = -if current_user.nil?
+          = link_to "Sign In", "auth/linkedin"
+          -else
+          = link_to "Sign Out", "signout"
