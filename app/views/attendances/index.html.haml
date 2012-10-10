@@ -1,5 +1,6 @@
 .row
-  %h1= "Attendees at " + @conference.name
+  -if @conference.name
+    %h1= "Attendees at " + @conference.name
 
 %ul.row.attendees
   - @attendees.each do |attendee|
