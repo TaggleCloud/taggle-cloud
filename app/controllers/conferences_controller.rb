@@ -14,12 +14,17 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @conference = Conference.find(params[:id])
-    @attendees = @conference.attendances
+    @attendees = @conference.attendances.last(10)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }
     end
+  end
+
+  def connections
+    @conference = Conference.find(params[:conference_id])
+    @connections = @conference.attendances.connections_for_user(current_user)
   end
 
   # GET /conferences/new

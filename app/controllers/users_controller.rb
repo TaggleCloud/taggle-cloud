@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
+  def dashboard
+    @user = current_user
+    @conferences = @user.get_users_conferences
+  end
+
   def profile
-    @user = User.find(params[current_user.id])
+    @user = current_user
   end
 
 end
