@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009225737) do
+ActiveRecord::Schema.define(:version => 20121010182406) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20121009225737) do
   create_table "connections", :force => true do |t|
     t.integer  "attendance1_id"
     t.integer  "attendance2_id"
-    t.integer  "conference_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "strength"
