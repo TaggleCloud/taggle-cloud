@@ -6,5 +6,5 @@
     %li.three.columns
       - if attendee.user_id?
         =# link_to "User Name", user_path(attendee.user_id)
-      = attendee.registered_email
+      = link_to attendee.registered_email, conference_attendee_path(@conference, attendee)
       = link_to '&times;'.html_safe, conference_attendee_path(@conference, attendee), method: :delete, data: { confirm: 'Are you sure you want to delete this registration?' }

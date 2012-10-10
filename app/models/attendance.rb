@@ -4,7 +4,7 @@ class Attendance < ActiveRecord::Base
   belongs_to :conference
   belongs_to :user
   belongs_to :connection
-  has_one :connection
+  has_one :connection, :dependent => :destroy
   has_many :abstracts
 
 end

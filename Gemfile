@@ -10,6 +10,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'levenshtein-ffi', :require => 'levenshtein'
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development do
   gem 'sqlite3'
