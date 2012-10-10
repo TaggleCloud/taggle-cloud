@@ -6,4 +6,8 @@
 #signup
   .row-fluid
     .span12
-      %button.btn= link_to "Sign up with LinkedIn", "#", :class => "large button"
+      -if current_user.nil?
+        = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "large button"
+      -else
+        %h2 Welcome #{current_user.name}
+        = link_to "Sign out", "signout", :class => "large button"
