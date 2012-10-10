@@ -27,4 +27,13 @@ class User < ActiveRecord::Base
     
     return user
   end
+
+  def get_users_conferences
+    conferences = Array.new
+    self.attendances.each do |attendance|
+      conferences << attendance.conferences
+    end
+    return conferences
+  end
+
 end

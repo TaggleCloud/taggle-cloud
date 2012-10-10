@@ -5,7 +5,7 @@
       %li= link_to "Conferences", conferences_path
     %ul.nav.pull-right
       %li
-        = -if current_user.nil?
+        - if current_user.nil?
           = link_to "Sign In", "auth/linkedin"
-          -else
+        - else
           = link_to "Sign Out", "signout"

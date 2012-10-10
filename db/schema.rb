@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008041938) do
+ActiveRecord::Schema.define(:version => 20121010182406) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -46,11 +46,26 @@ ActiveRecord::Schema.define(:version => 20121008041938) do
   create_table "connections", :force => true do |t|
     t.integer  "attendance1_id"
     t.integer  "attendance2_id"
-    t.integer  "conference_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "strength"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "emails", :force => true do |t|
     t.integer  "user_id"
@@ -73,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20121008041938) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "email"
   end
 
 end

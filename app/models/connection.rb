@@ -4,14 +4,18 @@ class Connection < ActiveRecord::Base
   belongs_to :attendance
   has_one :attendance
   
+  def self.includes_user(user)
+    return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
+  end
+
   def self.my_logger
     @@my_logger ||= Logger.new("#{Rails.root}/log/logfile.log")
   end
   
   def self.csv_upload_builder(conf)
     atts = conf.attendances
-    atts.each do |atnd|
-      atts.each do |comp_atnd|
+    atts.each_with_index do |atnd, index|
+      atts.drop(index).each do |comp_atnd|
         next if atnd.id == comp_atnd.id
         tagset1 = Array.new
         tagset2 = Array.new

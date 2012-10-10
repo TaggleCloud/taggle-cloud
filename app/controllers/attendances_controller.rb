@@ -2,11 +2,12 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.all
+    @attendees = Attendance.all
+    @conference = Conference.find(params[:conference_id])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @attendances }
+      format.json { render json: @attendees }
     end
   end
 
