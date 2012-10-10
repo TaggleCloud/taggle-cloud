@@ -1,14 +1,13 @@
 #welcome
-  .row
-    .twelve.columns
+  .row-fluid
+    .span12
       %h1 TaggleCloud
       %h2 Connect with people in your field
 #signup
-  .row
-    .twelve.columns
+  .row-fluid
+    .span12
       -if current_user.nil?
-        = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "large button"
-      -else
+        = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "btn"
+        -else
         %h2 Welcome #{current_user.name}
-        = link_to "Sign out", "signout", :class => "large button"
-      
+        = link_to "Sign out", "signout", :class => "btn"
