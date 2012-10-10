@@ -2,7 +2,7 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendees = Attendance.all
+    @attendees = Attendance.where(:conference_id => params[:conference_id])
     @conference = Conference.find(params[:conference_id])
 
     respond_to do |format|
