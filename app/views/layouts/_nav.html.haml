@@ -1,10 +1,11 @@
-%nav.top-bar
-  %ul
-    %li.name
-      %h1= link_to "TaggleCloud", :root
-    %li.toggle-topbar= link_to "", "#"
-  %section
-    %ul.left
+.navbar.navbar-fixed-top
+  .navbar-inner
+    %ul.nav
+      %li.brand=link_to "TaggleCloud", :root
       %li= link_to "Conferences", conferences_path
-    %ul.right
-      %li= link_to "UserNav Goes Here", "#"
+    %ul.nav.pull-right
+      %li
+        = -if current_user.nil?
+          = link_to "Sign In", "auth/linkedin"
+          -else
+          = link_to "Sign Out", "signout"

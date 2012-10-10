@@ -7,7 +7,6 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .fixed.contain-to-grid
-      = render "layouts/nav"
+    =render "layouts/nav"
     .container
       = yield
