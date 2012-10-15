@@ -15,5 +15,6 @@ TaggleCloud::Application.routes.draw do
     root :to => "users#dashboard", :as => :dashboard
   end
 
+  match "/credits" => "landings#credits"
   root :to => "landings#home"
 end
