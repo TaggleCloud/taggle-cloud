@@ -14,7 +14,17 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @conference = Conference.find(params[:id])
-    @attendees = @conference.attendances.last(10)
+    current_att = current_user.attendances.where(:conference_id => @conference.id).last
+    if current_user && current_att
+      #FIXME bad coding due to bad archtectural decisions
+      @connections = Connection.find(:all, :conditions => "attendance1_id = #{current_att.id}", :order => 'strength')
+      @attendees = []
+      @connections.each do |c|
+        @attendees << Attendance.find(c.attendance2_id)
+      end
+    else
+      @attendees = Attendance.find(:all, :limit => 10)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

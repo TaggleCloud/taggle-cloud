@@ -4,7 +4,9 @@ class Attendance < ActiveRecord::Base
   belongs_to :conference
   belongs_to :user
   belongs_to :connection
-  has_one :connection, :dependent => :destroy
+  has_many :connections, :dependent => :destroy, :class_name => "Connection", :foreign_key => "attendance1_id"
   has_many :abstracts
+
+  
 
 end
