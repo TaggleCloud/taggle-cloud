@@ -7,6 +7,8 @@ class Attendance < ActiveRecord::Base
   has_many :connections, :dependent => :destroy, :class_name => "Connection", :foreign_key => "attendance1_id"
   has_many :abstracts
 
-  
+  def name
+    return first_name + " " + last_name
+  end
 
 end
