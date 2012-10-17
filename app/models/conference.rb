@@ -9,8 +9,8 @@ class Conference < ActiveRecord::Base
   
   def upload(uploaded_io)
     CSV.parse(uploaded_io.read) do |row|
-      if row[5] && row[5] != "PI Email"
-        at = Attendance.new(:registered_email => row[5], :conference_id => self.id)
+      if row[5] && valid_email(row[5])
+        at = Attendance.new(:registered_email => row[5], :conference_id => self.id, :first_name => row[3], :last_name => row[4], :organization => row[5])
         e = Email.where(:mail_address => row[5]).first
         if e
           at.user_id = e.user_id
@@ -24,6 +24,10 @@ class Conference < ActiveRecord::Base
       end
     end
     Connection.csv_upload_builder(self)
+  end
+
+  def valid_email(email)
+    return /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/.match(email)
   end
   
   def sanitize_string(untrusted_string)
