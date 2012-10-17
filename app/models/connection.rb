@@ -1,8 +1,8 @@
 class Connection < ActiveRecord::Base
   attr_accessible :attendance1_id, :attendance2_id, :strength
 
-  belongs_to :attendance
-  has_one :attendance
+  belongs_to :attendance, :class_name => "Attendance", :foreign_key => "attendance1_id"
+  has_one :attendance, :class_name => "Attendance", :foreign_key => "attendance2_id"
   
   def self.includes_user(user)
     return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
