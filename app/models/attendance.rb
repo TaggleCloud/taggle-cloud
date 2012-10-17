@@ -8,7 +8,7 @@ class Attendance < ActiveRecord::Base
   has_many :abstracts
 
   def name
-    return first_name + " " + last_name
+    return first_name.to_s + " " + last_name.to_s
   end
 
 end
