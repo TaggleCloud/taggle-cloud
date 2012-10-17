@@ -18,7 +18,7 @@ class ConferencesController < ApplicationController
       current_att = current_user.attendances.where(:conference_id => @conference.id).last
       if current_att
         #FIXME bad coding due to bad archtectural decisions
-        @connections = Connection.find(:all, :conditions => "attendance1_id = #{current_att.id}", :order => 'strength')
+        @connections = Connection.find(:all, :conditions => "attendance1_id = #{current_att.id}", :order => 'strength DESC')
         @attendees = []
         @connections.each do |c|
           @attendees << Attendance.find(c.attendance2_id)
