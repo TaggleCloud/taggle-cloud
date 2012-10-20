@@ -20,7 +20,7 @@ class Conference < ActiveRecord::Base
         # end
         abstract = sanitize_string(row[7]) if row[7]
         if abstract
-          abstracts << Abstract.new(:body => abstract, :attendance_id => at.id, :user_id => at.user_id)
+          abstracts << Abstract.new(:body => abstract, :attendance_id => attendances.last.id, :user_id => attendances.last.user_id)
         end
       end
     end
