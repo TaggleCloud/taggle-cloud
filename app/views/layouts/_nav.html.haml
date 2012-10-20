@@ -2,10 +2,13 @@
   .navbar-inner
     %ul.nav
       %li.title_link=link_to "TaggleCloud", :root
-      %li
-        - if current_user.nil?
-        - else
+      - if current_user.nil?
+      - else
+        %li
           = link_to "Conferences", conferences_path
+        %li
+          %span
+            Welcome #{link_to current_user.name, current_user}
     %ul.nav.pull-right
       %li
         - if current_user.nil?
