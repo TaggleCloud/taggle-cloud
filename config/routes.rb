@@ -4,8 +4,11 @@ TaggleCloud::Application.routes.draw do
     match "connections" => "conferences#connections"
     resources :attendances, :as => :attendees, :path => 'attendees', :on => :member
   end
-
-  resources :users, :only => :show
+  
+  resources :users do
+    match "/users/:id" => "users#profile"
+    resources :attendances
+  end
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/linkedin", :as => :signin
@@ -17,4 +20,6 @@ TaggleCloud::Application.routes.draw do
 
   match "/credits" => "landings#credits"
   root :to => "landings#home"
+  
+  match "/users/:id" => "users#profile"
 end
