@@ -21,5 +21,4 @@ TaggleCloud::Application.routes.draw do
   match "/credits" => "landings#credits"
   root :to => "landings#home"
   
-  match "/users/:id" => "users#profile"
 end

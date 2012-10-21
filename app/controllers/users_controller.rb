@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @attendance = Attendance.new(:user_id => @user.id, :conference_id => nil)
+    @attendance = Attendance.new(:user_id => @user.id, :conference_id => Conference.find(:first, :conditions => ["name = :n", {:n => "User testing"}, "location = :l", {:l => "Here"}]))
     @abstract = Abstract.new(:attendance_id => @attendance.id, :body => params[:body]) # Running create_tags on nil before page loads, not on submit
 
     respond_to do |format|
