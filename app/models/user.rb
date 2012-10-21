@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :abstracts
   has_many :attendances
   has_many :emails
+  
+  accepts_nested_attributes_for :abstracts
 
   def self.create_with_omniauth(auth)
     user = User.new
