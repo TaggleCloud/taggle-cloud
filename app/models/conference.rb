@@ -14,20 +14,18 @@ class Conference < ActiveRecord::Base
     CSV.parse(uploaded_io.read) do |row|
       if row[5] && valid_email(row[5])
         attendances << Attendance.new(:registered_email => row[5], :conference_id => self.id, :first_name => row[3], :last_name => row[4], :organization => row[2])
-        # e = Email.where(:mail_address => row[5]).first
-        # if e
-        #   at.user_id = e.user_id
-        # end
+
+        e = Email.where(:mail_address => row[5]).first
+        attendances.last.user_id = e.user_id if e
+        
         abstract = sanitize_string(row[7]) if row[7]
-        if abstract
-          abstracts << Abstract.new(:body => abstract, :attendance_id => attendances.last.id, :user_id => attendances.last.user_id)
-        end
+        abstracts << Abstract.new(:body => abstract, :attendance_id => attendances.last.id, :user_id => attendances.last.user_id) if abstract
       end
     end
-    # Connection.csv_upload_builder(self)
 
     Attendance.import(attendances)
     Abstract.import(abstracts)
+    # Connection.build_conf_connections(self)
   end
 
   def valid_email(email)
