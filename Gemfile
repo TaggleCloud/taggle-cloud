@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 gem 'levenshtein-ffi', :require => 'levenshtein'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'activerecord-import'
 
 group :development do
   gem 'sqlite3'

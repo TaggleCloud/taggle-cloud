@@ -2,7 +2,10 @@
   .navbar-inner
     %ul.nav
       %li.title_link=link_to "TaggleCloud", :root
-      %li= link_to "Conferences", conferences_path
+      %li
+        - if current_user.nil?
+        - else
+          = link_to "Conferences", conferences_path
     %ul.nav.pull-right
       %li
         - if current_user.nil?

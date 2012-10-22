@@ -1,15 +1,13 @@
 %p#notice= notice
 
-%p
-  %b User:
-  = @attendance.user_id
-%p
-  %b Conference:
-  = @attendance.conference_id
-%p
-  %b Registered email:
-  = @attendance.registered_email
+%h2
+  = @attendance.name
+%h3
+  = @attendance.organization
 
-= link_to 'Edit', conference_attendees_edit_path(@attendance)
+= @abstracts.each do |abs|
+  %p= abs.body
+
+= link_to 'Edit', edit_conference_attendee_path(@attendance)
 \|
 = link_to 'Back', conference_attendees_path
