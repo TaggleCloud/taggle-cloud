@@ -11,9 +11,9 @@ gem 'omniauth-linkedin'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'levenshtein-ffi', :require => 'levenshtein'
-gem 'delayed_job_active_record'
-gem 'daemons'
-gem 'activerecord-import'
+
+gem 'foreman'
+gem 'sidekiq'
 
 group :development do
   gem 'sqlite3'
