@@ -6,7 +6,7 @@ TaggleCloud::Application.routes.draw do
   end
   
   resources :users do
-    match "/users/:id" => "users#profile"
+    match "users/:id" => "users#profile"
     resources :attendances
   end
 
