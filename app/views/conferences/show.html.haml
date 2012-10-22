@@ -15,4 +15,6 @@
     %li.three.columns
       - if attendee.user_id?
         = link_to "User Name", user_path(attendee.user_id)
-      = attendee.registered_email
+      = attendee.name
+      %br
+      = attendee.organization
