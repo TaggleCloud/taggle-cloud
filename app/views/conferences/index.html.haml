@@ -6,6 +6,7 @@
       - @conferences.each do |conference|
         %li
           = link_to conference do
-            %h3= conference.name
+            %h3= conference.location
+          = link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }
 
     = link_to 'New Conference', new_conference_path
