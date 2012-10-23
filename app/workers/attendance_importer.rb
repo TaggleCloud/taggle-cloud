@@ -1,10 +1,13 @@
+require 'sidekiq/testing'
+
 class AttendanceImporter
   include Sidekiq::Worker
+  sidekiq_options :retry => false
   
-  def perform(conference, row)
+  def perform(conference_id, row)
     if row[5] && valid_email(row[5])
       new_attendee = Attendance.create!(:registered_email => row[5],
-                                        :conference_id => conference.id,
+                                        :conference_id => conference_id,
                                         :first_name => row[3],
                                         :last_name => row[4],
                                         :organization => row[2])
@@ -19,7 +22,7 @@ class AttendanceImporter
       Abstract.create(:body => abstract, :attendance_id => new_attendee.id, :user_id => new_attendee.user_id) if abstract
     end
 
-    ConnectionBuilder.perform_async(conference, new_attendee)
+    ConnectionBuilder.perform_async(conference_id, new_attendee.id)
   end
 
   def valid_email(email)

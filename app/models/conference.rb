@@ -8,7 +8,7 @@ class Conference < ActiveRecord::Base
   
   def upload(uploaded_io)
     CSV.parse(uploaded_io.read) do |row|
-      AttendanceImporter.perform_async(self,row)
+      AttendanceImporter.perform_async(self.id,row)
     end
   end
 
