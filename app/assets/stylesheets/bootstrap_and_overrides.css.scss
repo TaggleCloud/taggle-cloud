@@ -1,6 +1,7 @@
-body { 
-	padding-top: 60px;
-}
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+
 
 .title_link {
   float: left;
@@ -12,6 +13,3 @@ body {
   color: #555;
   text-shadow: 0 1px 0 white;
 }
-
-@import "bootstrap";
-@import "bootstrap-responsive";
