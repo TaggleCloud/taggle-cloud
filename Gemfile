@@ -8,12 +8,15 @@ gem 'haml-rails'
 
 gem 'omniauth'
 gem 'omniauth-linkedin'
+
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'levenshtein-ffi', :require => 'levenshtein'
 
 gem 'foreman'
 gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 group :development do
   gem 'sqlite3'
