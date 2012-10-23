@@ -1,5 +1,9 @@
 TaggleCloud::Application.routes.draw do
 
+  resources :user_interests
+
+  resources :interests
+
   resources :conferences do
     match "connections" => "conferences#connections"
     resources :attendances, :as => :attendees, :path => 'attendees', :on => :member

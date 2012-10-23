@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :abstracts
   has_many :attendances
   has_many :emails
+  has_many :user_interests
+  has_many :interests, :through => :user_interests
   
   accepts_nested_attributes_for :abstracts
 
