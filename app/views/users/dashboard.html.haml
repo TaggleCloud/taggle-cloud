@@ -2,4 +2,13 @@
   %h1 TaggleCloud
   %p Connect with people in your field
   %h2 Welcome #{current_user.name}
+
+- if !@conferences.empty?
+  %h2 Conferences you are attending
+  %ul
+    - @conferences.each do |conference|
+      %li= conference.name
+- else
+  %h3 Looks like you aren't attending any conferences :(
+
   = link_to "Sign out", "signout", :class => "btn"
