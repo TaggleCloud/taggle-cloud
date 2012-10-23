@@ -1,2 +1,5 @@
-%h2 Welcome #{current_user.name}
-%ul
+.hero-unit
+  %h1 TaggleCloud
+  %p Connect with people in your field
+  %h2 Welcome #{current_user.name}
+  = link_to "Sign out", "signout", :class => "btn"

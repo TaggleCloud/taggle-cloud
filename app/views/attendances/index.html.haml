@@ -1,11 +1,12 @@
-.row
-  -if @conference.name
-    %h1= "Attendees at " + @conference.name
+-if @conference.name
+  %h1= "Attendees at " + @conference.name
 
 %ul.row.attendees
-  - @attendees.each do |attendee|
-    %li.three.columns
-      - if attendee.user_id?
-        =# link_to "User Name", user_path(attendee.user_id)
-      = link_to attendee.name, conference_attendee_path(@conference, attendee)
-      = link_to '&times;'.html_safe, conference_attendee_path(@conference, attendee), method: :delete, data: { confirm: 'Are you sure you want to delete this registration?' }
+  - @attendees.each_slice(3) do |slice|
+    .row-fluid
+      - slice.each do |attendee|
+        %li.span4
+          - if attendee.user_id?
+            =# link_to "User Name", user_path(attendee.user_id)
+          = link_to attendee.name, conference_attendee_path(@conference, attendee)
+          = link_to '&times;'.html_safe, conference_attendee_path(@conference, attendee), method: :delete, data: { confirm: 'Are you sure you want to delete this registration?' }

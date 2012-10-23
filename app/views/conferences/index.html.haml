@@ -1,11 +1,9 @@
-.row-fluid
-  .span12
-    %h1 Current conferences
+%h1 Current conferences
 
-    %ul.no-bullets
-      - @conferences.each do |conference|
-        %li
-          = link_to conference do
-            %h3= conference.name
+%ul.no-bullets
+  - @conferences.each do |conference|
+    %li
+      = link_to conference do
+        %h3= conference.name
 
-    = link_to 'New Conference', new_conference_path
+= link_to 'New Conference', new_conference_path
