@@ -1,4 +1,7 @@
-%p#notice= notice
+- if flash[:notice]
+  .alert.alert-success
+    %button.close{:type => "button", :"data-dismiss" => "alert"} ×
+    %strong= notice
 .row-fluid
   .span9
     %h1= @conference.name
