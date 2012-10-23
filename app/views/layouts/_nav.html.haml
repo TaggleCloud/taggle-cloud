@@ -8,10 +8,16 @@
           = link_to "Conferences", conferences_path
         %li
           %span
-            Welcome #{link_to current_user.name, current_user}
+            
     %ul.nav.pull-right
-      %li
-        - if current_user.nil?
+      - if current_user.nil?
+        %li
           = link_to "Sign In", signin_path
-        - else
-          = link_to "Sign Out", signout_path
+      - else
+        %li.dropdown
+          = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
+            ="Welcome #{current_user.name}"
+            %b.caret
+          %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
+            %li= link_to "My Profile", profile_path
+            %li= link_to "Sign Out", signout_path
