@@ -2,13 +2,17 @@
   .navbar-inner
     %ul.nav
       %li.title_link=link_to "TaggleCloud", :root
-      %li
-        - if current_user.nil?
-        - else
-          = link_to "Conferences", conferences_path
+      - if current_user
+        %li= link_to "Conferences", conferences_path
+            
     %ul.nav.pull-right
-      %li
-        - if current_user.nil?
-          = link_to "Sign In", signin_path
-        - else
-          = link_to "Sign Out", signout_path
+      - if current_user
+        %li.dropdown
+          = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
+            ="Welcome #{current_user.name}"
+            %b.caret
+          %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
+            %li= link_to "My Profile", profile_path
+            %li= link_to "Sign Out", signout_path
+      - else
+        %li= link_to "Sign In", signin_path

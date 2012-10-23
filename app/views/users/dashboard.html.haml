@@ -1,2 +1,7 @@
-%h2 Welcome #{current_user.name}
-%ul
+- if !@conferences.empty?
+  %h2 Conferences you are attending
+  %ul
+    - @conferences.each do |conference|
+      %li= conference.name
+- else
+  %h3 Looks like you aren't attending any conferences :(
