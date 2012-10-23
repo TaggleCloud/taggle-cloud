@@ -7,6 +7,7 @@ class Abstract < ActiveRecord::Base
   belongs_to :user
   belongs_to :attendance
   has_many :abstract_tags
+  has_many :tags, :through => :abstract_tags
   
   #http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Ruby
   def levenshtein(b)
