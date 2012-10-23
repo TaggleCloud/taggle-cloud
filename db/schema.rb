@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023182418) do
+ActiveRecord::Schema.define(:version => 20121023190604) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -84,11 +84,9 @@ ActiveRecord::Schema.define(:version => 20121023182418) do
   end
 
   create_table "tags", :force => true do |t|
-    t.integer  "abstract_id"
     t.string   "value"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "abstract_tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_interests", :force => true do |t|
