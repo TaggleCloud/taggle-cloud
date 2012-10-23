@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20121023190604) do
     t.string   "value"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "abstract_tag_id"
   end
 
   create_table "user_interests", :force => true do |t|
