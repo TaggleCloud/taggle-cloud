@@ -11,4 +11,8 @@ class Attendance < ActiveRecord::Base
     return first_name.to_s + " " + last_name.to_s
   end
 
+  def make_connections
+    ConnectionBuilder.perform_async(:conference_id, :id)
+  end
+
 end
