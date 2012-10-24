@@ -8,6 +8,10 @@ class Connection < ActiveRecord::Base
     return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
   end
 
+  def self.get_connection(first_attendace_id, second_attendance_id)
+    return Connection.where(attendance1_id = first_attendance_id, attendance2_id = second_attendance_id)
+  end
+
   def self.my_logger
     @@my_logger ||= Logger.new("#{Rails.root}/log/logfile.log")
   end

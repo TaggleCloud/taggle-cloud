@@ -22,11 +22,12 @@ class User < ActiveRecord::Base
     raw_info = extra["raw_info"] if extra["raw_info"]
     if auth["provider"] == "facebook"
       work = raw_info["work"].first if raw_info["work"] && raw_info["work"].first
-      employer = work["employer"]["name"] if work["employer"]
-      position = work["position"]["name"] if work["position"]
-
+      if work
+        employer = work["employer"]["name"] if work["employer"]
+        position = work["position"]["name"] if work["position"]
+        user.occupation = position + " at " + employer
+      end
       user.location = auth["info"]["location"] if auth["info"]["location"]
-      user.occupation = position + " at " + employer
     elsif auth["provider"] == "linkedin"
       location = raw_info["location"] if raw_info["location"]
       user.occupation = auth["info"]["headline"] if auth["info"]["headline"]
