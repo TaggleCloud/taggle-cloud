@@ -76,6 +76,7 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
+    @attendance = Attendance.new
 
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
