@@ -1,13 +1,25 @@
 = form_for @user do |f|
   - if @abstract.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this conference from being saved:"
+      %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this interest from being saved:"
       %ul
         - @abstract.errors.full_messages.each do |msg|
           %li= msg
-
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :occupation
+    = f.text_field :occupation
   -f.fields_for "abstract_attributes[]", Abstract.new do |t|
     = t.label :body
     = t.text_area :body
+  
   .actions
-    = f.submit 
+    = f.submit

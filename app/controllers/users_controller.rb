@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
-    @conferences = @user.get_users_conferences
+    @conferences = current_user.get_conferences
   end
 
   def profile
