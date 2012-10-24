@@ -11,7 +11,6 @@ gem 'omniauth-linkedin'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem 'levenshtein-ffi', :require => 'levenshtein'
 
 gem 'foreman'
 gem 'sidekiq'

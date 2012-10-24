@@ -1,10 +1,11 @@
-require 'sidekiq/testing'
+# require 'sidekiq/testing'
 
 class AttendanceImporter
   include Sidekiq::Worker
-  sidekiq_options :retry => false
+  sidekiq_options :retry => 5
   
   def perform(conference_id, row)
+    logger.info("x" * 100)
     if row[5] && valid_email(row[5])
       new_attendee = Attendance.create!(:registered_email => row[5],
                                         :conference_id => conference_id,
@@ -12,17 +13,12 @@ class AttendanceImporter
                                         :last_name => row[4],
                                         :organization => row[2])
       
-      logger.info("x" * 100)
-      logger.info(new_attendee.to_yaml)
-
       e = Email.where(:mail_address => row[5]).first
       new_attendee.user_id = e.user_id if e
       
       abstract = sanitize_string(row[7]) if row[7]
-      Abstract.create(:body => abstract, :attendance_id => new_attendee.id, :user_id => new_attendee.user_id) if abstract
+      Abstract.create!(:body => abstract, :attendance_id => new_attendee.id, :user_id => new_attendee.user_id) if abstract
     end
-
-    ConnectionBuilder.perform_async(conference_id, new_attendee.id)
   end
 
   def valid_email(email)

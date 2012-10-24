@@ -8,6 +8,7 @@ class Conference < ActiveRecord::Base
   
   def upload(uploaded_io)
     CSV.parse(uploaded_io.read) do |row|
+      logger.info("x" * 100 + "\n" + row.to_s)
       AttendanceImporter.perform_async(self.id,row)
     end
   end
