@@ -1,5 +1,5 @@
 class Abstract < ActiveRecord::Base
-  after_create :tagbuilder
+  after_commit :tagbuilder
   attr_accessible :body, :user_id, :attendance_id
 
   belongs_to :user
@@ -10,6 +10,6 @@ class Abstract < ActiveRecord::Base
 
   def tagbuilder
     TagsetBuilder.perform_async(:id)
+    attendance.make_connections
   end
-  
 end

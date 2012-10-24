@@ -1,8 +1,6 @@
 class Attendance < ActiveRecord::Base
   attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization
 
-  after_create :make_connections
-
   belongs_to :conference
   belongs_to :user
   belongs_to :connection
