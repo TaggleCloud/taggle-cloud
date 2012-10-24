@@ -8,7 +8,8 @@
     = csrf_meta_tags
   %body
     .container
-      = render "layouts/nav"
+      = render :partial => "layouts/nav"
       .row
         .span12
+          = render :partial => "layouts/flash_messages", :locals => {:flash => flash}
           = yield
