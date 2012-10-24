@@ -2,7 +2,7 @@
 
 class AttendanceImporter
   include Sidekiq::Worker
-  sidekiq_options :retry => 5
+  sidekiq_options :queue => 'default'
   
   def perform(conference_id, row)
     logger.info("x" * 100)
