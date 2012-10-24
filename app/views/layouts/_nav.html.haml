@@ -1,17 +1,25 @@
-.navbar.navbar-fixed-top
+.navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner
-    %ul.nav
-      %li.title_link=link_to "TaggleCloud", :root
-      - if current_user.nil?
-      - else
-        %li
-          = link_to "Conferences", conferences_path
-        %li
-          %span
-            Welcome #{link_to current_user.name, current_user}
-    %ul.nav.pull-right
-      %li
-        - if current_user.nil?
-          = link_to "Sign In", signin_path
-        - else
-          = link_to "Sign Out", signout_path
+    .container
+      %a.btn.btn-navbar{:"data-toggle" => "collapse", :"data-target" => ".nav-collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Taggle Cloud", :root, :class => "brand"
+      .nav-collapse
+        %ul.nav
+          %li
+            - if current_user
+              = link_to "Conferences", conferences_path
+        %ul.nav.pull-right
+          - if current_user
+            %li.dropdown
+              = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
+                %i.icon-user.icon-white
+                = "#{current_user.name}"
+                %b.caret
+              %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
+                %li= link_to "My Profile", profile_path
+                %li= link_to "Sign Out", signout_path
+          - else
+            %li= link_to "Sign In", signin_path
