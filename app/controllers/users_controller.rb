@@ -12,5 +12,6 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @abstract = Abstract.new
   end
 end
