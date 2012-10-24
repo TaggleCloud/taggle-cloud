@@ -17,9 +17,10 @@
   .field
     = f.label :occupation
     = f.text_field :occupation
-  -f.fields_for "abstract_attributes[]", Abstract.new do |t|
-    = t.label :body
-    = t.text_area :body
+  -f.fields_for "abstract_attributes[]", @abstract do |t|
+    .field
+      = t.label :body
+      = t.text_area :body
   
   .actions
     = f.submit
