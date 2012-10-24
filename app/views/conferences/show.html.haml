@@ -8,22 +8,24 @@
     %small= @conference.location
   
 %p.lead
-  = "Your Matches"
-  \/
-  = link_to "Attendees", conference_attendees_path(@conference)
+  - if @user_attendance
+    = "Your Matches"
+    \/
+  = link_to "All Attendees", conference_attendees_path(@conference)
   
 %ul.thumbnails
   - @attendees.each do |attendee|
     %li.span6
       .thumbnail
         .card
-          - if attendee.user_id?
+          - if attendee.user_id
             %h4= link_to attendee.name, user_path(attendee.user_id)
           - else
             %h4= attendee.name
-          - unless attendee.organization
-            %h5 No Organization Specified
-          - else
+          - if attendee.organization
             %h5= attendee.organization
-          .progress.progress-striped
-            .bar{:style => "width: 75%"}
+          - else
+            %h5 No Organization Specified
+          - if @user_attendance
+            .progress.progress-striped
+              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}"}
