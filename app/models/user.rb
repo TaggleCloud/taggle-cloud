@@ -1,7 +1,7 @@
 require 'pp'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :provider, :uid
+  attr_accessible :name, :image, :location, :occupation
 
   has_many :abstracts
   has_many :attendances
