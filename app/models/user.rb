@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :abstracts
   has_many :attendances
   has_many :emails
+  has_many :user_interests
+  has_many :interests, :through => :user_interests
   
   accepts_nested_attributes_for :abstracts
 
@@ -30,13 +32,12 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def get_users_conferences
-    return Conference.first
-    #conferences = Array.new
-    #self.attendances.each do |attendance|
-    #  conferences << attendance.conferences
-    #end
-    #return conferences
+  def get_conferences
+    conferences = []
+    self.attendances.each do |attendance|
+     conferences << attendance.conference
+    end
+    return conferences
   end
 
 end
