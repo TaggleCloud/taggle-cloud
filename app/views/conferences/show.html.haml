@@ -28,4 +28,4 @@
             %h5 No Organization Specified
           - if @user_attendance
             .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}"}
+              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
