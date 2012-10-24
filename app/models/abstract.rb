@@ -5,6 +5,7 @@ class Abstract < ActiveRecord::Base
   belongs_to :user
   belongs_to :attendance
   has_many :abstract_tags
+  has_many :tags, :through => :abstract_tags
   
   private
 
