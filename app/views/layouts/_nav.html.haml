@@ -15,7 +15,8 @@
           - if current_user
             %li.dropdown
               = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
-                ="Welcome #{current_user.name}"
+                %i.icon-user.icon-white
+                = "#{current_user.name}"
                 %b.caret
               %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
                 %li= link_to "My Profile", profile_path
