@@ -12,4 +12,20 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
   end
+
+  # PUT /conferences/1
+  # PUT /conferences/1.json
+  def update
+    @user = current_user
+   
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        #format.html { render action: "edit" }
+        #format.json { render json: @conference.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end
