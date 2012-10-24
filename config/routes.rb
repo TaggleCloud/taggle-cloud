@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 TaggleCloud::Application.routes.draw do
 
   resources :conferences do
@@ -20,5 +22,7 @@ TaggleCloud::Application.routes.draw do
 
   match "/credits" => "landings#credits"
   root :to => "landings#home"
+  
+  mount Sidekiq::Web, at: "/sidekiq"
   
 end
