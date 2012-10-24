@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  .alert{ "data-alert" => "alert", :class => bootstrap_alerts(type) }
+    %button.close{:type => "button", :"data-dismiss" => "alert"} &times;
+    %strong= message
