@@ -1,5 +1,8 @@
--if @conference.name
-  %h1= "Attendees at " + @conference.name
+.page-header
+  -if @conference.name
+    %h1
+      = @conference.name
+      %small= @conference.location
 
 %ul.row.attendees
   - @attendees.each_slice(3) do |slice|
