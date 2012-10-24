@@ -9,15 +9,15 @@
     = f.label :name
     = f.text_field :name
   .field
+    = f.label :occupation
+    = f.text_field :occupation
+  .field
     = f.label :image
     = f.text_field :image
   .field
     = f.label :location
     = f.text_field :location
-  .field
-    = f.label :occupation
-    = f.text_field :occupation
-  -f.fields_for @abstract do |t|
+  = f.fields_for @abstract do |t|
     .field
       = t.label :body
       = t.text_area :body
