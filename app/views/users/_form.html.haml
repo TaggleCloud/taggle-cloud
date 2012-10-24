@@ -1,13 +1,15 @@
-= form_for ([@user, Attendance.new]) do |f|
-  - if @attendance.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this conference from being saved:"
-      %ul
-        - @attendance.errors.full_messages.each do |msg|
-          %li= msg
-
+= form_for @user do |f|
   .field
-    = f.label :body
-    = f.text_field :body
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :occupation
+    = f.text_field :occupation
   .actions
     = f.submit
