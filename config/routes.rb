@@ -6,7 +6,7 @@ TaggleCloud::Application.routes.draw do
   end
   
   resources :users do
-    resources :attendances
+    resources :abstracts
   end
 
   match "/auth/:provider/callback" => "sessions#create"
