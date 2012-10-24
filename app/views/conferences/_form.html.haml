@@ -12,8 +12,9 @@
   .field
     = f.label :location
     = f.text_field :location
-  .file_field
-    = f.label :"Attendee list (csv file)"
-    = f.file_field :csv
+  - if f.object.new_record?
+    .file_field
+      = f.label :"Attendee list (csv file)"
+      = f.file_field :csv
   .actions
     = f.submit
