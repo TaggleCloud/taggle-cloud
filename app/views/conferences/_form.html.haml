@@ -16,7 +16,7 @@
     .file_field
       = f.label :"Attendee list (csv file)"
       = f.file_field :csv
-  -f.fields_for "attendance_attributes[]", @attendance do |t|
+  -f.fields_for :attendances do |t|
     .field
       = t.label :registered_email
       = t.text_field :registered_email

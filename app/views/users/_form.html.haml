@@ -17,7 +17,7 @@
   .field
     = f.label :occupation
     = f.text_field :occupation
-  -f.fields_for "abstract_attributes[]", @abstract do |t|
+  -f.fields_for @abstract do |t|
     .field
       = t.label :body
       = t.text_area :body
