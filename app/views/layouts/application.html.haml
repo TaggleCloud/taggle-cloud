@@ -7,9 +7,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .fixed.contain-to-grid
-      = render "layouts/nav"
     .container
-      .row-fluid
+      = render :partial => "layouts/nav"
+      .row
         .span12
+          = render :partial => "layouts/flash_messages", :locals => {:flash => flash}
           = yield
