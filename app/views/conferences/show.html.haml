@@ -14,7 +14,8 @@
   - if @user_attendance
     = "Your Matches"
     \/
-  = link_to "All Attendees", conference_attendees_path(@conference)
+  - else
+    All Attendees
   
 %ul.thumbnails
   - @attendees.each do |attendee|
