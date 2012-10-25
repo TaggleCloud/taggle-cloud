@@ -17,10 +17,11 @@
   .field
     = f.label :location
     = f.text_field :location
-  = f.fields_for @abstract do |t|
-    .field
-      = t.label :body
-      = t.text_area :body
-  
   .actions
     = f.submit
+  = f.fields_for @abstract do |t|
+    .field
+      = t.label :interests
+      = t.text_area :interests
+    .actions
+      = t.submit

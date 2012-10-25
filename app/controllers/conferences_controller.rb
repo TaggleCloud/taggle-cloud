@@ -50,7 +50,10 @@ class ConferencesController < ApplicationController
   # GET /conferences/1/edit
   def edit
     @conference = Conference.find(params[:id])
-    @conference.attendances.build
+  end
+  
+  def attendee
+    @attendance = @conference.attendances.build
   end
 
   # POST /conferences
