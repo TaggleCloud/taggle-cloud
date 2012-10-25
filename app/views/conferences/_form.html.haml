@@ -16,7 +16,10 @@
     .file_field
       = f.label :"Attendee list (csv file)"
       = f.file_field :csv
-  = f.fields_for :attendance do |t|
+  .actions
+    = f.submit
+  %h3= "Add an attendee:"
+  = f.fields_for :attendances do |t|
     .field
       = t.label :registered_email
       = t.text_field :registered_email
@@ -29,5 +32,5 @@
     .field
       = t.label :organization
       = t.text_field :organization
-  .actions
-    = f.submit
+    .actions
+      = t.submit "Add attendee"
