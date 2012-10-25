@@ -20,4 +20,5 @@
     = f.submit
   %h3= "Add an attendee:"
   = f.fields_for :attendances do |t|
-    = render 'attendee_fields', :f => t
+    = render 'attendance_fields', :f => t
+  = link_to_add_fields "Add attendee", f, :attendances
