@@ -1,15 +1,17 @@
-= form_for @user do |f|
-  .field
+= form_for @user, :html => {:class => "form-horizontal"} do |f|
+  %fieldset
+    %legend Member Form
     = f.label :name
     = f.text_field :name
-  .field
+  
     = f.label :image
     = f.text_field :image
-  .field
+  
     = f.label :location
     = f.text_field :location
-  .field
+  
     = f.label :occupation
     = f.text_field :occupation
+    
   .actions
-    = f.submit
+    = f.submit :class => "btn btn-primary"
