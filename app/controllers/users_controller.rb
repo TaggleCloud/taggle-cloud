@@ -14,14 +14,14 @@ class UsersController < ApplicationController
     @abstract = Abstract.new
     
     # respond_to do |format|
-    #       if @abstract.save
-    #         format.html { redirect_to @user, notice: 'Interest was successfully added.' }
-    #         format.json { head :no_content }
-    #       else
-    #         format.html { render action: "profile" }
-    #         format.json { render json: @abstract.errors, status: :unprocessable_entity }
-    #       end
-    #     end
+    #   if @abstract.save
+    #     format.html { redirect_to @user, notice: 'Interest was successfully added.' }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render action: "profile" }
+    #     format.json { render json: @abstract.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /conferences/1

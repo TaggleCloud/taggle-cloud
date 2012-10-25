@@ -20,17 +20,4 @@
     = f.submit
   %h3= "Add an attendee:"
   = f.fields_for :attendances do |t|
-    .field
-      = t.label :registered_email
-      = t.text_field :registered_email
-    .field
-      = t.label :first_name
-      = t.text_field :first_name
-    .field
-      = t.label :last_name
-      = t.text_field :last_name
-    .field
-      = t.label :organization
-      = t.text_field :organization
-    .actions
-      = t.submit "Add attendee"
+    = render 'attendee_fields', :f => t
