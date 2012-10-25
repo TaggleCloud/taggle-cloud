@@ -19,9 +19,5 @@
     = f.text_field :location
   .actions
     = f.submit
-  = f.fields_for @abstract do |t|
-    .field
-      = t.label :interests
-      = t.text_area :interests
-    .actions
-      = t.submit
+  = f.fields_for :abstracts do |t|
+    = render 'interest_fields', :f => t
