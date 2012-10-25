@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+# Pull the JSON object for attendees on click
+$ ->
+  $("a.card").click ->
+    url = @href + '.json'
+    $.getJSON url, (data) ->
+      alert data
+      false

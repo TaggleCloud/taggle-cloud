@@ -12,9 +12,14 @@
     padding: 5px 10px;
     min-height: 60px;
   }
-  
-.card {
-  padding: 10px 10px 10px 10px;
 }
 
+.thumbnails {
+  .card {
+    padding: 10px 10px 10px 10px;
+    color: inherit;
+    &:hover { text-decoration: none; }
+  }
 }
+
+.no-org { color: #AAA }

@@ -1,8 +1,11 @@
 .page-header
-  %p.pull-right
-    = link_to 'Edit', edit_conference_path(@conference)
-    \|
-    = link_to 'Back', conferences_path
+  .pull-right
+    %p
+      = link_to 'Edit', edit_conference_path(@conference)
+      \|
+      = link_to 'Destroy', @conference, method: :delete, data: { confirm: 'Are you sure?' }
+    %p.pull-right
+      = link_to 'Back', conferences_path
   %h1
     = @conference.name
     %small= @conference.location
@@ -16,16 +19,15 @@
 %ul.thumbnails
   - @attendees.each do |attendee|
     %li.span6
-      .thumbnail
-        .card
-          - if attendee.user_id
-            %h4= link_to attendee.name, user_path(attendee.user_id)
-          - else
-            %h4= attendee.name
-          - if attendee.organization
-            %h5= attendee.organization
-          - else
-            %h5 No Organization Specified
-          - if @user_attendance
-            .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
+      = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card" do
+        - if attendee.user_id
+          %h4= link_to attendee.name, user_path(attendee.user_id)
+        - else
+          %h4= attendee.name
+        - if attendee.organization
+          %h5= truncate(attendee.organization, :length => 60)
+        - else
+          %h5.no-org No Organization Specified
+        - if @user_attendance
+          .progress.progress-striped
+            .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
