@@ -8,8 +8,8 @@ class Connection < ActiveRecord::Base
     return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
   end
 
-  def self.get_connection(first_attendace_id, second_attendance_id)
-    return Connection.where(attendance1_id = first_attendance_id, attendance2_id = second_attendance_id)
+  def self.get_connection(first_attendance_id, second_attendance_id)
+    return Connection.find(:all, :conditions => "attendance1_id = #{first_attendance_id} AND attendance2_id = #{second_attendance_id}")
   end
 
   def self.compare(tags1, tags2)
