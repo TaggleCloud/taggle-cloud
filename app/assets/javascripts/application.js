@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+= require jquery
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
@@ -18,7 +18,5 @@
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  $(link).up().insert({
-        before: content.replace(regexp, new_id)
-  });
+  $(link).parent().before(content.replace(regexp, new_id));
 }

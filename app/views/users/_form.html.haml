@@ -20,4 +20,5 @@
   .actions
     = f.submit
   = f.fields_for :abstracts do |t|
-    = render 'interest_fields', :f => t
+    = render 'abstract_fields', :f => t
+  = link_to_add_fields "Add interest", f, :abstracts
