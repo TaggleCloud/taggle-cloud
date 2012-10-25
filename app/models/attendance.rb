@@ -15,4 +15,8 @@ class Attendance < ActiveRecord::Base
     ConnectionBuilder.perform_async(:conference_id, :id)
   end
 
+  def get_connection_strength(other_attendance)
+    return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
+  end
+
 end
