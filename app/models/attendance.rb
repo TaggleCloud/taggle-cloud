@@ -16,7 +16,7 @@ class Attendance < ActiveRecord::Base
   end
 
   def get_connection_strength(other_attendance)
-    return Connection.get_connection(:id, other_attendance.id).strength
+    return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
   end
 
 end

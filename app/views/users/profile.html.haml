@@ -1,10 +1,8 @@
 Hi there.
 %br
-%img(src= "#{current_user.image}")
+= image_tag(current_user.image) if current_user.image
 %ul
   %li= current_user.location
   %li= current_user.occupation
-
-
 
 = render 'form'
