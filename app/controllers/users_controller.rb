@@ -11,18 +11,21 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @attendance = Attendance.new(:user_id => @user.id, :conference_id => Conference.find(:first, :conditions => ["name = :n", {:n => "User testing"}, "location = :l", {:l => "Here"}]))
-    @abstract = Abstract.new(:attendance_id => @attendance.id, :body => params[:body])
+    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
+    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
+    @interests = Abstract.find_or_create_by_attendance_id(@attendance.id)
+    Abstract.update(@interests.id, :body => params[:body])
     
-    # respond_to do |format|
-    #   if @abstract.save
-    #     format.html { redirect_to @user, notice: 'Interest was successfully added.' }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: "profile" }
-    #     format.json { render json: @abstract.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @interests.save
+        format.html #{ notice: 'Interest was successfully added.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "profile" }
+        format.json { render json: @abstract.errors, status: :unprocessable_entity }
+      end
+    end
+    
   end
 
   # PUT /conferences/1

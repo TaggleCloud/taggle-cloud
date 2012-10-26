@@ -6,6 +6,8 @@ class Attendance < ActiveRecord::Base
   belongs_to :connection
   has_many :connections, :dependent => :destroy, :class_name => "Connection", :foreign_key => "attendance1_id"
   has_many :abstracts
+  
+  accepts_nested_attributes_for :abstracts
 
   def name
     return first_name.to_s + " " + last_name.to_s
