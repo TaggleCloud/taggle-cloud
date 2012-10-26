@@ -1,3 +1,7 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/buttons";
+
 #welcome {
   padding: 15px 15px 15px 15px;
   background: #DEDEDE;
@@ -7,3 +11,15 @@
   text-align: center;
 }
 
+$facebook-primary: #3B5998;
+$google-primary: #C63D2D;
+$linkedin-primary: #4875B4;
+.btn-facebook {
+  @include buttonBackground(lighten($facebook-primary, 15%), $facebook-primary);
+}
+.btn-google {
+  @include buttonBackground(lighten($google-primary, 15%), $google-primary);
+}
+.btn-linkedin {
+  @include buttonBackground(lighten($linkedin-primary, 15%), $linkedin-primary);
+}

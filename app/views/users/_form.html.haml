@@ -1,15 +1,15 @@
 = form_for @user do |f|
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :first_name
+    = f.text_field :first_name
   .field
-    = f.label :image
-    = f.text_field :image
-  .field
-    = f.label :location
-    = f.text_field :location
+    = f.label :last_name
+    = f.text_field :last_name
   .field
     = f.label :occupation
     = f.text_field :occupation
+  .field
+    = f.label :location
+    = f.text_field :location
   .actions
     = f.submit
