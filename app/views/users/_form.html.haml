@@ -1,5 +1,5 @@
 = form_for @user do |f|
-  - if @abstract.errors.any?
+  - if @interests.errors.any?
     #error_explanation
       %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this interest from being saved:"
       %ul
@@ -17,8 +17,9 @@
   .field
     = f.label :location
     = f.text_field :location
+  = f.fields_for @interests do |i|
+    .field
+      = i.label :interests
+      = i.text_area :body
   .actions
     = f.submit
-  = f.fields_for :abstracts do |t|
-    = render 'abstract_fields', :f => t
-  = link_to_add_fields "Add interest", f, :abstracts
