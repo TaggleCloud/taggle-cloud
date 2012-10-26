@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023213746) do
+ActiveRecord::Schema.define(:version => 20121025165849) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -39,11 +39,22 @@ ActiveRecord::Schema.define(:version => 20121023213746) do
     t.string   "organization"
   end
 
+  create_table "authentications", :force => true do |t|
+    t.integer  "authentication_id"
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "conferences", :force => true do |t|
     t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "connections", :force => true do |t|
@@ -61,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20121023213746) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "interests", :force => true do |t|
+    t.string   "interest"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "value"
     t.datetime "created_at", :null => false
@@ -75,8 +92,6 @@ ActiveRecord::Schema.define(:version => 20121023213746) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
