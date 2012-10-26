@@ -22,7 +22,7 @@ class ConferencesController < ApplicationController
         @attendees << Attendance.find(c.attendance2_id)
       end
     else
-      @attendees = @conference.attendances.first(10)
+      @attendees = @conference.attendances
     end
 
     respond_to do |format|

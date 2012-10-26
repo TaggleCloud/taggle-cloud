@@ -1,13 +1,16 @@
 %p#notice= notice
+- if @attendance.user_id
+  = link_to user_path(@attendance.user_id) do
+    %h2= @attendance.name
+    %h3= @attendance.organization
+- else
+  %h2= @attendance.name
+  %h3= @attendance.organization
+  
 
-%h2
-  = @attendance.name
-%h3
-  = @attendance.organization
+- @abstracts.each do |abstract|
+  %p= abstract.body
 
-= @abstracts.each do |abs|
-  %p= abs.body
-
-= link_to 'Edit', edit_conference_attendee_path(@attendance)
+= link_to 'Edit', edit_conference_attendee_path(@conference, @attendance)
 \|
 = link_to 'Back', conference_attendees_path
