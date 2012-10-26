@@ -14,8 +14,6 @@ module ApplicationHelper
         type.to_s
     end
   end
-  
-  
 
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
@@ -24,7 +22,5 @@ module ApplicationHelper
     end
     link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
-
-
   
 end
