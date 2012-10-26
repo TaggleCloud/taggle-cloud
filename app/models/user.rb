@@ -37,10 +37,11 @@ class User < ActiveRecord::Base
         aModel.provider = auth["provider"]
         aModel.user_id = eModel.user_id
         aModel.save
-        return User.find(aModel.user_id).last
+        return User.find(aModel.user_id)
       end
 
-      user.name = auth["info"]["name"]
+      user.first_name = auth["info"]["first_name"]
+      user.last_name = auth["info"]["last_name"]
       user.image = auth["info"]["image"] if auth["info"]["image"]
       extra = auth["extra"] if auth["extra"]
       raw_info = extra["raw_info"] if extra["raw_info"]
