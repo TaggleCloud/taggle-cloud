@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :image, :location, :occupation
+  attr_accessible :first_name, :last_name, :image, :location, :occupation
 
   has_many :abstracts
   has_many :attendances
@@ -9,6 +9,18 @@ class User < ActiveRecord::Base
   has_many :interests, :through => :user_interests
   
   accepts_nested_attributes_for :abstracts
+
+  def name
+    return self.first_name.to_s + " " + self.last_name.to_s
+  end
+
+  def get_conferences
+    conferences = []
+    self.attendances.each do |attendance|
+     conferences << attendance.conference
+    end
+    return conferences
+  end
 
   def self.create_with_omniauth(auth)
     user = User.new
@@ -61,14 +73,6 @@ class User < ActiveRecord::Base
       end
       return user
     end
-  end
-
-  def get_conferences
-    conferences = []
-    self.attendances.each do |attendance|
-     conferences << attendance.conference
-    end
-    return conferences
   end
 
 end
