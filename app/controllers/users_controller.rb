@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @abstract = Abstract.new
+    @attendance = Attendance.new(:user_id => @user.id, :conference_id => Conference.find(:first, :conditions => ["name = :n", {:n => "User testing"}, "location = :l", {:l => "Here"}]))
+    @abstract = Abstract.new(:attendance_id => @attendance.id, :body => params[:body])
     
     # respond_to do |format|
     #   if @abstract.save
