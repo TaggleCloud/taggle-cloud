@@ -3,9 +3,10 @@
   %head
     %title TaggleCloud
     %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag "application", params[:controller], :media => "all"
+    = javascript_include_tag "application", params[:controller]
     = csrf_meta_tags
+    = yield :head
   %body
     .container
       = render :partial => "layouts/nav"

@@ -6,8 +6,11 @@
         - @abstract.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
   .field
     = f.label :occupation
     = f.text_field :occupation
