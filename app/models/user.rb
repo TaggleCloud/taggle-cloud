@@ -1,7 +1,7 @@
 require 'pp'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :image, :location, :occupation
+  attr_accessible :first_name, :last_name, :image, :location, :occupation
 
   has_many :abstracts
   has_many :attendances
@@ -11,12 +11,25 @@ class User < ActiveRecord::Base
   
   accepts_nested_attributes_for :abstracts
 
+  def name
+    return self.first_name.to_s + " " + self.last_name.to_s
+  end
+
+  def get_conferences
+    conferences = []
+    self.attendances.each do |attendance|
+     conferences << attendance.conference
+    end
+    return conferences
+  end
+
   def self.create_with_omniauth(auth)
     user = User.new
     pp auth
     user.provider = auth["provider"]
     user.uid = auth["uid"]
-    user.name = auth["info"]["name"]
+    user.first_name = auth["info"]["first_name"]
+    user.last_name = auth["info"]["last_name"]
     user.image = auth["info"]["image"] if auth["info"]["image"]
     extra = auth["extra"] if auth["extra"]
     raw_info = extra["raw_info"] if extra["raw_info"]
@@ -50,14 +63,6 @@ class User < ActiveRecord::Base
     end
     
     return user
-  end
-
-  def get_conferences
-    conferences = []
-    self.attendances.each do |attendance|
-     conferences << attendance.conference
-    end
-    return conferences
   end
 
 end

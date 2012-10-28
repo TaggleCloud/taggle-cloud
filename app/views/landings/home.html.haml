@@ -1,10 +1,11 @@
+- content_for :head do
+  = stylesheet_link_tag "homepage", :media => "all"
+
 .hero-unit
   %h1 TaggleCloud
   %p Connect with people in your field
-  -if current_user.nil?
-    = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "btn"
-    = link_to "Sign up with Google", "auth/google_oauth2", :class => "btn"
-    = link_to "Sign up with Facebook", "auth/facebook", :class => "btn"
-  -else
-    %h3 Welcome #{current_user.name}
-    = link_to "Sign out", "signout", :class => "btn"
+  %br
+  .centered
+    = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "btn btn-large btn-linkedin"
+    = link_to "Sign up with Google", "auth/google_oauth2", :class => "btn btn-large btn-google"
+    = link_to "Sign up with Facebook", "auth/facebook", :class => "btn btn-large btn-facebook"
