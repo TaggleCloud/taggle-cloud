@@ -39,11 +39,31 @@ ActiveRecord::Schema.define(:version => 20121026033102) do
     t.string   "organization"
   end
 
+  create_table "authentication", :force => true do |t|
+    t.integer  "authentication_id"
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "authentication_id"
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "conferences", :force => true do |t|
     t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "connections", :force => true do |t|
@@ -81,8 +101,6 @@ ActiveRecord::Schema.define(:version => 20121026033102) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "image"
