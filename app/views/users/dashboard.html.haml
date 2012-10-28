@@ -7,6 +7,6 @@
   %h2 Conferences you are attending
   %ul
     - @conferences.each do |conference|
-      %li= conference.name
+      %li= link_to conference.name, conference_path(conference)
 - else
   %h3.centered Looks like you aren't attending any conferences &#9785;
