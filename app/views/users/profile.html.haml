@@ -4,4 +4,6 @@
   %li= current_user.location
   %li= current_user.occupation
   
+= image_tag(current_user.image) if current_user.image
+
 = render 'form'
