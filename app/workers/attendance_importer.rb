@@ -4,6 +4,13 @@ class AttendanceImporter
   include Sidekiq::Worker
   sidekiq_options :queue => 'default'
   
+  REDIS_POOL = ConnectionPool.new(:size => 10, :timeout => 3) { Redis.new }
+  def perform(args)
+    REDIS_POOL.with_connection do |redis|
+      redis.lsize(:foo)
+    end
+  end
+  
   def perform(conference_id, row)
     if row[5] && valid_email(row[5])
       new_attendee = Attendance.create( :registered_email => row[5],
