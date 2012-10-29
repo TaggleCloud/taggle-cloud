@@ -1,8 +1,7 @@
 %br
-%img(src= "#{current_user.image}")
-%ul
-  %li= current_user.location
-  %li= current_user.occupation
+%h2= current_user.name
+%h4= current_user.occupation
+= current_user.location
   
 = image_tag(current_user.image) if current_user.image
 
