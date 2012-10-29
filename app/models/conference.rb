@@ -5,7 +5,7 @@ class Conference < ActiveRecord::Base
 
   has_many :attendances
   has_many :connections, :through => :attendances
-  
+ 
   accepts_nested_attributes_for :attendances
   
   def upload(uploaded_io)

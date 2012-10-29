@@ -16,9 +16,7 @@
     .file_field
       = f.label :"Attendee list (csv file)"
       = f.file_field :csv
+  = link_to_add_fields "Add attendee", f, :attendances
   .actions
     = f.submit
-  %h3= "Add an attendee:"
-  = f.fields_for :attendances do |t|
-    = render 'attendance_fields', :f => t
-  = link_to_add_fields "Add attendee", f, :attendances
+  

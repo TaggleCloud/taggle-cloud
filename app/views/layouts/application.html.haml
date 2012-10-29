@@ -4,7 +4,7 @@
     %title TaggleCloud
     %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag "application", params[:controller], :media => "all"
-    = javascript_include_tag "application", params[:controller]
+    = javascript_include_tag "application"#, params[:controller] <- I think putting params here makes the javascript load twice, Tony
     = csrf_meta_tags
     = yield :head
   %body
