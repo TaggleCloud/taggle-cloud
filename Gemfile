@@ -18,6 +18,8 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 
+gem 'activerecord-import'
+
 group :development do
   gem 'sqlite3'
   gem 'rails-erd'
