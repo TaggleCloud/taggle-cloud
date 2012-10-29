@@ -1,5 +1,5 @@
 = form_for @user do |f|
-  - if @interests.errors.any?
+  - if @abstract.errors.any?
     #error_explanation
       %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this interest from being saved:"
       %ul
@@ -20,9 +20,9 @@
   .field
     = f.label :location
     = f.text_field :location
-  = f.fields_for @interests do |i|
+  = f.fields_for @abstract do |a|
     .field
-      = i.label :interests
-      = i.text_area :body
+      = a.label :attributes
+      = a.text_area :body
   .actions
     = f.submit
