@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :image, :location, :occupation
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes
 
   has_many :abstracts
   has_many :attendances
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :emails
   has_many :user_interests
   has_many :interests, :through => :user_interests
-  
+ 
   accepts_nested_attributes_for :abstracts
 
   def name
