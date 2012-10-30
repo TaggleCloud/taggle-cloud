@@ -12,11 +12,12 @@ class Conference < ActiveRecord::Base
     attendances, abstracts = [], []
     CSV.parse(uploaded_io.read) do |row|
       if row[5] && valid_email(row[5])
-        @att = Attendance.create(:registered_email => row[5], :conference_id => self.id, :first_name => row[3], :last_name => row[4], :organization => row[2])
+        att = Attendance.create(:registered_email => row[5], :conference_id => self.id, :first_name => row[3], :last_name => row[4], :organization => row[2])
         e = Email.where(:mail_address => row[5]).first
-        @att.user_id = e.user_id if e
+        att.user_id = e.user_id if e
+        att.save
         abstract = sanitize_string(row[7]) if row[7]
-        Abstract.create(:body => abstract, :attendance_id => @att.id, :user_id => @att.user_id) if abstract
+        Abstract.create(:body => abstract, :attendance_id => att.id, :user_id => att.user_id) if abstract
       end
       # Attendance.import(attendances)
       # Abstract.import(abstracts)
