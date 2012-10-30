@@ -3,7 +3,7 @@ require 'csv'
 class Conference < ActiveRecord::Base
   attr_accessible :name, :location, :attendances_attributes
 
-  has_many :attendances
+  has_many :attendances, :dependent => :destroy
   has_many :connections, :through => :attendances
  
   accepts_nested_attributes_for :attendances
@@ -21,10 +21,10 @@ class Conference < ActiveRecord::Base
       end
       # Attendance.import(attendances)
       # Abstract.import(abstracts)
-      Connection.build_conf_connections(self)
       
       #AttendanceImporter.perform_in(5.seconds, self.id, row)
     end
+    Connection.build_conf_connections(self)
   end
   
   def valid_email(email)
