@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
     #FIXME check auth here instead of in user
     user = User.create_with_omniauth(auth)
     session[:user_id] = user.id
+    @conf = Conference.find_or_create_by_name_and_location("User testing", "Here")
+    if(!Attendance.find_by_conference_id_and_user_id(@conf.id, user.id))
+      @att = Attendance.create(:conference_id => @conf.id, :user_id => user.id)
+      Abstract.create(:body => "", :user_id => user.id, :attendance_id => @att.id)
+    end
     redirect_to root_url, :notice => "Signed in!"
   end
 

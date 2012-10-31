@@ -1,6 +1,6 @@
 namespace :db do
   desc "Add conference for user testing with name = User testing"
   task :populate => :environment do
-    Conference.create(:id => 7357, :name => "User testing", :location => "Here")
+    @conf = Conference.find_or_create_by_name_and_location("User testing", "Here")
   end
 end
