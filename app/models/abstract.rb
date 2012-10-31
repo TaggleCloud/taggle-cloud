@@ -1,6 +1,7 @@
 class Abstract < ActiveRecord::Base
   #after_commit :tagbuilder
   after_create :create_tags
+  after_update :create_tags
   attr_accessible :body, :user_id, :attendance_id
 
   belongs_to :user

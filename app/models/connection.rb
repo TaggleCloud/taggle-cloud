@@ -39,7 +39,8 @@ class Connection < ActiveRecord::Base
             # self.my_logger.info("comp_atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
           end
         end
-        self.create(:attendance1_id => atnd.id, :attendance2_id => comp_atnd.id, :strength => self.compare(tagset1, tagset2))
+        conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
+        conn.update_attribute(:strength => self.compare(tagset1, tagset2))
       end
     end
   end
