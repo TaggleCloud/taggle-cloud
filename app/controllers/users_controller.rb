@@ -25,14 +25,15 @@ class UsersController < ApplicationController
     @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
     @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
     Abstract.update(@abstract.id, :body => params["user"]["abstract"]["body"])
+    Connection.build_conf_connections(@interests_conf)
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
-        #format.html { render action: "edit" }
-        #format.json { render json: @conference.errors, status: :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.json { render json: @conference.errors, status: :unprocessable_entity }
       end
     end
   end
