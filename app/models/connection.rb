@@ -24,7 +24,7 @@ class Connection < ActiveRecord::Base
   def self.build_conf_connections(conf)
     atts = conf.attendances.all
     atts.each_with_index do |atnd, index|
-      atts.drop(index).each do |comp_atnd|
+      atts.each do |comp_atnd|
         next if atnd.id == comp_atnd.id
         tagset1, tagset2 = [], []
         atnd.abstracts.all.each do |abstract|
@@ -40,7 +40,7 @@ class Connection < ActiveRecord::Base
           end
         end
         conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-        conn.update_attribute(:strength => self.compare(tagset1, tagset2))
+        conn.update_attribute(:strength, self.compare(tagset1, tagset2))
       end
     end
   end
