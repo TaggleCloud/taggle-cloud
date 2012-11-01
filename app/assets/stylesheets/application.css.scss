@@ -1,8 +1,27 @@
 /*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require bootstrap_and_overrides
 */
 .centered { text-align: center }
+
+@import "bootstrap";
+
+.title_link {
+  float: left;
+  display: block;
+  padding: 0px 20px 0px 20px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #555;
+  text-shadow: 0 1px 0 white;
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+@import "homepage";
+@import "conferences";
+
+@import "bootstrap-responsive";
