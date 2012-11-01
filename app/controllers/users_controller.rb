@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   # PUT /conferences/1
   # PUT /conferences/1.json
   def update
-    puts params
+    puts("---------------------------------------" + params.to_s)
     @user = current_user
     @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
     @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @interests_conf, notice: 'Profile has been successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
