@@ -40,9 +40,9 @@ class Connection < ActiveRecord::Base
           end
         end
         conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-        conn.update_attribute(:strength, self.compare(tagset1, tagset2))
+        str = self.compare(tagset1, tagset2)
+        conn.update_attribute(:strength, str)
       end
     end
   end
-  
 end

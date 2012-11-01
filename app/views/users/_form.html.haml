@@ -22,7 +22,7 @@
     = f.text_field :location
   = f.fields_for @abstract do |a|
     .field
-      = a.label :attributes
+      = a.label :bio
       = a.text_area :body
   .actions
     = f.submit
