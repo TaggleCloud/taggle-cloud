@@ -1,7 +1,7 @@
 require 'csv'
 
 class Conference < ActiveRecord::Base
-  attr_accessible :name, :location, :attendances_attributes
+  attr_accessible :name, :location, :attendances_attributes, :start_time, :end_time
 
   has_many :attendances, :dependent => :destroy
   has_many :connections, :through => :attendances
