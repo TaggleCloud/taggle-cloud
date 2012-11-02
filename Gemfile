@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
@@ -36,4 +35,5 @@ group :assets do
   gem 'compass-rails', '~> 1.0.3'
   gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
+  gem 'bootstrap-datepicker-rails'
 end
