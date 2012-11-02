@@ -13,13 +13,11 @@
     = f.label :location
     = f.text_field :location
   .field
-    .datepicker
-      = f.label :start_date
-      = f.date_select :start_time
+    = f.label :start_date
+    = f.text_field :start_time, :class => 'datepicker'
   .field
-    .datepicker
-      = f.label :end_date
-      = f.date_select :end_time
+    = f.label :end_date
+    = f.text_field :end_time, :class => 'datepicker'
   = if f.object.new_record?
     .file_field
       = f.label :"Attendee list (csv file)"
