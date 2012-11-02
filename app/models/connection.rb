@@ -14,6 +14,7 @@ class Connection < ActiveRecord::Base
 
   def self.compare(tags1, tags2)
     intersection = tags1 & tags2
+    puts "\n\n\n\n\n\n\nIntersection = " + intersection.to_s + "\n\n\n\n\n\n\n\n"
     return 0 if intersection.size == tags1.size && intersection.size == tags2.size # Probably want to change this eventually
     shorter = (tags1.size > tags2.size ? tags2.size : tags1.size)
     # logger.info("comparing #{tags1.map(&:value).join(",")}\n, against #{tags2.map(&:value).join(",")}\n, intersection = #{intersection.map(&:value).join(",")}, \n shorter = #{shorter.size}\n")
