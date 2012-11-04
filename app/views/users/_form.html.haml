@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-= form_for @user, :html => {:class => "form-horizontal"} do |f|
-  %fieldset
-    %legend Member Form
-    = f.label :name
-    = f.text_field :name
-  
-    = f.label :image
-    = f.text_field :image
-  
-    = f.label :location
-    = f.text_field :location
-  
-    = f.label :occupation
-    = f.text_field :occupation
-    
-=======
 = form_for @user do |f|
+  - if @abstract.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this interest from being saved:"
+      %ul
+        - @abstract.errors.full_messages.each do |msg|
+          %li= msg
   .field
     = f.label :first_name
     = f.text_field :first_name
@@ -26,8 +15,14 @@
     = f.label :occupation
     = f.text_field :occupation
   .field
+    = f.label :image
+    = f.text_field :image
+  .field
     = f.label :location
     = f.text_field :location
->>>>>>> dbe93495b74b053566ffc6483b620be9bca78947
+  = f.fields_for @abstract do |a|
+    .field
+      = a.label :bio
+      = a.text_area :body
   .actions
-    = f.submit :class => "btn btn-primary"
+    = f.submit
