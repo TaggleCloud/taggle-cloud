@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
@@ -16,6 +17,8 @@ gem 'foreman'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+
+gem 'activerecord-import'
 
 group :development do
   gem 'sqlite3'
