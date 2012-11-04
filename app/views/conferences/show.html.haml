@@ -29,3 +29,5 @@
         - if @user_attendance
           .progress.progress-striped
             .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
+              #{@user_attendance.get_connection_strength(attendee)}%
+              
