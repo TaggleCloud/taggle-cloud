@@ -1,30 +1,20 @@
-= form_for @conference do |f|
-  - if @conference.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@conference.errors.count, "error")} prohibited this conference from being saved:"
-      %ul
-        - @conference.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @conference, :html => {:class => 'form-horizontal' } do |f|
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :location
-    = f.text_field :location
-  .field
-    = f.label :start_date
-    = f.text_field :start_time, :class => 'datepicker'
-  .field
-    = f.label :end_date
-    = f.text_field :end_time, :class => 'datepicker'
+  = f.input :name
+  = f.input :location
+  = f.input :start_time, :as => :string, :input_html => { :class => 'datepicker' }
+  = f.input :end_time, :as => :string, :input_html => { :class => 'datepicker' }
   - if f.object.new_record?
-    .file_field
-      = f.label :"Attendee list (csv file)"
-      = f.file_field :csv
+    = f.input :"Attendee list (csv file)"
+
+  %hr
+
+  %h3 Add Attendees
   = link_to_add_fields "Add attendee", f, :attendances
-  .actions
-    = f.submit
+
+  %hr
+
+  = f.button :submit
   
 :javascript
   $(function() {
