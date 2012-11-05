@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(:version => 20121026033102) do
     t.string   "organization"
   end
 
-  create_table "authentication", :force => true do |t|
-    t.integer  "authentication_id"
-    t.integer  "user_id"
-    t.string   "uid"
-    t.string   "provider"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
   create_table "authentications", :force => true do |t|
     t.integer  "authentication_id"
     t.integer  "user_id"
