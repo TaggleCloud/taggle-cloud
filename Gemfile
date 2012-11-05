@@ -18,6 +18,7 @@ gem 'sinatra', require: false
 gem 'slim'
 
 gem 'activerecord-import'
+gem 'simple_form'
 
 group :development do
   gem 'sqlite3'
