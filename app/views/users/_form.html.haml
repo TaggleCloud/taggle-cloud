@@ -1,15 +1,36 @@
-= form_for @user do |f|
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :occupation
-    = f.text_field :occupation
-  .field
-    = f.label :location
-    = f.text_field :location
-  .actions
-    = f.submit
+= form_for @user, :html => {:class => "form-horizontal"} do |f|
+  - if @abstract.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@abstract.errors.count, "error")} prohibited this interest from being saved:"
+      %ul
+        - @abstract.errors.full_messages.each do |msg|
+          %li= msg
+  .control-group
+    = f.label :first_name, :class => "control-label"
+    .controls
+      = f.text_field :first_name
+  .control-group
+    = f.label :last_name, :class => "control-label"
+    .controls
+      = f.text_field :last_name
+  .control-group
+    = f.label :occupation, :class => "control-label"
+    .controls
+      = f.text_field :occupation
+  .control-group
+    = f.label :image, :class => "control-label"
+    .controls
+      = f.text_field :image
+  .control-group
+    = f.label :location, :class => "control-label"
+    .controls
+      = f.text_field :location
+  = f.fields_for @abstract do |a|
+    .control-group
+      = a.label :bio, :class=> "control-label"
+      .controls
+        = a.text_area :body
+  .control-group
+    .controls
+      .actions
+        = f.submit

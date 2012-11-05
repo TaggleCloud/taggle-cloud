@@ -51,6 +51,10 @@ class ConferencesController < ApplicationController
   def edit
     @conference = Conference.find(params[:id])
   end
+  
+  def attendee
+    @attendance = @conference.attendances.build
+  end
 
   # POST /conferences
   # POST /conferences.json
@@ -73,6 +77,7 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
+    puts params
 
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
