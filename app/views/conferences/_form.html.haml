@@ -12,6 +12,12 @@
   .field
     = f.label :location
     = f.text_field :location
+  .field
+    = f.label :start_date
+    = f.text_field :start_time, :class => 'datepicker'
+  .field
+    = f.label :end_date
+    = f.text_field :end_time, :class => 'datepicker'
   = if f.object.new_record?
     .file_field
       = f.label :"Attendee list (csv file)"
@@ -20,3 +26,7 @@
   .actions
     = f.submit
   
+:javascript
+  $(function() {
+  	$('.datepicker').datepicker()
+  })
