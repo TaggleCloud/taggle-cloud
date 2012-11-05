@@ -18,7 +18,7 @@
   .field
     = f.label :end_date
     = f.text_field :end_time, :class => 'datepicker'
-  = if f.object.new_record?
+  - if f.object.new_record?
     .file_field
       = f.label :"Attendee list (csv file)"
       = f.file_field :csv
