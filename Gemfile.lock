@@ -35,7 +35,6 @@ GEM
     bootstrap-datepicker-rails (0.6.24)
       railties (>= 3.0)
     bootstrap-sass (2.1.0.0)
-    bootstrap_forms (2.0.3)
     builder (3.0.3)
     celluloid (0.12.2)
       facter (>= 1.6.12)
@@ -201,7 +200,6 @@ DEPENDENCIES
   activerecord-import
   bootstrap-datepicker-rails
   bootstrap-sass
-  bootstrap_forms
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.3)
   foreman
