@@ -2,8 +2,8 @@
 %h2= current_user.name
 %h4= current_user.occupation
 = current_user.location
-  
-- if current_user.image
-  = image_tag(current_user.image) if current_user.image
+ 
+-if current_user.image
+  = image_tag(current_user.image) if current_user.image.length > 0
 
 = link_to 'Edit', edit_user_path(current_user)
