@@ -10,11 +10,15 @@
   %hr
 
   %h3 Add Attendees
-  = link_to_add_fields "Add attendee", f, :attendances
+  = link_to_add_fields "Add Attendee", f, :attendances
 
   %hr
 
   = f.button :submit
+  - if !f.object.new_record?
+    = link_to @conference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" do
+      %i.icon-trash.icon-white
+      Delete Conference
   
 :javascript
   $(function() {
