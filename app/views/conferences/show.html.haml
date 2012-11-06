@@ -1,19 +1,15 @@
 .page-header
   .pull-right
-    %p
-      = link_to 'Edit', edit_conference_path(@conference)
-      \|
-      = link_to 'Destroy', @conference, method: :delete, data: { confirm: 'Are you sure?' }
-    %p.pull-right
-      = link_to 'Back', conferences_path
+    = link_to conferences_path, :class => "btn" do
+      %i.icon-th-list
+      All Conferences
   %h1
     = @conference.name
     %small= @conference.location
   
 %p.lead
   - if @user_attendance
-    = "Your Matches"
-    \/
+    Your Matches
   - else
     All Attendees
 
@@ -35,4 +31,8 @@
             .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
               #{@user_attendance.get_connection_strength(attendee)}%
           
-:javascript
+%hr
+
+= link_to edit_conference_path(@conference), :class => "btn" do
+  %i.icon-edit
+  Edit Conference
