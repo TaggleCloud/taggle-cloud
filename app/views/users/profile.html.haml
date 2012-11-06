@@ -1,9 +1,22 @@
-%br
-%h2= current_user.name
-%h4= current_user.occupation
-= current_user.location
- 
--if current_user.image
-  = image_tag(current_user.image) if current_user.image.length > 0
+.row-fluid
+  .span2
+    .row-fluid
+      -if current_user.image
+        = image_tag(current_user.image) if current_user.image.length > 0
+    %hr
+    .row-fluid
+      = link_to 'Edit Profile', edit_user_path(current_user), :class => "btn"
 
-= link_to 'Edit', edit_user_path(current_user)
+  .span10
+    %h2= current_user.name
+    %h4= current_user.occupation
+    = current_user.location
+    %hr
+    .row-fluid
+      %h3 Attended/Upcoming Conferences
+      %ul.thumbnails
+        - current_user.attendances.all.each do |att|
+          %li.span4
+            = link_to att.conference, :class => "thumbnail card" do
+              %h4= att.conference.name
+              %h5= att.conference.location
