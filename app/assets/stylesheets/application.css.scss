@@ -30,6 +30,9 @@ input, textarea {
   input, textarea {
     width: 500px;
   }
+  textarea {
+    height: 200px;
+  }
 }
 
 @import "homepage";
