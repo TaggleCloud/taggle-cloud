@@ -22,3 +22,9 @@
             = link_to att.conference, :class => "thumbnail card" do
               %h4= att.conference.name
               %h5= att.conference.location
+
+= @abstract.body
+
+%br
+
+= link_to 'Edit', edit_user_path(current_user)
