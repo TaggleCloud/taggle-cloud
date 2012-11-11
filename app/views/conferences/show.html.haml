@@ -1,28 +1,25 @@
 .page-header
   .pull-right
-    %p
-      = link_to 'Edit', edit_conference_path(@conference)
-      \|
-      = link_to 'Destroy', @conference, method: :delete, data: { confirm: 'Are you sure?' }
-    %p.pull-right
-      = link_to 'Back', conferences_path
+    = link_to conferences_path, :class => "btn" do
+      %i.icon-th-list
+      All Conferences
   %h1
     = @conference.name
     %small= @conference.location
   
 %p.lead
   - if @user_attendance
-    = "Your Matches"
-    \/
+    Your Matches
   - else
     All Attendees
-  
+
 %ul.thumbnails
   - @attendees.each do |attendee|
     %li.span6
-      = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card" do
+      .thumbnail.card 
+        = link_to "blah", conference_attendee_path(@conference, attendee), :class => "arealink"
         - if attendee.user_id
-          %h4= link_to attendee.name, user_path(attendee.user_id)
+          %h4= link_to attendee.name, user_path(attendee.user_id), :class => "namelink"
         - else
           %h4= attendee.name
         - if attendee.organization
@@ -37,4 +34,9 @@
           .progress.progress-striped
             .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
               #{@user_attendance.get_connection_strength(attendee)}%
-              
+          
+%hr
+
+= link_to edit_conference_path(@conference), :class => "btn" do
+  %i.icon-edit
+  Edit Conference
