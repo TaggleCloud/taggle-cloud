@@ -76,12 +76,15 @@ class AttendancesController < ApplicationController
   # DELETE /attendances/1
   # DELETE /attendances/1.json
   def destroy
+    #TODO Jbender will fix this later to use destroy instead of delete
     @attendance = Attendance.find(params[:id])
-    @attendance.destroy
+    @conference = Conference.find(@attendance.conference_id)
+    @attendance.delete
+    @attendees = @conference.attendances
 
     respond_to do |format|
-      format.html { redirect_to attendances_url }
-      format.json { head :no_content }
+      format.html {render action: "index"}
+      format.json { render json: @attendees }
     end
   end
 end
