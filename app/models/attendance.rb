@@ -1,5 +1,5 @@
 class Attendance < ActiveRecord::Base
-  attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes
+  attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes, :project_name
 
   belongs_to :conference
   belongs_to :user
@@ -20,5 +20,4 @@ class Attendance < ActiveRecord::Base
   def get_connection_strength(other_attendance)
     return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
   end
-
 end
