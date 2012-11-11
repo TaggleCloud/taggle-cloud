@@ -1,12 +1,14 @@
-.hero-unit
-  %h1 Taggle Cloud
-  %p Connect with people in your field
-  %h2 Welcome #{current_user.name}
+%h1 Welcome, #{current_user.name}
+
+%hr
 
 - if !@conferences.empty?
   %h2 Conferences you are attending
-  %ul
+  %ul.thumbnails
     - @conferences.each do |conference|
-      %li= link_to conference.name, conference_path(conference)
+      %li.span6
+        = link_to conference_path(conference), :class=> "thumbnail card" do
+          %h3= conference.name
+          %h4= conference.location
 - else
   %h3.centered Looks like you aren't attending any conferences &#9785;

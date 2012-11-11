@@ -1,14 +1,6 @@
-%h3= "Attendee information"
+%h4= "Attendee Information"
 
-.fieldset
-  = f.label :registered_email
-  = f.text_field :registered_email
-
-  = f.label :first_name
-  = f.text_field :first_name
-
-  = f.label :last_name
-  = f.text_field :last_name
-
-  = f.label :organization
-  = f.text_field :organization
+= f.input :registered_email
+= f.input :first_name
+= f.input :last_name
+= f.input :organization
