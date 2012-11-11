@@ -1,3 +1,5 @@
+= stylesheet_link_tag "abstracts"
+
 %p#notice= notice
 - if @attendance.user_id
   = link_to user_path(@attendance.user_id) do
@@ -9,6 +11,9 @@
   
 
 - @abstracts.each do |abstract|
-  %p= abstract.body
+  = abstract.highlight_body(current_user).html_safe
+
+%br
+%br
 
 = link_to 'Back', conference_attendees_path

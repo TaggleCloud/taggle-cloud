@@ -6,4 +6,8 @@
 -if current_user.image
   = image_tag(current_user.image) if current_user.image.length > 0
 
+= @abstract.body
+
+%br
+
 = link_to 'Edit', edit_user_path(current_user)
