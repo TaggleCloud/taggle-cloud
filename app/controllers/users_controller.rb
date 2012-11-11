@@ -1,7 +1,17 @@
 class UsersController < ApplicationController
 
+  def profile 
+    @user = current_user
+    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
+    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
+    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+  end
+
   def show
     @user = User.find(params[:id])
+    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
+    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
+    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
     redirect_to profile_path if @user = current_user
   end
 

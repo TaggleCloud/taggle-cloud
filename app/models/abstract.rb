@@ -9,6 +9,19 @@ class Abstract < ActiveRecord::Base
   has_many :abstract_tags, :dependent => :destroy
   has_many :tags, :through => :abstract_tags
   
+  def highlight_body(user)
+    current_att = user.attendances.where(:conference_id => self.attendance.conference_id).last
+    current_abs = current_att.abstracts
+    result_body = self.body
+    current_abs.each do |a|
+      a.abstract_tags.map do |t|
+        p t.tag.value
+        result_body.gsub!(t.tag.value, "<span class='highlight'>#{t.tag.value}</span>")
+      end
+    end
+    return result_body
+  end
+
   private
 
   # def tagbuilder
