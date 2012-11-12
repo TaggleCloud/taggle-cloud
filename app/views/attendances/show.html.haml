@@ -9,6 +9,10 @@
   %h2= @attendance.name
   %h3= @attendance.organization
   
+%button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
+
+%br
+%br
 
 - @abstracts.each do |abstract|
   = abstract.highlight_body(current_user).html_safe
@@ -17,3 +21,17 @@
 %br
 
 = link_to 'Back', conference_attendees_path
+
+:javascript
+  var checked = false;
+  $('#toggle').click(function(){
+    if(checked == true) {
+      $('.highlight').css('color', 'blue');
+      checked = false;
+    }
+    else {
+      $('.highlight').css('color', 'black');
+      checked = true;
+    }
+  })
+  
