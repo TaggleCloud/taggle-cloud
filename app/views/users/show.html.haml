@@ -1,0 +1,28 @@
+.row-fluid
+  .span2
+    .row-fluid
+      -if @user.image
+        = image_tag(@user.image) if current_user.image.length > 0
+    %hr
+    .row-fluid
+      = link_to edit_user_path(@user), :class => "btn" do
+        %i.icon-edit
+        Edit Profile
+
+  .span10
+    %h2= @user.name
+    %h4= @user.occupation
+    = @user.location
+    %hr
+    .row-fluid
+      %h3 Attended/Upcoming Conferences
+      %ul.thumbnails
+        - @user.attendances.all.each do |att|
+          %li.span4
+            = link_to att.conference, :class => "thumbnail card" do
+              %h4= att.conference.name
+              %h5= att.conference.location
+
+= @abstract.body
+
+%br
