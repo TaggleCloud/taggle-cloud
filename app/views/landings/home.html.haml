@@ -6,3 +6,11 @@
     = link_to "Sign up with LinkedIn", "auth/linkedin", :class => "btn btn-large btn-linkedin"
     = link_to "Sign up with Google", "auth/google_oauth2", :class => "btn btn-large btn-google"
     = link_to "Sign up with Facebook", "auth/facebook", :class => "btn btn-large btn-facebook"
+    %br
+    There are currently
+    = @attendee_count
+    users at
+    = @conference_count
+    conferences making
+    = @connection_count
+    connections
