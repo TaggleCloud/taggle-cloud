@@ -4,7 +4,7 @@
   = f.input :occupation
   = f.input :location
 
-  = f.fields_for @abstract do |a|
+  = f.fields_for @bio do |a|
     = a.input :body, :label => "Bio"
 
   = f.submit

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_create :create_bio
   attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes
 
   has_many :abstracts
@@ -74,6 +75,10 @@ class User < ActiveRecord::Base
       end
       return user
     end
+  end
+  
+  def create_bio
+    bio = Abstract.create(:user_id => user.id, :is_bio => true)
   end
 
 end
