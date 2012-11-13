@@ -17,9 +17,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
-    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
-    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+    @bio = Abstract.where(:is_bio => true).first
   end
 
   def dashboard
@@ -29,7 +27,6 @@ class UsersController < ApplicationController
   # PUT /conferences/1
   # PUT /conferences/1.json
   def update
-    puts("---------------------------------------" + params.to_s)
     @user = current_user
     @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
     @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
