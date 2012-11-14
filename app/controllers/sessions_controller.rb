@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       @att = Attendance.create(:conference_id => @conf.id, :user_id => user.id, :first_name => user.first_name, :last_name => user.last_name)
       Abstract.create(:body => "", :user_id => user.id, :attendance_id => @att.id)
     end
-    redirect_to root_url, :notice => "Signed in!"
+    redirect_to root_url
   end
 
   def destroy
