@@ -7,9 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
-    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
-    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     redirect_to profile_path if @user == current_user
   end
 
