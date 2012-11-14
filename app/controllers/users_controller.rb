@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @bio = Abstract.where(:is_bio => true, :user_id => @user.id).first
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
   end
 
   def dashboard
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user = current_user
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
-    # TODO: Need to update connections here somehow
+    
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
