@@ -7,6 +7,8 @@ TaggleCloud::Application.routes.draw do
     resources :attendances, :as => :attendees, :path => 'attendees', :on => :member
   end
   
+  resources :coordinates
+  
   resources :users do
     resources :abstracts
   end

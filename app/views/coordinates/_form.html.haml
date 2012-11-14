@@ -1,0 +1,10 @@
+= simple_form_for(@coordinate) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.collection_select :user_id, User.all, :id, :name
+    %br
+    = f.collection_select :conference_id, Conference.all, :id, :name
+
+  .form-actions
+    = f.button :submit
