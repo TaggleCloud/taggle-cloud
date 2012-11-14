@@ -1,5 +1,9 @@
 %h1 Welcome, #{current_user.name}
 
+%p
+  In order to ensure that we create the best possible matches for you, be sure to
+  = link_to "keep your profile updated.", edit_user_path(current_user)
+
 %hr
 
 - if !@conferences.empty?
