@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
     @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
     @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
-    redirect_to profile_path if @user = current_user
+    redirect_to profile_path if @user == current_user
   end
 
   def edit
@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
     @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
     @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+    unless @user.is_admin || @user == current_user
+      flash[:notice] = "You have no right to edit this user"
+      redirect_to profile_path
+    end
   end
 
   def dashboard

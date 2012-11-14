@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @coordinate.user_id
+%p
+  %b Conference:
+  = @coordinate.conference_id
+
+= link_to 'Edit', edit_coordinate_path(@coordinate)
+\|
+= link_to 'Back', coordinates_path
