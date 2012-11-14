@@ -29,10 +29,10 @@ class UsersController < ApplicationController
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
     # TODO: Need to update connections here somehow
-    #params["user"].delete("abstract")
+    params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @profile, notice: 'Profile has been successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'Profile has been successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
