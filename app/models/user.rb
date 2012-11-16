@@ -7,8 +7,18 @@ class User < ActiveRecord::Base
   has_many :emails
   has_many :user_interests
   has_many :interests, :through => :user_interests
+  has_many :coordinates
  
   accepts_nested_attributes_for :abstracts
+
+  def coordinate (conference)
+    self.coordinates.each do |c|
+      if c.conference_id == conference.id
+        return true
+      end
+    end
+    return false
+  end
 
   def name
     return self.first_name.to_s + " " + self.last_name.to_s
