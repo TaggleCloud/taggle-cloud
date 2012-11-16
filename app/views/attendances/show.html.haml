@@ -15,6 +15,7 @@
 %br
 
 - @abstracts.each do |abstract|
+  %h3 Abstract:
   = abstract.highlight_body(current_user).html_safe
 
 %br
