@@ -3,10 +3,11 @@
     .image-box.vcenter
       -if @user.image
         = image_tag(@user.image)
-  .vcenter.pull-right
-    = link_to edit_user_path(@user), :class => "btn" do
-      %i.icon-edit
-      Edit Profile
+  - if @user == current_user
+    .vcenter.pull-right
+      = link_to edit_user_path(@user), :class => "btn" do
+        %i.icon-edit
+        Edit Profile
   .vcenter
     %h2= @user.name
     %h4= @user.occupation
