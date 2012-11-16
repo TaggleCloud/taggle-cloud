@@ -5,10 +5,11 @@ class Conference < ActiveRecord::Base
 
   has_many :attendances, :dependent => :destroy
   has_many :connections, :through => :attendances
+  has_many :coordinates
  
   accepts_nested_attributes_for :attendances
   
-  def upload(uploaded_io)
+  def upload(uploaded_io, current_user)
     attendances, abstracts = [], []
     CSV.parse(uploaded_io.read) do |row|
       if row[5] && valid_email(row[5])
@@ -25,6 +26,7 @@ class Conference < ActiveRecord::Base
       #AttendanceImporter.perform_in(5.seconds, self.id, row)
     end
     Connection.build_conf_connections(self)
+    Coordinate.create(:user_id => current_user.id, :conference_id => self.id)
   end
   
   def valid_email(email)
