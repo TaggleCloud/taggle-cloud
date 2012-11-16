@@ -17,13 +17,14 @@
   - @attendees.each do |attendee|
     %li.span6
       .thumbnail.card 
-        = link_to "blah", conference_attendee_path(@conference, attendee), :class => "arealink"
+        = link_to "attendee", conference_attendee_path(@conference, attendee), :class => "arealink"
         - if attendee.user_id
           %h4= link_to attendee.name, user_path(attendee.user_id), :class => "namelink"
         - else
           %h4= attendee.name
         - if attendee.organization
-          %h5= truncate(attendee.organization, :length => 60)
+          %h5, :class => "bmargin"
+          = truncate(attendee.organization, :length => 60)
         - else
           %h5.no-org No Organization Specified
         - if attendee.project_name
