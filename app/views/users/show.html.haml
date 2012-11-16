@@ -20,7 +20,7 @@
     %ul.thumbnails
       - @user.attendances.all.each do |att|
         %li.span4
-          = link_to att.conference, :class => "thumbnail card" do
+          = link_to att.conference, :class => "thumbnail card btn" do
             %h4= att.conference.name
             %h5= att.conference.location
 
