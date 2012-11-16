@@ -4,6 +4,6 @@
 %ul.thumbnails
   - @conferences.each do |conf|
     %li.span4
-      = link_to conf, :class => "thumbnail card" do
+      = link_to conf, :class => "thumbnail card centered" do
         %h4= conf.name
         %h5= conf.location
