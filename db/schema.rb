@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20121113191127) do
     t.text     "body"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "is_bio"
   end
 
   create_table "attendances", :force => true do |t|

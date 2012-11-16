@@ -12,15 +12,17 @@
 %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
 
 %br
-%br
 
 - @abstracts.each do |abstract|
+  %h3 Abstract:
   = abstract.highlight_body(current_user).html_safe
 
 %br
 %br
 
-= link_to 'Back', conference_attendees_path
+= link_to conference_path(@conference), :class => "btn" do
+  %i.icon-arrow-left
+  Back
 
 :javascript
   var checked = false;
