@@ -9,7 +9,6 @@
     
   = f.fields_for :emails do |e|
     = render "email_fields", :f => e
-    = e.link_to_remove "Remove email address"
   
   = link_to_add_fields "Add an email address", f, :emails
   
