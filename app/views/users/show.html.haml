@@ -11,9 +11,10 @@
   .vcenter
     %h2= @user.name
     %h4= @user.occupation
-    - @user.emails.all.each do |email|
-      %strong= "Email:"
-      = mail_to email.mail_address
+    - if @user.show_email
+      - @user.emails.all.each do |email|
+        %strong= "Email:"
+        = mail_to email.mail_address
     %br
     = @user.location
 

@@ -3,6 +3,7 @@
   = f.input :last_name
   = f.input :occupation
   = f.input :location
+  = f.input :show_email
 
   = f.fields_for @abstract do |a|
     = a.input :body, :label => "Bio"

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes, :emails_attributes
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes, :emails_attributes, :show_email, :is_admin
 
   has_many :abstracts
   has_many :attendances
