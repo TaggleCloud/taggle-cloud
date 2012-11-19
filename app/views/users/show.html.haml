@@ -13,7 +13,7 @@
     %h4= @user.occupation
     - @user.emails.all.each do |email|
       %strong= "Email:"
-      = email.mail_address
+      = mail_to email.mail_address
     %br
     = @user.location
 
