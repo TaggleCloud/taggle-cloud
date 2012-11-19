@@ -7,22 +7,42 @@
       %i.icon-arrow-left
       Back
   - if @attendance.user_id
-    = link_to user_path(@attendance.user_id) do
-      %h2= @attendance.name
+    .row-fluid
+      .span2
+        .image-box.vcenter
+          -if @user.image
+            = image_tag(@user.image, :class => "size")
+          -else
+            = image_tag("user_placeholder.png", :class => "size")
+      .span10
+        = link_to user_path(@attendance.user_id) do
+          %h2= @attendance.name
+        - if @user.show_email
+          - @user.emails.all.each do |email|
+            %strong= "Email:"
+            = mail_to email.mail_address
+        = @user.occupation
+        = @user.location
   - else
     %h2= @attendance.name
   %h3= @attendance.organization
   
-  
-
 - @abstracts.each do |abstract|
   %h3 
     Abstract:
     .pull-right 
       %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
-  = abstract.highlight_body(current_user).html_safe
+  - if(current_user)
+    = abstract.highlight_body(current_user).html_safe
+  - else
+    = abstract.body
 
-
+-if(current_user)
+  %h3 Connection strength:
+  .span4
+    .progress.progress-striped
+      .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
+        #{@user_attendance.get_connection_strength(@attendance)}%
 
 :javascript
   var checked = false;
