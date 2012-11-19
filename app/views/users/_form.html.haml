@@ -6,6 +6,12 @@
 
   = f.fields_for @abstract do |a|
     = a.input :body, :label => "Bio"
-
+    
+  = f.fields_for :emails do |e|
+    = render "email_fields", :f => e
+    = e.label :_destroy, "Remove email address"
+  
+  = link_to_add_fields "Add an email address", f, :emails
+  
   = f.submit :class => "btn"
   

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes, :email_attributes
 
   has_many :abstracts
   has_many :attendances
@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :coordinates
  
   accepts_nested_attributes_for :abstracts
+  accepts_nested_attributes_for :emails
 
   def coordinate (conference)
     self.coordinates.each do |c|
