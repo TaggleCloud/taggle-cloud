@@ -24,7 +24,7 @@
           - else
             %h4= attendee.name
           - if attendee.organization
-            %h5, :class => "bmargin"
+            %h5.bmargin
             = truncate(attendee.organization, :length => 60)
           - else
             %h5.no-org No Organization Specified
