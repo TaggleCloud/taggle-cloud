@@ -16,7 +16,9 @@
       - @user.emails.all.each do |email|
         %strong= "Email:"
         = mail_to email.mail_address
+        %br
     = @user.occupation
+    %br
     = @user.location
       
 %hr
