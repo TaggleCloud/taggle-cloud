@@ -19,7 +19,7 @@
                 = "#{current_user.name}"
                 %b.caret
               %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
-                %li= link_to "My Profile", profile_path
+                %li= link_to "My Profile", user_path(current_user.id)
                 %li= link_to "Sign Out", signout_path
           - else
             %li.dropdown

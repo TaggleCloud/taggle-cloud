@@ -10,12 +10,19 @@
 $facebook-primary: #3B5998;
 $google-primary: #C63D2D;
 $linkedin-primary: #4875B4;
+
 .btn-facebook {
   @include buttonBackground(lighten($facebook-primary, 15%), $facebook-primary);
+  margin-bottom: 5px;
 }
+
 .btn-google {
   @include buttonBackground(lighten($google-primary, 15%), $google-primary);
+  margin-bottom: 5px;
 }
+
 .btn-linkedin {
   @include buttonBackground(lighten($linkedin-primary, 15%), $linkedin-primary);
+  margin-bottom: 5px;
 }
+
