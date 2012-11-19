@@ -8,11 +8,9 @@
   %h3 Conferences you are attending
   %ul.thumbnails
     - @conferences.each do |conference|
-      %li.span6
-        = link_to conference_path(conference), :class=> "thumbnail card" do
-          %h4.centered
-            = conference.name
-          %h5.centered
-            = conference.location
+      %li.span4
+        = link_to conference_path(conference), :class=> "thumbnail card cbutton" do
+          %h4= conference.name
+          %h5= conference.location
 - else
   %h3.centered Looks like you aren't attending any conferences &#9785;
