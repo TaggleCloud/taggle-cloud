@@ -12,10 +12,10 @@
           %i.icon-edit
           Edit Profile
     %h1= @user.name
-    = @user.occupation
     - @user.emails.all.each do |email|
       %strong= "Email:"
-      = email.mail_address
+      = mail_to email.mail_address
+    = @user.occupation
     = @user.location
       
 %hr
