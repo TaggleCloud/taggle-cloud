@@ -19,7 +19,6 @@ TaggleCloud::Application.routes.draw do
   
   scope :constraints => lambda{ |req| !req.session[:user_id].blank? } do
     root :to => "users#dashboard", :as => :dashboard
-    match "profile" => "users#profile", :as => :profile
   end
 
   match "/credits" => "landings#credits"
