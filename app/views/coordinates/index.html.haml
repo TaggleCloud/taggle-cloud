@@ -4,18 +4,10 @@
   %tr
     %th User
     %th Conference
-    %th
-    %th
-    %th
 
   - @coordinates.each do |coordinate|
     %tr
-      %td= coordinate.user_id
-      %td= coordinate.conference_id
-      %td= link_to 'Show', coordinate
-      %td= link_to 'Edit', edit_coordinate_path(coordinate)
-      %td= link_to 'Destroy', coordinate, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to coordinate.user.name, user_path(coordinate.user)
+      %td= link_to coordinate.conference.name, conference_path(coordinate.conference)
 
 %br
-
-= link_to 'New Coordinate', new_coordinate_path

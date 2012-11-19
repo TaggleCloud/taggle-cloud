@@ -4,6 +4,9 @@
 %ul.thumbnails
   - @conferences.each do |conf|
     %li.span4
-      = link_to conf, :class => "thumbnail card centered btn" do
+      = link_to conf, :class => "thumbnail card cbutton" do
         %h4= conf.name
         %h5= conf.location
+- if current_user.is_admin
+  = link_to 'Add a new coordinator', new_coordinate_path
+  = link_to 'View all coordinators', coordinates_path

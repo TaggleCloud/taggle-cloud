@@ -25,7 +25,6 @@
       width:100%;
       height:100%;
       margin: -20px -10px -10px;
-      text-decoration: none;
       z-index: 1;
       background-color: white;
       opacity: 0;
@@ -56,6 +55,11 @@
   @extend h1;
   padding-bottom: 0px;
   font-weight: 400;
+}
+
+.cbutton {
+  @extend .btn;
+  text-align: left;
 }
 
 @media only screen and (max-width: 480px) {

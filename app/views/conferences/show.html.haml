@@ -15,7 +15,7 @@
 
 %ul.thumbnails
   - @attendees.each do |attendee|
-    %li.span6
+    %li.span4
       .thumbnail.card.btn
         .align-left
           = link_to "attendee", conference_attendee_path(@conference, attendee), :class => "arealink"
