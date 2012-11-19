@@ -1,23 +1,26 @@
-.header-container
-  .pull-left
+.row-fluid
+  .span2
     .image-box.vcenter
       -if @user.image
-        = image_tag(@user.image)
-  - if @user == current_user
-    .vcenter.pull-right
-      = link_to edit_user_path(@user), :class => "btn" do
-        %i.icon-edit
-        Edit Profile
-  .vcenter
-    %h2= @user.name
-    %h4= @user.occupation
-    - @user.emails.all.each do |email|
-      %strong= "Email:"
-      = mail_to email.mail_address
-    %br
+        = image_tag(@user.image, :class => "size")
+      -else
+        = image_tag("user_placeholder.png", :class => "size")
+  .span10
+    -if @user == current_user
+      .pull-right
+        = link_to edit_user_path(@user), :class => "btn" do
+          %i.icon-edit
+          Edit Profile
+    %h1= @user.name
+    - if @user.show_email
+      - @user.emails.all.each do |email|
+        %strong= "Email:"
+        = mail_to email.mail_address
+    = @user.occupation
     = @user.location
-
+      
 %hr
+
 
 .row-fluid
   .span12
@@ -25,7 +28,7 @@
     %ul.thumbnails
       - @user.attendances.all.each do |att|
         %li.span4
-          = link_to att.conference, :class => "thumbnail card btn" do
+          = link_to att.conference, :class => "thumbnail card cbutton" do
             %h4= att.conference.name
             %h5= att.conference.location
 
