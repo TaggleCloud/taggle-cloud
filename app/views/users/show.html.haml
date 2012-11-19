@@ -11,6 +11,10 @@
   .vcenter
     %h2= @user.name
     %h4= @user.occupation
+    - @user.emails.all.each do |email|
+      %strong= "Email:"
+      = email.mail_address
+    %br
     = @user.location
 
 %hr
