@@ -18,7 +18,7 @@ class Connection < ActiveRecord::Base
     shorter = (tags1.size > tags2.size ? tags2.size : tags1.size)
     # logger.info("comparing #{tags1.map(&:value).join(",")}\n, against #{tags2.map(&:value).join(",")}\n, intersection = #{intersection.map(&:value).join(",")}, \n shorter = #{shorter.size}\n")
     return 0 if shorter == 0
-    return ((intersection.size * 1.0) / (shorter * 1.0)) * 100
+    return ((intersection.size * 1.0) / (tags1.size * 1.0)) * 100 # divides by current user's size instead of shorter
   end
   
   def self.build_conf_connections(conf)
