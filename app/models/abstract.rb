@@ -14,11 +14,21 @@ class Abstract < ActiveRecord::Base
     result_body = ""
     if current_att
       current_abs = current_att.abstracts
-      result_body = self.body
+      # result_body = self.body
+      body_split = self.body.split(' ')
       current_abs.each do |a|
-        a.abstract_tags.map do |t|
-          p t.tag.value
-          result_body.gsub!(" #{t.tag.value} ", "<span class='highlight'> #{t.tag.value} </span>")
+        body_split.each do |word|
+          a.abstract_tags.map do |t|
+            p t.tag.value
+            p word
+            if(t.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with t.tag.value, then replace with word
+              word = "<span class='highlight'> " + word + " </span>"
+              p "replace"
+              break
+            end
+          end
+          p "------------------------------------------------"
+          result_body += " #{word}"
         end
       end
     end
