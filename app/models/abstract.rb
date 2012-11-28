@@ -1,8 +1,8 @@
 class Abstract < ActiveRecord::Base
   #after_commit :tagbuilder
   after_create :create_tags
-  after_update :create_tags
-  attr_accessible :body, :user_id, :attendance_id
+  after_update :refresh_connections
+  attr_accessible :body, :user_id, :attendance_id, :is_bio
 
   belongs_to :user
   belongs_to :attendance
@@ -34,9 +34,9 @@ class Abstract < ActiveRecord::Base
   private
 
   # def tagbuilder
-  #     TagsetBuilder.perform_async(:id)
-  #     attendance.make_connections
-  #   end
+  #   TagsetBuilder.perform_async(:id)
+  #   attendance.make_connections
+  # end
   
   def create_tags
     if self.body == nil 
@@ -57,4 +57,18 @@ class Abstract < ActiveRecord::Base
       AbstractTag.find_by_abstract_id_and_tag_id(self.id, tag.id).delete if !tags.include?(tag.value)
     end
   end
+  
+  def refresh_connections
+    create_tags
+    if self.user_id.nil?
+      return
+    else
+      usr = User.find(self.user_id)
+      usr.attendances.all.each do |atnd|
+        conf = Conference.find(atnd.conference_id)
+        Connection.refresh_conf_connections(conf, usr.id)
+      end
+    end
+  end
+  
 end
