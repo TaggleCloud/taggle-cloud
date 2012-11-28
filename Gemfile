@@ -14,7 +14,7 @@ gem 'omniauth-facebook'
 
 gem 'foreman'
 gem 'sidekiq'
-gem 'sinatra', require: false
+gem 'sinatra', :require => false
 gem 'slim'
 
 gem 'activerecord-import'
