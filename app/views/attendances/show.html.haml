@@ -34,7 +34,10 @@
     .pull-right 
       %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
   - if(current_user)
-    = abstract.highlight_body(current_user).html_safe
+    = abstract.highlight_body(current_user, @conference.id).html_safe
+    - if(@attendance.user_id)
+      %h3 Bio:
+      = @bio.highlight_body(current_user, @conference.id).html_safe
   - else
     = abstract.body
 
