@@ -39,6 +39,7 @@
           
 %hr
 
-= link_to edit_conference_path(@conference), :class => "btn" do
-  %i.icon-edit
-  Edit Conference
+- if (current_user.is_admin || current_user.coordinate(@conference))
+  = link_to edit_conference_path(@conference), :class => "btn" do
+    %i.icon-edit
+    Edit Conference
