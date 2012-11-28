@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to profile_path, notice: 'Profile has been successfully updated.' }
+        format.html { redirect_to user_path(@user), notice: 'Profile has been successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

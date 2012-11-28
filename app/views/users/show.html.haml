@@ -15,10 +15,10 @@
     .vcenter
       %h1= @user.name
       - if @user.show_email
-        %strong= "Email:"
         - @user.emails.all.each do |email|
+          %strong= "Email:"
           = mail_to email.mail_address
-        %br
+          %br
       = @user.occupation
       Occupation
       %br
