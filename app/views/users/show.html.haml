@@ -1,25 +1,29 @@
 .row-fluid
   .span2
-    .image-box.vcenter
-      -if @user.image
-        = image_tag(@user.image, :class => "size")
-      -else
-        = image_tag("user_placeholder.png", :class => "size")
+    .image-container
+      .image-box.vcenter
+        -if @user.image
+          = image_tag(@user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
   .span10
     -if @user == current_user
       .pull-right
         = link_to edit_user_path(@user), :class => "btn" do
           %i.icon-edit
           Edit Profile
-    %h1= @user.name
-    - if @user.show_email
-      - @user.emails.all.each do |email|
+    .vcenter
+      %h1= @user.name
+      - if @user.show_email
         %strong= "Email:"
-        = mail_to email.mail_address
+        - @user.emails.all.each do |email|
+          = mail_to email.mail_address
         %br
-    = @user.occupation
-    %br
-    = @user.location
+      = @user.occupation
+      Occupation
+      %br
+      = @user.location
+      Location
       
 %hr
 

@@ -7,6 +7,11 @@
   vertical-align: middle;
   height: 100px;
 }
+.image-container {
+  display: table;
+  width: 100%;
+  max-width: 100px;
+}
 .image-box {
   display: table-cell;
   width: 100px;
@@ -15,11 +20,6 @@
   size {
     max-width: 90px;
     max-height: 90px;
-  }
-  .image-box {
-    display: table-cell;
-    width: 100px;
-    text-align: center;
   }
 }
 
