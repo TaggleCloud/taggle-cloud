@@ -1,5 +1,8 @@
 %h1 New coordinate
 
+.pull-right
+  = link_to coordinates_path, :class => "btn" do
+    %i.icon-arrow-left
+    Back
+  
 = render 'form'
-
-= link_to 'Back', coordinates_path
