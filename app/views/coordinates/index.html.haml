@@ -1,0 +1,13 @@
+%h1 Listing coordinates
+
+%table
+  %tr
+    %th User
+    %th Conference
+
+  - @coordinates.each do |coordinate|
+    %tr
+      %td= link_to coordinate.user.name, user_path(coordinate.user)
+      %td= link_to coordinate.conference.name, conference_path(coordinate.conference)
+
+%br

@@ -15,25 +15,27 @@
 
 %ul.thumbnails
   - @attendees.each do |attendee|
-    %li.span6
-      .thumbnail.card 
-        = link_to "blah", conference_attendee_path(@conference, attendee), :class => "arealink"
-        - if attendee.user_id
-          %h4= link_to attendee.name, user_path(attendee.user_id), :class => "namelink"
-        - else
-          %h4= attendee.name
-        - if attendee.organization
-          %h5= truncate(attendee.organization, :length => 60)
-        - else
-          %h5.no-org No Organization Specified
-        - if attendee.project_name
-          %h5= truncate(attendee.project_name, :length => 60)
-        - else
-          %h5.no-org No Project Specified
-        - if @user_attendance
-          .progress.progress-striped
-            .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
-              #{@user_attendance.get_connection_strength(attendee)}%
+    %li.span4
+      .thumbnail.card.btn
+        .align-left
+          = link_to "attendee", conference_attendee_path(@conference, attendee), :class => "arealink"
+          - if attendee.user_id
+            %h4= link_to attendee.name, user_path(attendee.user_id), :class => "namelink"
+          - else
+            %h4= attendee.name
+          - if attendee.organization
+            %h5.bmargin
+            = truncate(attendee.organization, :length => 60)
+          - else
+            %h5.no-org No Organization Specified
+          - if attendee.project_name
+            %h5= truncate(attendee.project_name, :length => 60)
+          - else
+            %h5.no-org No Project Specified
+          - if @user_attendance
+            .progress.progress-striped
+              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
+                #{@user_attendance.get_connection_strength(attendee)}%
           
 %hr
 

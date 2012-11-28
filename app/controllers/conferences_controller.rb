@@ -40,7 +40,10 @@ class ConferencesController < ApplicationController
   # GET /conferences/new.json
   def new
     @conference = Conference.new
-
+    unless current_user.is_admin
+      flash[:notice] = "You have no right to create a conference"
+      return redirect_to conferences_path
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @conference }
@@ -50,6 +53,10 @@ class ConferencesController < ApplicationController
   # GET /conferences/1/edit
   def edit
     @conference = Conference.find(params[:id])
+    unless current_user.is_admin || current_user.coordinate(@conference)
+      flash[:notice] = "You have no right to edit this conference"
+      return redirect_to conference_path
+    end
   end
   
   def attendee
@@ -60,7 +67,8 @@ class ConferencesController < ApplicationController
   # POST /conferences.json
   def create
     @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name])
-    @conference.upload(params[:conference][:csv])
+    @conference.upload(params[:conference][:csv], current_user)
+    @email = params[:conference][:email]
 
     respond_to do |format|
       if @conference.save

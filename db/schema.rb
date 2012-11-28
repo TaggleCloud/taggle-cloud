@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112230636) do
+ActiveRecord::Schema.define(:version => 20121119212518) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20121112230636) do
     t.integer  "strength"
   end
 
+  create_table "coordinates", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "conference_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "emails", :force => true do |t|
     t.integer  "user_id"
     t.string   "mail_address"
@@ -101,6 +108,8 @@ ActiveRecord::Schema.define(:version => 20121112230636) do
     t.string   "occupation"
     t.string   "first_name"
     t.string   "last_name"
+    t.boolean  "is_admin"
+    t.boolean  "show_email"
   end
 
 end

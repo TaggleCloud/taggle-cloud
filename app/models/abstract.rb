@@ -11,11 +11,21 @@ class Abstract < ActiveRecord::Base
   
   def highlight_body(user)
     current_att = user.attendances.where(:conference_id => self.attendance.conference_id).last
-    current_abs = current_att.abstracts
-    result_body = self.body
-    current_abs.each do |a|
-      a.abstract_tags.map do |t|
-        result_body.gsub!(" #{t.tag.value} ", "<span class='highlight'> #{t.tag.value} </span>")
+    result_body = ""
+    if current_att
+      current_abs = current_att.abstracts
+      # result_body = self.body
+      body_split = self.body.split(' ')
+      current_abs.each do |a|
+        body_split.each do |word|
+          a.abstract_tags.map do |t|
+            if(t.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with t.tag.value, then replace with word
+              word = "<span class='highlight'> " + word + " </span>"
+              break
+            end
+          end
+          result_body += " #{word}"
+        end
       end
     end
     return result_body
