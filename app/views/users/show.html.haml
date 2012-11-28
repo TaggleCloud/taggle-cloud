@@ -27,10 +27,6 @@
       
 %hr
 
-
-<<<<<<< HEAD
-= @bio.body
-=======
 .row-fluid
   .span12
     %h3 Attended/Upcoming Conferences
@@ -40,7 +36,6 @@
           = link_to att.conference, :class => "thumbnail card cbutton" do
             %h4= att.conference.name
             %h5= att.conference.location
->>>>>>> master
 
     %h4 Bio:
-    = @abstract.body
+    = @bio.body

@@ -1,10 +1,6 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
   after_create :create_bio
-  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes
-=======
   attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes, :emails_attributes, :show_email, :is_admin
->>>>>>> master
 
   has_many :abstracts
   has_many :attendances

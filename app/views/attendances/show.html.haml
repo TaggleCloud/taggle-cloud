@@ -38,18 +38,12 @@
   - else
     = abstract.body
 
-<<<<<<< HEAD
-= link_to conference_path(@conference), :class => "btn" do
-  %i.icon-arrow-left
-  Back
-=======
 -if(current_user)
   %h3 Connection strength:
   .span4
     .progress.progress-striped
       .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
         #{@user_attendance.get_connection_strength(@attendance)}%
->>>>>>> master
 
 :javascript
   var checked = false;
