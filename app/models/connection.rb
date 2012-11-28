@@ -28,12 +28,26 @@ class Connection < ActiveRecord::Base
         next if atnd.id == comp_atnd.id
         tagset1, tagset2 = [], []
         atnd.abstracts.all.each do |abstract|
+          if !abstract.user_id.nil?
+            # Include bio when comparing
+            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+            bio.abstract_tags.all.each do |bio_tag|
+              tagset1 << bio_tag.tag if bio_tag.tag
+            end
+          end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset1 << abstract_tag.tag if abstract_tag.tag
             # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
           end
         end
         comp_atnd.abstracts.all.each do |abstract|
+          if !abstract.user_id.nil?
+            # Include bio when comparing
+            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+            bio.abstract_tags.all.each do |bio_tag|
+              tagset2 << bio_tag.tag if bio_tag.tag
+            end
+          end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset2 << abstract_tag.tag if abstract_tag.tag
             # self.my_logger.info("comp_atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
@@ -45,4 +59,43 @@ class Connection < ActiveRecord::Base
       end
     end
   end
+  
+  def self.refresh_conf_connections(conf, usr_id)
+    atts = conf.attendances.all
+    atnd = conf.attendances.where(:user_id => usr_id).first
+    atts.each do |comp_atnd|
+      next if atnd.id == comp_atnd.id
+      tagset1, tagset2 = [], []
+      atnd.abstracts.all.each do |abstract|
+        if !abstract.user_id.nil?
+          # Include bio when comparing
+          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+          bio.abstract_tags.all.each do |bio_tag|
+            tagset1 << bio_tag.tag if bio_tag.tag
+          end
+        end
+        abstract.abstract_tags.all.each do |abstract_tag|
+          tagset1 << abstract_tag.tag if abstract_tag.tag
+          # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
+        end
+      end
+      comp_atnd.abstracts.all.each do |abstract|
+        if !abstract.user_id.nil?
+          # Include bio when comparing
+          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+          bio.abstract_tags.all.each do |bio_tag|
+            tagset2 << bio_tag.tag if bio_tag.tag
+          end
+        end
+        abstract.abstract_tags.all.each do |abstract_tag|
+          tagset2 << abstract_tag.tag if abstract_tag.tag
+          # self.my_logger.info("comp_atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
+        end
+      end
+      conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
+      str = self.compare(tagset1, tagset2)
+      conn.update_attribute(:strength, str)
+    end
+  end
+  
 end

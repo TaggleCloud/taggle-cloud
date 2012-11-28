@@ -18,7 +18,7 @@ class Conference < ActiveRecord::Base
         att.user_id = e.user_id if e
         att.save
         abstract = sanitize_string(row[7]) if row[7]
-        Abstract.create(:body => abstract, :attendance_id => att.id, :user_id => att.user_id) if abstract
+        Abstract.create(:body => abstract, :attendance_id => att.id, :user_id => att.user_id, :is_bio => false) if abstract
       end
       # Attendance.import(attendances)
       # Abstract.import(abstracts)

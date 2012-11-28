@@ -85,8 +85,7 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
-    puts params
-
+    
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
         format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
