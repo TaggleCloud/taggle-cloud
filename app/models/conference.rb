@@ -4,8 +4,8 @@ class Conference < ActiveRecord::Base
   attr_accessible :name, :location, :attendances_attributes, :start_time, :end_time
 
   has_many :attendances, :dependent => :destroy
-  has_many :connections, :through => :attendances
-  has_many :coordinates
+  has_many :connections, :through => :attendances, :dependent => :destroy
+  has_many :coordinates, :dependent => :destroy
  
   accepts_nested_attributes_for :attendances
   

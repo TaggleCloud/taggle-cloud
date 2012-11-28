@@ -19,6 +19,7 @@ class AttendancesController < ApplicationController
     @abstracts = @attendance.abstracts
     if(@attendance.user_id)
       @user = User.find(@attendance.user_id)
+      @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     end
     if(current_user)
       @user_attendance = Attendance.where(:conference_id => @conference.id, :user_id => current_user.id).first

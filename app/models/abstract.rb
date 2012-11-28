@@ -9,13 +9,18 @@ class Abstract < ActiveRecord::Base
   has_many :abstract_tags, :dependent => :destroy
   has_many :tags, :through => :abstract_tags
   
-  def highlight_body(user)
-    current_att = user.attendances.where(:conference_id => self.attendance.conference_id).last
+  def highlight_body(user, conf_id)
+    current_att = user.attendances.where(:conference_id => conf_id).last
     result_body = ""
     if current_att
       current_abs = current_att.abstracts
-      # result_body = self.body
-      body_split = self.body.split(' ')
+      #current_abs << user.abstracts.where(:is_bio => true).first
+      # TODO: This line ^ makes attendance show super slow. Without, it doesn't highlight words in your bio
+      if self.body.nil?
+        body_split = []
+      else
+        body_split = self.body.split(' ')
+      end
       current_abs.each do |a|
         body_split.each do |word|
           a.abstract_tags.map do |t|
