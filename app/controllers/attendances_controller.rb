@@ -17,6 +17,13 @@ class AttendancesController < ApplicationController
     @conference = Conference.find(params[:conference_id])
     @attendance = Attendance.find(params[:id])
     @abstracts = @attendance.abstracts
+    if(@attendance.user_id)
+      @user = User.find(@attendance.user_id)
+    end
+    if(current_user)
+      @user_attendance = Attendance.where(:conference_id => @conference.id, :user_id => current_user.id).first
+      @connection = Connection.where(:attendance1_id => @user_attendance.id, :attendance2_id => params[:id]).first
+    end
 
     respond_to do |format|
       format.html # show.html.erb

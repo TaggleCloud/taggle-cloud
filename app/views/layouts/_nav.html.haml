@@ -6,27 +6,26 @@
         %span.icon-bar
         %span.icon-bar
       = link_to "Taggle Cloud", :root, :class => "brand"
+      %ul.nav.pull-right
+        %li.dropdown
+          - if current_user
+            = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
+              %i.icon-user.icon-white
+              = "#{current_user.name}"
+              %b.caret
+            %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
+              %li= link_to "Profile", user_path(current_user.id)
+              %li= link_to "Sign Out", signout_path
+          - else
+            = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
+              Sign In
+              %b.caret
+            %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
+              %li= link_to "Sign in with LinkedIn", "auth/linkedin"
+              %li= link_to "Sign in with Google", "auth/google_oauth2"
+              %li= link_to "Sign in with Facebook", "auth/facebook"
       .nav-collapse
         %ul.nav
           %li
             - if current_user
               = link_to "Conferences", conferences_path
-        %ul.nav.pull-right
-          - if current_user
-            %li.dropdown
-              = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
-                %i.icon-user.icon-white
-                = "#{current_user.name}"
-                %b.caret
-              %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
-                %li= link_to "My Profile", profile_path
-                %li= link_to "Sign Out", signout_path
-          - else
-            %li.dropdown
-              = link_to "#", :class => "dropdown-toggle", data: { toggle: 'dropdown' } do
-                Sign In
-                %b.caret
-              %ul.dropdown-menu{:role => "menu", :aria_labelledby => "dLabel"}
-                %li= link_to "Sign in with LinkedIn", "auth/linkedin"
-                %li= link_to "Sign in with Google", "auth/google_oauth2"
-                %li= link_to "Sign in with Facebook", "auth/facebook"

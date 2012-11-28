@@ -3,6 +3,13 @@
  *= require bootstrap-datepicker
 */
 .centered { text-align: center }
+.align-left {
+  text-align: left;
+}
+
+.pull-left {
+  float: left;
+}
 
 @import "bootstrap";
 
@@ -22,18 +29,24 @@ body {
   padding-bottom: 15px;
 }
 
-input, textarea {
+input {
   width: 250px;
 }
 
-@media only screen and (min-width: 800px) {
+textarea {
+  width: 250px;
+  height: 100px;
+}
+
+@media only screen and (min-width: 480px) {
   input, textarea {
-    width: 500px;
+    width: 80%;
   }
   textarea {
-    height: 200px;
+    height: 100px;
   }
 }
+
 
 @import "homepage";
 @import "conferences";

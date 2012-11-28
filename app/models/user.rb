@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+<<<<<<< HEAD
   after_create :create_bio
   attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes
+=======
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstract_attributes, :emails_attributes, :show_email, :is_admin
+>>>>>>> master
 
   has_many :abstracts
   has_many :attendances
@@ -8,8 +12,19 @@ class User < ActiveRecord::Base
   has_many :emails
   has_many :user_interests
   has_many :interests, :through => :user_interests
+  has_many :coordinates
  
   accepts_nested_attributes_for :abstracts
+  accepts_nested_attributes_for :emails
+
+  def coordinate (conference)
+    self.coordinates.each do |c|
+      if c.conference_id == conference.id
+        return true
+      end
+    end
+    return false
+  end
 
   def name
     return self.first_name.to_s + " " + self.last_name.to_s

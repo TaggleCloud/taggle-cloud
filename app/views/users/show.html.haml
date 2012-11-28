@@ -1,28 +1,46 @@
 .row-fluid
   .span2
-    .row-fluid
-      -if @user.image
-        = image_tag(@user.image) if current_user.image.length > 0
-    %hr
-    .row-fluid
-      = link_to edit_user_path(@user), :class => "btn" do
-        %i.icon-edit
-        Edit Profile
-
+    .image-container
+      .image-box.vcenter
+        -if @user.image
+          = image_tag(@user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
   .span10
-    %h2= @user.name
-    %h4= @user.occupation
-    = @user.location
-    %hr
-    .row-fluid
-      %h3 Attended/Upcoming Conferences
-      %ul.thumbnails
-        - @user.attendances.all.each do |att|
-          %li.span4
-            = link_to att.conference, :class => "thumbnail card" do
-              %h4= att.conference.name
-              %h5= att.conference.location
+    -if @user == current_user
+      .pull-right
+        = link_to edit_user_path(@user), :class => "btn" do
+          %i.icon-edit
+          Edit Profile
+    .vcenter
+      %h1= @user.name
+      - if @user.show_email
+        %strong= "Email:"
+        - @user.emails.all.each do |email|
+          = mail_to email.mail_address
+        %br
+      = @user.occupation
+      Occupation
+      %br
+      = @user.location
+      Location
+      
+%hr
 
+
+<<<<<<< HEAD
 = @bio.body
+=======
+.row-fluid
+  .span12
+    %h3 Attended/Upcoming Conferences
+    %ul.thumbnails
+      - @user.attendances.all.each do |att|
+        %li.span4
+          = link_to att.conference, :class => "thumbnail card cbutton" do
+            %h4= att.conference.name
+            %h5= att.conference.location
+>>>>>>> master
 
-%br
+    %h4 Bio:
+    = @abstract.body

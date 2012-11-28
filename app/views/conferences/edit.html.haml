@@ -1,13 +1,15 @@
 .row-fluid
-  %h1.pull-left Editing conference
-
-  .pull-right
+  .pull-right.buttons
     = link_to @conference, :class => "btn" do
       %i.icon-arrow-left
-      Back to Conference
-    %br
+      Back
+    
     = link_to conferences_path, :class => "btn" do
       %i.icon-th-list
-      Show All Conferences
+      All Conferences
+      
+  %h1.pull-left Editing conference
 
-= render 'form'
+
+.form
+  = render 'form'

@@ -1,28 +1,55 @@
 = stylesheet_link_tag "abstracts"
 
 %p#notice= notice
-- if @attendance.user_id
-  = link_to user_path(@attendance.user_id) do
+.page-header
+  .pull-right
+    = link_to conference_path(@conference), :class => "btn" do
+      %i.icon-arrow-left
+      Back
+  - if @attendance.user_id
+    .row-fluid
+      .span2
+        .image-box.vcenter
+          -if @user.image
+            = image_tag(@user.image, :class => "size")
+          -else
+            = image_tag("user_placeholder.png", :class => "size")
+      .span10
+        = link_to user_path(@attendance.user_id) do
+          %h2= @attendance.name
+        - if @user.show_email
+          - @user.emails.all.each do |email|
+            %strong= "Email:"
+            = mail_to email.mail_address
+            %br
+        = @user.occupation
+        = @user.location
+  - else
     %h2= @attendance.name
-    %h3= @attendance.organization
-- else
-  %h2= @attendance.name
   %h3= @attendance.organization
   
-%button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
-
-%br
-%br
-
 - @abstracts.each do |abstract|
-  = abstract.highlight_body(current_user).html_safe
+  %h3 
+    Abstract:
+    .pull-right 
+      %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
+  - if(current_user)
+    = abstract.highlight_body(current_user).html_safe
+  - else
+    = abstract.body
 
-%br
-%br
-
+<<<<<<< HEAD
 = link_to conference_path(@conference), :class => "btn" do
   %i.icon-arrow-left
   Back
+=======
+-if(current_user)
+  %h3 Connection strength:
+  .span4
+    .progress.progress-striped
+      .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
+        #{@user_attendance.get_connection_strength(@attendance)}%
+>>>>>>> master
 
 :javascript
   var checked = false;

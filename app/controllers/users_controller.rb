@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+<<<<<<< HEAD
   def profile 
     @user = current_user
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
@@ -14,6 +15,25 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+=======
+  def show
+    @user = User.find(params[:id])
+    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
+    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
+    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    @interests_conf = Conference.find_by_name_and_location("User testing", "Here")
+    @attendance = Attendance.find_or_create_by_conference_id_and_user_id(@interests_conf.id, @user.id)
+    @abstract = Abstract.find_or_create_by_attendance_id(@attendance.id)
+    #@user.emails.build
+    unless @user.is_admin || @user == current_user
+      flash[:notice] = "You have no right to edit this user"
+      redirect_to user_path(@user)
+    end
+>>>>>>> master
   end
 
   def dashboard
