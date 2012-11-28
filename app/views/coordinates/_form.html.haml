@@ -1,10 +1,10 @@
-= simple_form_for(@coordinate) do |f|
+= simple_form_for @coordinate, :html => {:class => 'form-horizontal' } do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.collection_select :user_id, User.all, :id, :name
-    %br
-    = f.collection_select :conference_id, Conference.all, :id, :name
-
-  .form-actions
-    = f.button :submit
+  = f.collection_select :user_id, User.all, :id, :name
+  %br
+  %br
+  = f.collection_select :conference_id, Conference.all, :id, :name
+  %br
+  %br
+  = f.button :submit, :inline_label => "Create new coordinator"

@@ -8,5 +8,9 @@
         %h4= conf.name
         %h5= conf.location
 - if current_user.is_admin
-  = link_to 'Add a new coordinator', new_coordinate_path
-  = link_to 'View all coordinators', coordinates_path
+  = link_to new_coordinate_path, :class => "btn" do
+    %i.icon-plus-sign
+    Add a new coordinator
+  = link_to coordinates_path, :class => "btn" do
+    %i.icon-th-list
+    View all coordinators
