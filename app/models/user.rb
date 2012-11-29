@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   end
   
   def create_bio
-    @bio = Abstract.create(:user_id => user.id)
+    @bio = Abstract.create(:user_id => self.id)
     @bio.is_bio = true
     @bio.save
   end
