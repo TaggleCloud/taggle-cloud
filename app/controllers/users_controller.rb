@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
   end
 
   def edit
