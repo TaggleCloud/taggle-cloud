@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     #@user.emails.build
     unless @user.is_admin || @user == current_user
       flash[:notice] = "You have no right to edit this user"
@@ -22,6 +23,9 @@ class UsersController < ApplicationController
   # PUT /conferences/1.json
   def update
     @user = current_user
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
+    params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to user_path(@user), notice: 'Profile has been successfully updated.' }
