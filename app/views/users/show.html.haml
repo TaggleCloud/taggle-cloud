@@ -1,41 +1,16 @@
-.row-fluid
-  .span2
-    .image-container
-      .image-box.vcenter
-        -if @user.image
-          = image_tag(@user.image, :class => "size")
-        -else
-          = image_tag("user_placeholder.png", :class => "size")
-  .span10
-    -if @user == current_user
-      .pull-right
-        = link_to edit_user_path(@user), :class => "btn" do
-          %i.icon-edit
-          Edit Profile
-    .vcenter
-      %h1= @user.name
-      - if @user.show_email
-        - @user.emails.all.each do |email|
-          %strong= "Email:"
-          = mail_to email.mail_address
-          %br
-      %strong Occupation:
-      = @user.occupation
-      %br
-      %strong Location:
-      = @user.location
-      
-%hr
+.page-header
+  %h1 Welcome, #{current_user.name}
+  %p
+    In order to ensure that we create the best possible matches for you, be sure to
+    = link_to "keep your profile updated.", edit_user_path(current_user)
 
-.row
-  .span12
-    %h3 Attended/Upcoming Conferences
-    %ul.thumbnails
-      - @user.attendances.all.each do |att|
-        %li.span4
-          = link_to att.conference, :class => "thumbnail card cbutton" do
-            %h4= att.conference.name
-            %h5= att.conference.location
-
-    %h4 Bio:
-    = @bio.body
+- unless @conferences.empty?
+  %h3 Conferences you are attending
+  %ul.thumbnails
+    - @conferences.each do |conference|
+      %li.span4
+        = link_to conference_path(conference), :class=> "thumbnail card cbutton" do
+          %h4= conference.name
+          %h5= conference.location
+- else
+  %h3.centered Looks like you aren't attending any conferences &#9785;
