@@ -1,16 +1,47 @@
-.page-header
-  %h1 Welcome, #{current_user.name}
-  %p
-    In order to ensure that we create the best possible matches for you, be sure to
-    = link_to "keep your profile updated.", edit_user_path(current_user)
+%h1
+  Welcome,
+  = current_user.name
+%hr
 
-- unless @conferences.empty?
-  %h3 Conferences you are attending
-  %ul.thumbnails
-    - @conferences.each do |conference|
-      %li.span4
-        = link_to conference_path(conference), :class=> "thumbnail card cbutton" do
-          %h4= conference.name
-          %h5= conference.location
-- else
-  %h3.centered Looks like you aren't attending any conferences &#9785;
+.row
+  .span12
+    %h2 Conferences
+    %ul.thumbnails
+      - current_user.attendances.all.each do |att|
+        %li.span4
+          = link_to att.conference, :class => "thumbnail card cbutton" do
+            %h4= att.conference.name
+            %h5= att.conference.location
+
+%hr
+.row-fluid
+  .span2
+    .image-container
+      .image-box.vcenter
+        -if current_user.image
+          = image_tag(current_user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
+        %br
+        %br
+        .centered
+          = link_to edit_user_path(current_user), :class => "btn" do
+            %i.icon-edit
+            Edit Profile
+  .span10
+    .vcenter
+      %h2= current_user.name
+      - if current_user.show_email
+        - current_user.emails.all.each do |email|
+          %strong= "Email:"
+          = mail_to email.mail_address
+          %br
+      %strong Occupation:
+      = current_user.occupation
+      %br
+      %strong Location:
+      = current_user.location
+      %h4 Bio:
+      = @bio.body
+
+%hr

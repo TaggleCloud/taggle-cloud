@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    @conferences = @user.get_conferences
   end
 
   def edit
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @conferences = current_user.get_conferences
+    @bio = Abstract.where(:user_id => current_user.id, :is_bio => true).first
   end
 
   # PUT /conferences/1
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to user_path(@user), notice: 'Profile has been successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Profile has been successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
