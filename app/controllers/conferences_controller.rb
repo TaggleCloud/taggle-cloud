@@ -15,7 +15,12 @@ class ConferencesController < ApplicationController
   def show
     @conference = Conference.find(params[:id])
     @user_attendance = current_user.attendances.where(:conference_id => @conference.id).last if current_user
-    @like_count = Like.where("conference_id = ? AND user_id = ?", @conference.id, current_user.id).count
+    @likes = current_user.likes.where(:conference_id => @conference.id).all
+    @liked_attendees = []
+    @likes.each do |like|
+      @liked_attendees << like.attendance
+    end
+    @liked_count = current_user.likes.where(:conference_id => @conference.id).all.count
     if @user_attendance
       @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'strength DESC')
       @attendees = []
@@ -25,7 +30,6 @@ class ConferencesController < ApplicationController
     else
       @attendees = @conference.attendances
     end
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }
@@ -86,7 +90,8 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
-    
+    puts params
+
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
         format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
