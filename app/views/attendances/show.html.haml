@@ -28,11 +28,13 @@
     %h2= @attendance.name
   %h3= @attendance.organization
   -if @like_count == 0
-    = link_to new_like_path(:attendance_id => @attendance.id, :conference_id => @attendance.conference.id, :user_id => current_user.id), :class => "btn" do
+    = link_to likes_path(:attendance_id => @attendance.id), :method => :post, :class => "btn" do
       %i.icon-thumbs-up
       Like
   -else
-    You like this attendee
+    = link_to like_path(@like), :method => :delete, :class => "btn" do
+      %i.icon-thumbs-down
+      Unlike
   
 - @abstracts.each do |abstract|
   %h3 
