@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def dashboard
     @conferences = current_user.get_conferences
     @bio = Abstract.where(:user_id => current_user.id, :is_bio => true).first
+    @like_count = Like.where("user_id = ?", current_user.id).count
   end
 
   # PUT /conferences/1

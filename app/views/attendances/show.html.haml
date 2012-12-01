@@ -39,7 +39,8 @@
     = abstract.body
 - if(@attendance.user_id)
   %h3 Bio:
-  = @bio.highlight_body(current_user, @conference.id).html_safe
+  -if @bio
+    = @bio.highlight_body(current_user, @conference.id).html_safe
 
 -if(current_user)
   %h3 Connection strength:
@@ -47,7 +48,12 @@
     .progress.progress-striped
       .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
         #{@user_attendance.get_connection_strength(@attendance)}%
-
+%br
+%br
+-if @like_count == 0
+  = link_to "Like", new_like_path(:attendance_id => @attendance.id, :conference_id => @attendance.conference.id, :user_id => current_user.id)
+-else
+  You liked this attendee
 :javascript
   var checked = false;
   $('#toggle').click(function(){
