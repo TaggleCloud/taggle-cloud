@@ -15,6 +15,7 @@ class ConferencesController < ApplicationController
   def show
     @conference = Conference.find(params[:id])
     @user_attendance = current_user.attendances.where(:conference_id => @conference.id).last if current_user
+    @like_count = Like.where("conference_id = ? AND user_id = ?", @conference.id, current_user.id).count
     if @user_attendance
       @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'strength DESC')
       @attendees = []

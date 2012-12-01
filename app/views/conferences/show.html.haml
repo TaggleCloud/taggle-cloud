@@ -6,7 +6,9 @@
   %h1
     = @conference.name
     %small= @conference.location
-  
+ 
+You like #{@like_count} attendee from this conference
+
 %p.lead
   - if @user_attendance
     Your Matches
