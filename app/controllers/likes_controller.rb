@@ -1,82 +1,22 @@
 class LikesController < ApplicationController
-  # GET /likes
-  # GET /likes.json
-  def index
-    @likes = Like.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @likes }
-    end
-  end
-
-  # GET /likes/1
-  # GET /likes/1.json
-  def show
-    @like = Like.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @like }
-    end
-  end
-
-  # GET /likes/new
-  # GET /likes/new.json
-  def new
-    @like = Like.new
-    if params[:attendance_id] && params[:conference_id] && params[:user_id]
-      if Like.where("attendance_id = ? AND user_id = ?", params[:attendance_id], params[:user_id]).count > 0
-        redirect_to conference_attendee_path(params[:conference_id], params[:attendance_id])
-      else
-        @like.attendance_id = params[:attendance_id]
-        @like.conference_id = params[:conference_id]
-        @like.user_id = params[:user_id]
-        @like.save
-        redirect_to conference_attendee_path(params[:conference_id], params[:attendance_id])
-      end
-    else
-      respond_to do |format|
-        format.html # new.html.erb
-        format.json { render json: @like }
-      end
-    end
-  end
-
-  # GET /likes/1/edit
-  def edit
-    @like = Like.find(params[:id])
-  end
-
   # POST /likes
   # POST /likes.json
   def create
-    @like = Like.new(params[:like])
-
+    @attendance = Attendance.find(params[:attendance_id])
+    @like = Like.new(:attendance_id => @attendance.id, :user_id => current_user.id)
+    logger.info(@like.attendance_id.to_s + " " + @like.user_id.to_s)
     respond_to do |format|
-      if @like.save
-        format.html { redirect_to @like, notice: 'Like was successfully created.' }
-        format.json { render json: @like, status: :created, location: @like }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @like.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /likes/1
-  # PUT /likes/1.json
-  def update
-    @like = Like.find(params[:id])
-
-    respond_to do |format|
-      if @like.update_attributes(params[:like])
-        format.html { redirect_to @like, notice: 'Like was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @like.errors, status: :unprocessable_entity }
-      end
+      format.html {
+        @like.save
+        redirect_to conference_attendee_path(@attendance.conference_id, params[:attendance_id])
+      }
+      format.json {
+        if (@like.save)
+          render json: @like, status: :created, location: @like
+        else
+          render json: @like.errors, status: :unprocessable_entity
+        end
+      }
     end
   end
 
@@ -84,10 +24,11 @@ class LikesController < ApplicationController
   # DELETE /likes/1.json
   def destroy
     @like = Like.find(params[:id])
+    @attendance = Attendance.find(@like.attendance_id)
     @like.destroy
 
     respond_to do |format|
-      format.html { redirect_to likes_url }
+      format.html { redirect_to conference_attendee_path(@attendance.conference_id, @attendance.id) }
       format.json { head :no_content }
     end
   end

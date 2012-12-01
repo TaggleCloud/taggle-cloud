@@ -6,6 +6,7 @@ class Conference < ActiveRecord::Base
   has_many :attendances, :dependent => :destroy
   has_many :connections, :through => :attendances, :dependent => :destroy
   has_many :coordinates, :dependent => :destroy
+  has_many :likes, :through => :attendances
  
   accepts_nested_attributes_for :attendances
   
