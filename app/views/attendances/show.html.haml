@@ -72,7 +72,32 @@
     %h3
       =@user.name
       is also attending:
-    asdf
+    %ul.thumbnails
+      - @conferences.each do |conference|
+        %li.span4
+          = link_to conference_path(conference), :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = conference.name
+            .pull-right
+              .iconblock
+                %i.icon-thumbs-up
+                = conference.likes
+              .iconblock
+                %i.icon-user
+                = conference.attendances.count
+            %h5.dblock.clear
+              = conference.location
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 %br
 %br
 :javascript
