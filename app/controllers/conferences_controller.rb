@@ -20,7 +20,7 @@ class ConferencesController < ApplicationController
     @likes.each do |like|
       @liked_attendees << like.attendance
     end
-    @liked_count = current_user.likes.where(:conference_id => @conference.id).all.count
+    @liked_count = @likes.count
     if @user_attendance
       @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'strength DESC')
       @attendees = []

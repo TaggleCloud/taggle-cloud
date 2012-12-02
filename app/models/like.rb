@@ -1,5 +1,5 @@
 class Like < ActiveRecord::Base
-  attr_accessible :attendance_id, :user_id
+  attr_accessible :attendance_id, :user_id, :conference_id
   belongs_to :conference
   belongs_to :user
   belongs_to :attendance
