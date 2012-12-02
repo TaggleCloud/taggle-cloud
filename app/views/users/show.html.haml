@@ -1,16 +1,58 @@
-.page-header
-  %h1 Welcome, #{current_user.name}
-  %p
-    In order to ensure that we create the best possible matches for you, be sure to
-    = link_to "keep your profile updated.", edit_user_path(current_user)
+-if current_user.id == @user.id
+  .pull-right
+    = link_to edit_user_path(@user), :class => "btn" do
+      %i.icon-edit
+      Edit Profile
+  %h1
+    My Profile
+
+  %hr
+.row-fluid
+  .span2
+    .image-container
+      .image-box.vcenter
+        -if @user.image
+          = image_tag(@user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
+  .span10
+    .vcenter
+      %h3
+        = @user.name
+      - if @user.show_email
+        - @user.emails.all.each do |email|
+          %strong= "Email:"
+          = mail_to email.mail_address
+          %br
+      - if @user.occupation
+        %strong Occupation:
+        = @user.occupation
+      %br
+      - if @user.location
+        %strong Location:
+        = @user.location
+%h4 Bio:
+- if @bio
+  = @bio.body
+%hr
 
 - unless @conferences.empty?
   %h3 Conferences you are attending
   %ul.thumbnails
     - @conferences.each do |conference|
       %li.span4
-        = link_to conference_path(conference), :class=> "thumbnail card cbutton" do
-          %h4= conference.name
-          %h5= conference.location
+        = link_to conference_path(conference), :class => "thumbnail card cbutton" do
+          %h4.dblock
+            = conference.name
+          .pull-right
+            .iconblock
+              %i.icon-thumbs-up
+              = conference.likes
+            .iconblock
+              %i.icon-user
+              = conference.attendances.count
+          %h5.dblock.clear
+            = conference.location
 - else
-  %h3.centered Looks like you aren't attending any conferences &#9785;
+  %h3.centered 
+    Looks like you aren't attending any conferences &#9785;

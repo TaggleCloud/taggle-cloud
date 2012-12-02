@@ -5,7 +5,7 @@
   .pull-right
     = link_to conference_path(@conference), :class => "btn" do
       %i.icon-arrow-left
-      Back
+      = @conference.name
   - if @attendance.user_id
     .row-fluid
       .span2
