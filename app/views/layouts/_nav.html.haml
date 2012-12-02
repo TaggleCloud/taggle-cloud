@@ -14,7 +14,7 @@
         %ul.nav.pull-right
           - if current_user
             %li
-              .nav-pad
+              = link_to user_path(current_user.id) do
                 %i.icon-user.icon-white
                 = "#{current_user.name}"
             %li
