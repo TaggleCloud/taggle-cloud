@@ -52,7 +52,7 @@
       %h3 
         Abstract:
         .pull-right 
-          %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
+          %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide matched words
       - if(current_user)
         = abstract.highlight_body(current_user, @conference.id).html_safe
       - else
