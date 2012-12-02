@@ -24,12 +24,16 @@
           %strong= "Email:"
           = mail_to email.mail_address
           %br
-      - if @user.occupation
-        %strong Occupation:
+      %strong Occupation:
+      -if @user.occupation.blank?
+        Not available
+      -else
         = @user.occupation
       %br
-      - if @user.location
-        %strong Location:
+      %strong Location:
+      -if @user.location.blank?
+        Not available
+      -else
         = @user.location
 %h4 Bio:
 - if @bio
