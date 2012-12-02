@@ -43,5 +43,9 @@ class Conference < ActiveRecord::Base
     # untrusted_string = ic.iconv(untrusted_string)
     # end
   end
+  
+  def likes
+    return Like.where(:conference_id => self.id).count
+  end
 
 end
