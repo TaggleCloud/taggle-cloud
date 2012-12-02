@@ -14,33 +14,37 @@
     = link_to like_path(@like), :method => :delete, :class => "btn" do
       %i.icon-thumbs-down
       Unlike
-      
-.row-fluid
-  .span2
-    .image-container
-      .image-box.vcenter
-        -if @user.image
-          = image_tag(@user.image, :class => "size")
-        -else
-          = image_tag("user_placeholder.png", :class => "size")
-  .span10
-    %h2= @user.name
-    - if @user.show_email
-      %strong= "Email:"
-      - @user.emails.all.each do |email|
-        = mail_to email.mail_address
+
+- if @user
+  .row-fluid
+    .span2
+      .image-container
+        .image-box.vcenter
+          -if @user.image
+            = image_tag(@user.image, :class => "size")
+          -else
+            = image_tag("user_placeholder.png", :class => "size")
+    .span10
+      %h2= @user.name
+      - if @user.show_email
+        %strong= "Email:"
+        - @user.emails.all.each do |email|
+          = mail_to email.mail_address
+        %br
+      %strong Occupation:
+      -if @user.occupation.blank?
+        Not available
+      -else
+        = @user.occupation
       %br
-    %strong Occupation:
-    -if @user.occupation.blank?
-      Not available
-    -else
-      = @user.occupation
-    %br
-    %strong Location:
-    -if @user.location.blank?
-      Not available
-    -else
-      = @user.location
+      %strong Location:
+      -if @user.location.blank?
+        Not available
+      -else
+        = @user.location
+- else
+  %h2= @attendance.name
+%h4= @attendance.organization
 
 .row-fluid
   .span12
@@ -67,36 +71,29 @@
         .progress.progress-striped
           .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
             #{@user_attendance.get_connection_strength(@attendance)}%
-.row-fluid
-  .span12
-    %h3
-      =@user.name
-      is also attending:
-    %ul.thumbnails
-      - @conferences.each do |conference|
-        %li.span4
-          = link_to conference_path(conference), :class => "thumbnail card cbutton" do
-            %h4.dblock
-              = conference.name
-            .pull-right
-              .iconblock
-                %i.icon-thumbs-up
-                = conference.likes
-              .iconblock
-                %i.icon-user
-                = conference.attendances.count
-            %h5.dblock.clear
-              = conference.location
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+            
+- if @conferences && @conferences.count > 1
+  .row-fluid
+    .span12
+      %h3
+        =@user.name
+        is also attending:
+      %ul.thumbnails
+        - @conferences.each do |conference|
+          - if (conference.id != @conference.id)
+            %li.span4
+              = link_to conference_path(conference), :class => "thumbnail card cbutton" do
+                %h4.dblock
+                  = conference.name
+                .pull-right
+                  .iconblock
+                    %i.icon-thumbs-up
+                    = conference.likes
+                  .iconblock
+                    %i.icon-user
+                    = conference.attendances.count
+                %h5.dblock.clear
+                  = conference.location
     
 %br
 %br

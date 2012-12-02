@@ -44,7 +44,8 @@
       %li.span4
         = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
           - if attendee.user_id
-            %h4.blue = attendee.name
+            %h4.blue
+              = attendee.name
           - else
             %h4= attendee.name
           - if attendee.organization
