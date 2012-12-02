@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   # POST /likes.json
   def create
     @attendance = Attendance.find(params[:attendance_id])
-    @like = Like.new(:attendance_id => @attendance.id, :user_id => current_user.id)
+    @like = Like.new(:attendance_id => @attendance.id, :user_id => current_user.id, :conference_id => @attendance.conference.id)
     logger.info(@like.attendance_id.to_s + " " + @like.user_id.to_s)
     respond_to do |format|
       format.html {
