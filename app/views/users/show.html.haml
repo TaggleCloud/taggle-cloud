@@ -17,13 +17,12 @@
           = image_tag("user_placeholder.png", :class => "size")
   .span10
     .vcenter
-      %h3
-        = @user.name
+      %h3= @user.name
       - if @user.show_email
+        %strong= "Email:"
         - @user.emails.all.each do |email|
-          %strong= "Email:"
           = mail_to email.mail_address
-          %br
+        %br
       %strong Occupation:
       -if @user.occupation.blank?
         Not available

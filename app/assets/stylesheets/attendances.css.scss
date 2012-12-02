@@ -1,3 +1,78 @@
 // Place all the styles related to the attendances controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dblock {
+  display: block;
+  float: left;
+}
+.clear {
+  clear: both;
+}
+
+.vcenter {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100px;
+}
+.image-container {
+  display: table;
+  max-width: 150px;
+}
+.image-box {
+  display: table-cell;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  size {
+    max-width: 90px;
+    max-height: 90px;
+  }
+}
+
+.remove-mail-address a {
+  color: red;
+}
+
+.remove-mail-address {
+  position: relative;
+  top: -44px;
+  left: 85.5%;
+  width: 20px;
+}
+
+@media (min-width: 1200px) {
+  .remove-mail-address {
+    position: relative;
+    top: -44px;
+    left: 84.5%;
+    width: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .remove-mail-address {
+    position: relative;
+    top: -44px;
+    left: 87.5%;
+    width: 20px;
+  }
+} 
+
+@media (max-width: 767px) {
+  .remove-mail-address {
+    position: relative;
+    top: -44px;
+    left: 91%;
+    width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .remove-mail-address {
+    position: relative;
+    top: -44px;
+    left: 270px;
+    width: 20px;
+  }
+}

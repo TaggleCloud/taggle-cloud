@@ -17,13 +17,12 @@
 }
 .image-container {
   display: table;
-  width: 100%;
-  max-width: 100px;
+  max-width: 150px;
 }
 .image-box {
   display: table-cell;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   text-align: center;
   size {
     max-width: 90px;
