@@ -10,8 +10,17 @@
       - current_user.attendances.all.each do |att|
         %li.span4
           = link_to att.conference, :class => "thumbnail card cbutton" do
-            %h4= att.conference.name
-            %h5= att.conference.location
+            %h4.dblock
+              = att.conference.name
+            .pull-right
+              .iconblock
+                %i.icon-thumbs-up
+                = att.conference.likes
+              .iconblock
+                %i.icon-user
+                = att.conference.attendances.count
+            %h5.dblock.clear
+              = att.conference.location
 
 %hr
 .row-fluid
