@@ -1,6 +1,33 @@
-%h1
-  Welcome,
-  = current_user.name
+
+.row-fluid
+  .span2
+    .image-container
+      .image-box.vcenter
+        -if current_user.image
+          = image_tag(current_user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
+  .span10
+    .pull-right
+      = link_to edit_user_path(current_user), :class => "btn" do
+        %i.icon-edit
+        Edit Profile
+    .vcenter
+      %h1 
+        = current_user.name
+      - if current_user.show_email
+        - current_user.emails.all.each do |email|
+          %strong= "Email:"
+          = mail_to email.mail_address
+          %br
+      %strong Occupation:
+      = current_user.occupation
+      %br
+      %strong Location:
+      = current_user.location
+%h4 Bio:
+- if @bio
+  = @bio.body
 %hr
 
 .row
@@ -13,36 +40,3 @@
             %h4= att.conference.name
             %h5= att.conference.location
 
-%hr
-.row-fluid
-  .span2
-    .image-container
-      .image-box.vcenter
-        -if current_user.image
-          = image_tag(current_user.image, :class => "size")
-        -else
-          = image_tag("user_placeholder.png", :class => "size")
-        %br
-        %br
-        .centered
-          = link_to edit_user_path(current_user), :class => "btn" do
-            %i.icon-edit
-            Edit Profile
-  .span10
-    .vcenter
-      %h2= current_user.name
-      - if current_user.show_email
-        - current_user.emails.all.each do |email|
-          %strong= "Email:"
-          = mail_to email.mail_address
-          %br
-      %strong Occupation:
-      = current_user.occupation
-      %br
-      %strong Location:
-      = current_user.location
-      %h4 Bio:
-      - if @bio
-        = @bio.body
-
-%hr
