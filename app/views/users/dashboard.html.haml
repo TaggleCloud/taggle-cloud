@@ -1,33 +1,12 @@
-.row-fluid
-  .span2
-    .image-container
-      .image-box.vcenter
-        -if current_user.image
-          = image_tag(current_user.image, :class => "size")
-        -else
-          = image_tag("user_placeholder.png", :class => "size")
-  .span10
-    .pull-right
-      = link_to edit_user_path(current_user), :class => "btn" do
-        %i.icon-edit
-        Edit Profile
-    .vcenter
-      %h1 
-        = current_user.name
-      - if current_user.show_email
-        - current_user.emails.all.each do |email|
-          %strong= "Email:"
-          = mail_to email.mail_address
-          %br
-      %strong Occupation:
-      = current_user.occupation
-      %br
-      %strong Location:
-      = current_user.location
-%h4 Bio:
-- if @bio
-  = @bio.body
+%h1
+  Welcome,
+  = current_user.name
 %hr
+
+%p.lead
+  Remember to keep your
+  = link_to "profile updated", edit_user_path(current_user)
+  to ensure the best possible matches for you.
 
 .row
   .span12
@@ -36,6 +15,19 @@
       - current_user.attendances.all.each do |att|
         %li.span4
           = link_to att.conference, :class => "thumbnail card cbutton" do
-            %h4= att.conference.name
-            %h5= att.conference.location
-
+            %h4.dblock
+              = att.conference.name
+            .pull-right
+              .iconblock
+                %i.icon-thumbs-up
+                = att.conference.likes
+              .iconblock
+                %i.icon-user
+                = att.conference.attendances.count
+            %h5.dblock.clear
+              = att.conference.location
+    %p
+      Note:
+      %br
+      If you signed up for a conference, but it does not show here, please check that your profile contains the email address you used to sign up for the conference. You may add additional email addresses by 
+      = link_to "updating your profile.", edit_user_path(current_user)

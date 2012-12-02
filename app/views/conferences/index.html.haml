@@ -1,25 +1,27 @@
-.page-header
-  %h1 Current Conferences
+%h1 Current Conferences
+%hr
 
-%ul.thumbnails
-  - @conferences.each do |conf|
-    %li.span4
-      = link_to conf, :class => "thumbnail card cbutton" do
-        %h4.dblock
-          = conf.name
-        .pull-right
-          .iconblock
-            %i.icon-thumbs-up
-            = conf.likes
-          .iconblock
-            %i.icon-user
-            = conf.attendances.count
-        %h5.dblock.clear
-          = conf.location
-- if current_user.is_admin
-  = link_to new_coordinate_path, :class => "btn" do
-    %i.icon-plus-sign
-    Add a new coordinator
-  = link_to coordinates_path, :class => "btn" do
-    %i.icon-th-list
-    View all coordinators
+.row-fluid
+  .span12
+    %ul.thumbnails
+      - @conferences.each do |conf|
+        %li.span4
+          = link_to conf, :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = conf.name
+            .pull-right
+              .iconblock
+                %i.icon-thumbs-up
+                = conf.likes
+              .iconblock
+                %i.icon-user
+                = conf.attendances.count
+            %h5.dblock.clear
+              = conf.location
+    - if current_user.is_admin
+      = link_to new_coordinate_path, :class => "btn" do
+        %i.icon-plus-sign
+        Add a new coordinator
+      = link_to coordinates_path, :class => "btn" do
+        %i.icon-th-list
+        View all coordinators
