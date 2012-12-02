@@ -1,32 +1,11 @@
 = stylesheet_link_tag "abstracts"
 
 %p#notice= notice
-.page-header
-  .pull-right
-    = link_to conference_path(@conference), :class => "btn" do
-      %i.icon-arrow-left
-      = @conference.name
-  - if @attendance.user_id
-    .row-fluid
-      .span2
-        .image-box.vcenter
-          -if @user.image
-            = image_tag(@user.image, :class => "size")
-          -else
-            = image_tag("user_placeholder.png", :class => "size")
-      .span10
-        = link_to user_path(@attendance.user_id) do
-          %h2= @attendance.name
-        - if @user.show_email
-          - @user.emails.all.each do |email|
-            %strong= "Email:"
-            = mail_to email.mail_address
-            %br
-        = @user.occupation
-        = @user.location
-  - else
-    %h2= @attendance.name
-  %h3= @attendance.organization
+    
+.pull-right
+  = link_to conference_path(@conference), :class => "btn" do
+    %i.icon-arrow-left
+    = @conference.name
   -if @like_count == 0
     = link_to likes_path(:attendance_id => @attendance.id), :method => :post, :class => "btn" do
       %i.icon-thumbs-up
@@ -35,27 +14,65 @@
     = link_to like_path(@like), :method => :delete, :class => "btn" do
       %i.icon-thumbs-down
       Unlike
-  
-- @abstracts.each do |abstract|
-  %h3 
-    Abstract:
-    .pull-right 
-      %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
-  - if(current_user)
-    = abstract.highlight_body(current_user, @conference.id).html_safe
-  - else
-    = abstract.body
-- if(@attendance.user_id)
-  %h3 Bio:
-  -if @bio
-    = @bio.highlight_body(current_user, @conference.id).html_safe
+      
+.row-fluid
+  .span2
+    .image-container
+      .image-box.vcenter
+        -if @user.image
+          = image_tag(@user.image, :class => "size")
+        -else
+          = image_tag("user_placeholder.png", :class => "size")
+  .span10
+    %h2= @user.name
+    - if @user.show_email
+      %strong= "Email:"
+      - @user.emails.all.each do |email|
+        = mail_to email.mail_address
+      %br
+    %strong Occupation:
+    -if @user.occupation.blank?
+      Not available
+    -else
+      = @user.occupation
+    %br
+    %strong Location:
+    -if @user.location.blank?
+      Not available
+    -else
+      = @user.location
 
--if(current_user)
-  %h3 Connection strength:
-  .span4
-    .progress.progress-striped
-      .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
-        #{@user_attendance.get_connection_strength(@attendance)}%
+.row-fluid
+  .span12
+    - @abstracts.each do |abstract|
+      %h3 
+        Abstract:
+        .pull-right 
+          %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide highlighted words
+      - if(current_user)
+        = abstract.highlight_body(current_user, @conference.id).html_safe
+      - else
+        = abstract.body
+.row-fluid
+  .span12
+    - if(@attendance.user_id)
+      %h3 Bio:
+      -if @bio
+        = @bio.highlight_body(current_user, @conference.id).html_safe
+.row-fluid
+  .span12
+    -if(current_user)
+      %h3 Connection strength:
+      .span4
+        .progress.progress-striped
+          .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
+            #{@user_attendance.get_connection_strength(@attendance)}%
+.row-fluid
+  .span12
+    %h3
+      =@user.name
+      is also attending:
+    asdf
 %br
 %br
 :javascript
