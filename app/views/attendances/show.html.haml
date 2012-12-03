@@ -8,12 +8,12 @@
     = @conference.name
   -if @like_count == 0
     = link_to likes_path(:attendance_id => @attendance.id), :method => :post, :class => "btn" do
-      %i.icon-thumbs-up
-      Like
+      %i.icon-star
+      Save
   -else
     = link_to like_path(@like), :method => :delete, :class => "btn" do
-      %i.icon-thumbs-down
-      Unlike
+      %i.icon-star-empty
+      Unsave
 
 - if @user
   .row-fluid
@@ -87,7 +87,7 @@
                   = conference.name
                 .pull-right
                   .iconblock
-                    %i.icon-thumbs-up
+                    %i.icon-star
                     = conference.likes
                   .iconblock
                     %i.icon-user

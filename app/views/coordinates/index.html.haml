@@ -10,4 +10,8 @@
       %td= link_to coordinate.user.name, user_path(coordinate.user)
       %td= link_to coordinate.conference.name, conference_path(coordinate.conference)
 
+= link_to new_coordinate_path, :class => "btn" do
+  %i.icon-plus-sign
+  Add a new coordinator
+  
 %br
