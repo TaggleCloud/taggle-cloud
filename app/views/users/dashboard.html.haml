@@ -20,7 +20,7 @@
             .pull-right
               .iconblock
                 %i.icon-star
-                = att.conference.likes
+                = att.conference.likes(current_user)
               .iconblock
                 %i.icon-user
                 = att.conference.attendances.count
