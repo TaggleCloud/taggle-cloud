@@ -26,6 +26,10 @@ class AttendancesController < ApplicationController
     end
     if(current_user)
       @user_attendance = Attendance.where(:conference_id => @conference.id, :user_id => current_user.id).first
+      if @user_attendance.nil?
+        flash[:notice] = "You have no right to create a conference"
+        return redirect_to conferences_path
+      end
       @connection = Connection.where(:attendance1_id => @user_attendance.id, :attendance2_id => params[:id]).first
     end
 

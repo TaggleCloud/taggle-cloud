@@ -94,5 +94,15 @@ class User < ActiveRecord::Base
     @bio.is_bio = true
     @bio.save
   end
+  
+  def attach_att(email_address)
+    atts = Attendance.all
+    atts.each do |a|
+      if a.registered_email == email_address
+        a.user_id = self.id
+        a.save
+      end
+    end
+  end
 
 end
