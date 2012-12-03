@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     #FIXME check auth here instead of in user
     user = User.create_with_omniauth(auth)
+    user.emails.each do |e|
+      user.attach_att(e.mail_address)
+    end
     session[:user_id] = user.id
     @conf = Conference.find_or_create_by_name_and_location("User testing", "Here")
     if(!Attendance.find_by_conference_id_and_user_id(@conf.id, user.id))
