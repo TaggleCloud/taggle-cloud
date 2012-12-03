@@ -9,29 +9,30 @@ class Abstract < ActiveRecord::Base
   has_many :abstract_tags, :dependent => :destroy
   has_many :tags, :through => :abstract_tags
   
-  def highlight_body(user, conf_id)
-    current_att = user.attendances.where(:conference_id => conf_id).last
+  def highlight_body(user, abs_id)
     result_body = ""
-    if current_att
-      current_abs = current_att.abstracts
-      #current_abs << user.abstracts.where(:is_bio => true).first
-      # TODO: This line ^ makes attendance show super slow. Without, it doesn't highlight words in your bio
-      if self.body.nil?
-        body_split = []
-      else
-        body_split = self.body.split(' ')
-      end
-      current_abs.each do |a|
-        body_split.each do |word|
-          a.abstract_tags.map do |t|
-            if(t.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with t.tag.value, then replace with word
-              word = "<span class='highlight'> " + word + " </span>"
-              break
-            end
-          end
-          result_body += " #{word}"
+    bio = user.abstracts.where(:is_bio => true).first
+    # TODO: This line ^ makes attendance show super slow. Without, it doesn't highlight words in your bio
+    if self.body.nil?
+      body_split = []
+    else
+      body_split = self.body.split(' ')
+    end
+    a = Abstract.find(abs_id)
+    body_split.each do |word|
+      a.abstract_tags.map do |t|
+        if(t.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with t.tag.value, then replace with word
+          word = "<span class='highlight'> " + word + " </span>"
+          break
         end
       end
+      bio.abstract_tags.map do |tt|
+        if(tt.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with tt.tag.value, then replace with word
+          word = "<span class='highlight'> " + word + " </span>"
+          break
+        end
+      end
+      result_body += " #{word}"
     end
     return result_body
   end
