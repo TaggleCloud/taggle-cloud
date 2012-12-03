@@ -27,10 +27,10 @@
     .span10
       %h2= @user.name
       - if @user.show_email
-        %strong= "Email:"
         - @user.emails.all.each do |email|
+          %strong= "Email:"
           = mail_to email.mail_address
-        %br
+          %br
       %strong Occupation:
       -if @user.occupation.blank?
         Not available
@@ -54,7 +54,7 @@
         .pull-right 
           %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide matched words
       - if(current_user)
-        = abstract.highlight_body(current_user, @conference.id).html_safe
+        = abstract.highlight_body(current_user, abstract.id).html_safe
       - else
         = abstract.body
 .row-fluid
@@ -73,7 +73,7 @@
             #{@user_attendance.get_connection_strength(@attendance)}%
             
 - if @conferences && @conferences.count > 1
-  .row-fluid
+  .row
     .span12
       %h3
         =@user.name
