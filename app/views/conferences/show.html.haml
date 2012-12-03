@@ -50,19 +50,27 @@
             %h4= attendee.name
           - if attendee.organization
             %h5.bmargin
-            = truncate(attendee.organization, :length => 60)
+            = truncate(attendee.organization, :length => 50)
           - else
             %h5.no-org No Organization Specified
           - if attendee.project_name
-            %h5= truncate(attendee.project_name, :length => 60)
+            %h5= truncate(attendee.project_name, :length => 45)
           - else
             %h5.no-org No Project Specified
           - if @user_attendance
             .progress.progress-striped
               .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
-                #{@user_attendance.get_connection_strength(attendee)}%
-          
+                #{@user_attendance.get_connection_strength(attendee)}%  
 %hr
+
+- if @user_attendance
+  - @user_attendance.abstracts.all.each do |abs|
+    %p.lead
+      Your abstract
+    = abs.body
+
+%hr
+%br
 
 - if (current_user.is_admin || current_user.coordinate(@conference))
   = link_to edit_conference_path(@conference), :class => "btn" do
