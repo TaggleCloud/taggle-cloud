@@ -50,7 +50,7 @@
           .pull-right
             .iconblock
               %i.icon-thumbs-up
-              = conference.likes
+              = conference.likes(@user.id)
             .iconblock
               %i.icon-user
               = conference.attendances.count

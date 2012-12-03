@@ -12,7 +12,7 @@
             .pull-right
               .iconblock
                 %i.icon-thumbs-up
-                = conf.likes
+                = conf.likes(current_user.id)
               .iconblock
                 %i.icon-user
                 = conf.attendances.count
