@@ -44,8 +44,8 @@ class Conference < ActiveRecord::Base
     # end
   end
   
-  def likes
-    return Like.where(:conference_id => self.id).count
+  def likes(usr_id)
+    return Like.where(:conference_id => self.id, :user_id => usr_id).count
   end
 
 end
