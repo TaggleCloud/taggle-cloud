@@ -2,7 +2,11 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-    @conferences = Conference.all
+    if current_user
+      @conferences = current_user.get_conferences
+    else
+      return redirect_to root_path
+    end
 
     respond_to do |format|
       format.html # index.html.erb
