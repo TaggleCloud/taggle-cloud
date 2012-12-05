@@ -63,13 +63,13 @@
 .row-fluid
   .span12
     - if(@attendance.user_id)
-      %h3 Bio:
+      %h4 Bio:
       -if @bio
         = @bio.highlight_body(current_user, @conference.id).html_safe
 .row-fluid
   .span12
     -if(current_user)
-      %h3 Connection strength:
+      %h4 Connection strength:
       .span4
         .progress.progress-striped
           .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
@@ -78,7 +78,7 @@
 - if @conferences && @conferences.count > 1
   .row
     .span12
-      %h3
+      %h4
         =@user.name
         is also attending:
       %ul.thumbnails
