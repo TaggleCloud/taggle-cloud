@@ -15,16 +15,16 @@
       %li.span4
         = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
           - if attendee.user_id
-            %h4.blue= attendee.name
+            %h4.blue= attendee.user.name
           - else
             %h4= attendee.name
           - if attendee.organization
             %h5.bmargin
-            = truncate(attendee.organization, :length => 60)
+            = truncate(attendee.organization, :length => 50)
           - else
             %h5.no-org No Organization Specified
           - if attendee.project_name
-            %h5= truncate(attendee.project_name, :length => 60)
+            %h5= truncate(attendee.project_name, :length => 45)
           - else
             %h5.no-org No Project Specified
           - if @user_attendance
@@ -45,7 +45,7 @@
         = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
           - if attendee.user_id
             %h4.blue
-              = attendee.name
+              = attendee.user.name
           - else
             %h4= attendee.name
           - if attendee.organization

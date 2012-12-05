@@ -14,42 +14,45 @@
     = link_to like_path(@like), :method => :delete, :class => "btn" do
       %i.icon-star-empty
       Unsave
-
-- if @user
-  .row-fluid
-    .span2
-      .image-container
-        .image-box.vcenter
-          -if @user.image
-            = image_tag(@user.image, :class => "size")
-          -else
-            = image_tag("user_placeholder.png", :class => "size")
-    .span10
-      %h2= @user.name
-      - if @user.show_email
-        - @user.emails.all.each do |email|
-          %strong= "Email:"
-          = mail_to email.mail_address
-          %br
-      %strong Occupation:
-      -if @user.occupation.blank?
-        Not available
-      -else
-        = @user.occupation
-      %br
-      %strong Location:
-      -if @user.location.blank?
-        Not available
-      -else
-        = @user.location
-- else
-  %h2= @attendance.name
-%h4= @attendance.organization
-
+.row-fluid
+  - if @user
+    .row-fluid
+      .span2
+        .image-container
+          .image-box.vcenter
+            -if @user.image
+              = image_tag(@user.image, :class => "size")
+            -else
+              = image_tag("user_placeholder.png", :class => "size")
+      .span10
+        %h2= @user.name
+        - if @user.show_email
+          - @user.emails.all.each do |email|
+            %strong= "Email:"
+            = mail_to email.mail_address
+            %br
+        %strong Occupation:
+        -if @user.occupation.blank?
+          Not available
+        -else
+          = @user.occupation
+        %br
+        %strong Location:
+        -if @user.location.blank?
+          Not available
+        -else
+          = @user.location
+  - else
+    %h2= @attendance.name
+.row-fluid
+  %h4= @attendance.organization
+%hr
 .row-fluid
   .span12
+    - if @attendance.project_name
+      %h3= @attendance.project_name
     - @abstracts.each do |abstract|
-      %h3 
+      %h4
         Abstract:
         .pull-right 
           %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide matched words
