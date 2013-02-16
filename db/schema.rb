@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201214457) do
+ActiveRecord::Schema.define(:version => 20130216224401) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20121201214457) do
     t.integer  "user_id"
     t.integer  "attendance_id"
     t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.boolean  "is_bio"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "is_bio",        :default => false
   end
 
   create_table "attendances", :force => true do |t|
@@ -52,11 +52,12 @@ ActiveRecord::Schema.define(:version => 20121201214457) do
 
   create_table "conferences", :force => true do |t|
     t.string   "location"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "name"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.text     "preference_categories"
   end
 
   create_table "connections", :force => true do |t|
@@ -93,6 +94,13 @@ ActiveRecord::Schema.define(:version => 20121201214457) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "conference_id"
+  end
+
+  create_table "preferences", :force => true do |t|
+    t.string   "category"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sessions", :force => true do |t|

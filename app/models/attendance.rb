@@ -7,6 +7,7 @@ class Attendance < ActiveRecord::Base
   has_many :connections, :dependent => :destroy, :class_name => "Connection", :foreign_key => "attendance1_id"
   has_many :abstracts, :dependent => :destroy
   has_many :likes, :dependent => :destroy
+  has_many :preferences, :dependent => :destroy
 
   accepts_nested_attributes_for :abstracts
 

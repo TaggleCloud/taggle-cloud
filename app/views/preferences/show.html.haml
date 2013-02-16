@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Category:
+  = @preference.category
+%p
+  %b Content:
+  = @preference.content
+
+= link_to 'Edit', edit_preference_path(@preference)
+\|
+= link_to 'Back', preferences_path
