@@ -75,7 +75,8 @@ class ConferencesController < ApplicationController
   # POST /conferences
   # POST /conferences.json
   def create
-    @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name])
+    @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name],
+                                    :preference_categories => params[:conference][:preference_categories])
     @conference.upload(params[:conference][:csv], current_user)
     @email = params[:conference][:email]
 
