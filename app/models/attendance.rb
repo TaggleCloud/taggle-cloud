@@ -22,4 +22,9 @@ class Attendance < ActiveRecord::Base
   def get_connection_strength(other_attendance)
     return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
   end
+
+  def get_categories
+	  @conf = Conference.find(:conference_id)
+	  return @conf.preference_categories.parse(',')	  
+  end
 end
