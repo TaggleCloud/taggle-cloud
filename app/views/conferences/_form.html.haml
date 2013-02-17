@@ -2,6 +2,7 @@
 
   = f.input :name
   = f.input :location
+  = f.input :preference_categories
   = f.input :start_time, :as => :string, :input_html => { :class => 'datepicker' }
   = f.input :end_time, :as => :string, :input_html => { :class => 'datepicker' }
   - if f.object.new_record?
