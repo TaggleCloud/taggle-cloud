@@ -2,7 +2,7 @@ class PreferencesController < ApplicationController
   # GET /preferences
   # GET /preferences.json
   def index
-    @preferences = Preference.all
+    @conferences = Conference.all
 
     respond_to do |format|
       format.html # index.html.erb

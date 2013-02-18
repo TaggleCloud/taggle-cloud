@@ -8,13 +8,13 @@
     %th
     %th
 
-  - @preferences.each do |preference|
+  - @conferences.each do |conf|
     %tr
-      %td= preference.category
-      %td= preference.content
-      %td= link_to 'Show', preference
-      %td= link_to 'Edit', edit_preference_path(preference)
-      %td= link_to 'Destroy', preference, method: :delete, data: { confirm: 'Are you sure?' }
+      %td Preference Categories
+      %td= conf.preference_categories
+      %td= link_to 'Show', conf
+      %td= link_to 'Edit', edit_preference_path(conf)
+      %td= link_to 'Destroy', conf, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

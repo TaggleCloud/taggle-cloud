@@ -3,6 +3,9 @@
     = link_to conferences_path, :class => "btn" do
       %i.icon-th-list
       All Conferences
+    = link_to edit_conference_attendee_path(@user_attendance), :class => "btn" do
+      %i.icon-edit
+      Edit Attendance
   %h1
     = @conference.name
     %small= @conference.location

@@ -1,19 +1,6 @@
-= form_for @attendance do |f|
-  - if @attendance.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this attendance from being saved:"
-      %ul
-        - @attendance.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for(@attendance) do |f|
+  = f.error_notification
 
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
-  .field
-    = f.label :conference_id
-    = f.text_field :conference_id
-  .field
-    = f.label :registered_email
-    = f.text_field :registered_email
-  .actions
-    = f.submit 'Save'
+
+  .form-actions
+    = f.button :submit

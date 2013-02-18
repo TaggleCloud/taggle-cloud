@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 TaggleCloud::Application.routes.draw do
-
+  
   resources :preferences
 
   resources :likes
