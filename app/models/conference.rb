@@ -1,15 +1,15 @@
 require 'csv'
 
 class Conference < ActiveRecord::Base
-  attr_accessible :name, :location, :attendances_attributes, :start_time, :end_time
+  attr_accessible :name, :location, :attendances_attributes, :start_time, :end_time, :lock_date
 
   has_many :attendances, :dependent => :destroy
   has_many :connections, :through => :attendances
   has_many :coordinates, :dependent => :destroy
   has_many :likes, :through => :attendances
- 
+
   accepts_nested_attributes_for :attendances
-  
+
   def upload(uploaded_io, current_user)
     attendances, abstracts = [], []
     CSV.parse(uploaded_io.read) do |row|
@@ -23,17 +23,17 @@ class Conference < ActiveRecord::Base
       end
       # Attendance.import(attendances)
       # Abstract.import(abstracts)
-      
+
       #AttendanceImporter.perform_in(5.seconds, self.id, row)
     end
     Connection.build_conf_connections(self)
     Coordinate.create(:user_id => current_user.id, :conference_id => self.id)
   end
-  
+
   def valid_email(email)
     return /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/.match(email)
   end
-  
+
   def sanitize_string(untrusted_string)
     untrusted_string.unpack('C*').pack('U*')
     # if String.method_defined?(:encode)
@@ -43,7 +43,7 @@ class Conference < ActiveRecord::Base
     # untrusted_string = ic.iconv(untrusted_string)
     # end
   end
-  
+
   def likes(usr_id)
     return Like.where(:conference_id => self.id, :user_id => usr_id).count
   end

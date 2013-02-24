@@ -4,6 +4,7 @@
   = f.input :location
   = f.input :start_time, :as => :string, :input_html => { :class => 'datepicker' }
   = f.input :end_time, :as => :string, :input_html => { :class => 'datepicker' }
+  = f.input :lock_date, :as => :string, :input_html => { :class => 'datepicker' }
   - if f.object.new_record?
     = f.input :csv, :as => :file, :inline_label => "Attendee list (csv file)"
 
@@ -19,7 +20,7 @@
     // = link_to @conference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" do
     //   %i.icon-trash.icon-white
     //   Delete Conference
-  
+
 :javascript
   $(function() {
   	$('.datepicker').datepicker()
