@@ -14,3 +14,10 @@
 /log/*.log
 /log/logfile
 /tmp
+
+hp_sample_file.csv
+user_testing_csv.csv
+test_csv.csv
+
+# JTan's weird rdb files...
+*.rdb
