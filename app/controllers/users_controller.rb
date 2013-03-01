@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   # PUT /conferences/1.json
   def update
     @user = current_user
-    # @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
-    # Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
+    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
     @user.attendances.each do |a|
       a.default_bio
     end
