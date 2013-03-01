@@ -80,7 +80,7 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.update_attributes(params[:attendance])
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
+        format.html { redirect_to conference_attendee_path(@attendance), notice: 'Attendance was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
