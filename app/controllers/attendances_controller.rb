@@ -53,6 +53,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1/edit
   def edit
+    @conference = Conference.find(params[:conference_id])
     @attendance = Attendance.find(params[:id])
   end
 
