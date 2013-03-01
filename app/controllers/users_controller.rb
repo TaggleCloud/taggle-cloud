@@ -28,6 +28,9 @@ class UsersController < ApplicationController
     @user = current_user
     @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
     Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
+    @user.attendances.each do |a|
+      a.default_bio
+    end
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])

@@ -6,7 +6,7 @@ TaggleCloud::Application.routes.draw do
 
   resources :conferences do
     match "connections" => "conferences#connections"
-    resources :attendances, :as => :attendees, :path => 'attendees', :on => :member
+    resources :attendances, :as => :attendees, :path => 'attendees', :on => :member 
   end
   
   resources :coordinates

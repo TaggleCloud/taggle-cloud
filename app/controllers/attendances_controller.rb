@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
     @like_count = Like.where("attendance_id = ? AND user_id = ?", @attendance.id, current_user.id).count
     if(@attendance.user_id)
       @user = User.find(@attendance.user_id)
-      @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+      @bio = @attendance.bio
       @conferences = @user.get_conferences
     end
     if(current_user)
@@ -43,6 +43,7 @@ class AttendancesController < ApplicationController
   # GET /attendances/new
   # GET /attendances/new.json
   def new
+    @conference = Conference.find(params[:conference_id])
     @attendance = Attendance.new
 
     respond_to do |format|
@@ -76,11 +77,12 @@ class AttendancesController < ApplicationController
   # PUT /attendances/1
   # PUT /attendances/1.json
   def update
+    @conference = Conference.find(params[:conference_id])
     @attendance = Attendance.find(params[:id])
 
     respond_to do |format|
       if @attendance.update_attributes(params[:attendance])
-        format.html { redirect_to conference_attendee_path(@attendance), notice: 'Attendance was successfully updated.' }
+        format.html { redirect_to conference_attendee_path(@conference, @attendance), notice: 'Attendance was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

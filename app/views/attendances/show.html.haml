@@ -63,9 +63,10 @@
 .row-fluid
   .span12
     - if(@attendance.user_id)
-      %h4 Bio:
-      -if @bio
-        = @bio.highlight_body(current_user, @conference.id).html_safe
+      %h4 Bio: 
+      = @bio
+//      -if @bio
+//      = @bio.highlight_body(current_user, @conference.id).html_safe
 .row-fluid
   .span12
     -if(current_user)
