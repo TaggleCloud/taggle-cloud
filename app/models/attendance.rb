@@ -1,5 +1,5 @@
 class Attendance < ActiveRecord::Base
-  attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes, :project_name
+  attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes, :project_name, :bio
 
   belongs_to :conference
   belongs_to :user

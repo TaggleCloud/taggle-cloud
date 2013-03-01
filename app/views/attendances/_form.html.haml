@@ -1,8 +1,8 @@
-= form_for [@conference, @attendance] do |f|
+= simple_form_for [@conference, @attendance], :url => { :action => 'update' }, :html => {:class => 'form-horizontal' } do |f|
 
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
+    = f.input :bio
 
-  .actions
-    = f.submit 'Save'
+    %hr
+
+    = f.button :submit
+
