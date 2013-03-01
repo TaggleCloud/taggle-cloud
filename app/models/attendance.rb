@@ -1,4 +1,6 @@
 class Attendance < ActiveRecord::Base
+  after_create :default_bio
+  after_update :default_bio
   attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes, :project_name, :bio
 
   belongs_to :conference
@@ -16,6 +18,13 @@ class Attendance < ActiveRecord::Base
   
   def get_bio
 	  return bio.to_s.scan(/#\S+/)
+  end
+
+  def default_bio
+    if self.bio == nil 
+      self.bio = Abstract.where(:user_id => self.user_id, :is_bio => true).first.body
+      self.save
+    end
   end
 
   # def make_connections
