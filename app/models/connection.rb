@@ -13,6 +13,7 @@ class Connection < ActiveRecord::Base
   end
 
   def self.compare(tags1, tags2)
+	logger.info "print tags: #{tags1.inspect}"
     intersection = tags1 & tags2
     return 0 if intersection.size == tags1.size && intersection.size == tags2.size # Probably want to change this eventually
     shorter = (tags1.size > tags2.size ? tags2.size : tags1.size)
@@ -30,10 +31,8 @@ class Connection < ActiveRecord::Base
         atnd.abstracts.all.each do |abstract|
           if !abstract.user_id.nil?
             # Include bio when comparing
-            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-            bio.abstract_tags.all.each do |bio_tag|
-              tagset1 << bio_tag.tag if bio_tag.tag
-            end
+			bio = Attendance.bio.scan(/#\S+/)
+            tagset1 << bio if bio
           end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset1 << abstract_tag.tag if abstract_tag.tag
@@ -43,10 +42,8 @@ class Connection < ActiveRecord::Base
         comp_atnd.abstracts.all.each do |abstract|
           if !abstract.user_id.nil?
             # Include bio when comparing
-            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-            bio.abstract_tags.all.each do |bio_tag|
-              tagset2 << bio_tag.tag if bio_tag.tag
-            end
+			bio = Attendance.bio.scan(/#\S+/)
+            tagset2 << bio if bio
           end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset2 << abstract_tag.tag if abstract_tag.tag
@@ -69,10 +66,8 @@ class Connection < ActiveRecord::Base
       atnd.abstracts.all.each do |abstract|
         if !abstract.user_id.nil?
           # Include bio when comparing
-          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-          bio.abstract_tags.all.each do |bio_tag|
-            tagset1 << bio_tag.tag if bio_tag.tag
-          end
+			bio = Attendance.bio.scan(/#\S+/)
+            tagset1 << bio if bio
         end
         abstract.abstract_tags.all.each do |abstract_tag|
           tagset1 << abstract_tag.tag if abstract_tag.tag
@@ -82,10 +77,8 @@ class Connection < ActiveRecord::Base
       comp_atnd.abstracts.all.each do |abstract|
         if !abstract.user_id.nil?
           # Include bio when comparing
-          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-          bio.abstract_tags.all.each do |bio_tag|
-            tagset2 << bio_tag.tag if bio_tag.tag
-          end
+			bio = Attendance.bio.scan(/#\S+/)
+            tagset2 << bio if bio
         end
         abstract.abstract_tags.all.each do |abstract_tag|
           tagset2 << abstract_tag.tag if abstract_tag.tag
