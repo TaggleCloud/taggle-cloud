@@ -17,7 +17,7 @@ class Attendance < ActiveRecord::Base
   end
 
   def default_bio
-    if self.bio == nil 
+    if ((self.bio == nil) || (self.bio == ""))
       self.bio = Abstract.where(:user_id => self.user_id, :is_bio => true).first.body
       self.save
     end
