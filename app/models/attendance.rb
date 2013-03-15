@@ -1,5 +1,4 @@
 class Attendance < ActiveRecord::Base
-  after_create :default_bio
   after_update :default_bio
   attr_accessible :conference_id, :registered_email, :user_id, :first_name, :last_name, :organization, :abstracts_attributes, :project_name, :bio
 
