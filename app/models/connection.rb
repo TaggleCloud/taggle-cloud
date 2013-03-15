@@ -13,7 +13,6 @@ class Connection < ActiveRecord::Base
   end
 
   def self.compare(tags1, tags2)
-	logger.info "print tags: #{tags1.inspect}"
     intersection = tags1 & tags2
     return 0 if intersection.size == tags1.size && intersection.size == tags2.size # Probably want to change this eventually
     shorter = (tags1.size > tags2.size ? tags2.size : tags1.size)
@@ -27,24 +26,24 @@ class Connection < ActiveRecord::Base
     atts.each_with_index do |atnd, index|
       atts.each do |comp_atnd|
         next if atnd.id == comp_atnd.id
-        tagset1, tagset2 = [], []
-        atnd.abstracts.all.each do |abstract|
-          if !abstract.user_id.nil?
-            # Include bio when comparing
-			bio = Attendance.bio.scan(/#\S+/)
-            tagset1 << bio if bio
-          end
+		tagset1, tagset2 = [], []
+		# Include bio when comparing
+		bio = atnd.get_bio
+		bio.each do |preference|
+			tagset1 << preference if preference
+		end
+		atnd.abstracts.all.each do |abstract|
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset1 << abstract_tag.tag if abstract_tag.tag
             # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
           end
         end
+		# Include bio when comparing
+		bio = comp_atnd.get_bio
+		bio.each do |preference|
+			tagset2 << preference if preference
+		end
         comp_atnd.abstracts.all.each do |abstract|
-          if !abstract.user_id.nil?
-            # Include bio when comparing
-			bio = Attendance.bio.scan(/#\S+/)
-            tagset2 << bio if bio
-          end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset2 << abstract_tag.tag if abstract_tag.tag
             # self.my_logger.info("comp_atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
@@ -63,23 +62,23 @@ class Connection < ActiveRecord::Base
     atts.each do |comp_atnd|
       next if atnd.id == comp_atnd.id
       tagset1, tagset2 = [], []
-      atnd.abstracts.all.each do |abstract|
-        if !abstract.user_id.nil?
-          # Include bio when comparing
-			bio = Attendance.bio.scan(/#\S+/)
-            tagset1 << bio if bio
-        end
+	  # Include bio when comparing
+	  bio = atnd.get_bio
+	  bio.each do |preference|
+		  tagset1 << preference if preference
+	  end
+		  atnd.abstracts.all.each do |abstract|
         abstract.abstract_tags.all.each do |abstract_tag|
           tagset1 << abstract_tag.tag if abstract_tag.tag
           # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
         end
       end
+	  # Include bio when comparing
+	  bio = comp_atnd.get_bio
+	  bio.each do |preference|
+		  tagset2 << preference if preference
+	  end
       comp_atnd.abstracts.all.each do |abstract|
-        if !abstract.user_id.nil?
-          # Include bio when comparing
-			bio = Attendance.bio.scan(/#\S+/)
-            tagset2 << bio if bio
-        end
         abstract.abstract_tags.all.each do |abstract_tag|
           tagset2 << abstract_tag.tag if abstract_tag.tag
           # self.my_logger.info("comp_atnd has #{abstract_tag.tag.value}") if abstract_tag.tag

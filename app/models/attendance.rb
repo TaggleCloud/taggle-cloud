@@ -15,6 +15,10 @@ class Attendance < ActiveRecord::Base
   def name
     return first_name.to_s + " " + last_name.to_s
   end
+  
+  def get_bio
+	  return bio.to_s.scan(/#\S+/)
+  end
 
   def default_bio
     if ((self.bio == nil) || (self.bio == ""))
@@ -30,4 +34,5 @@ class Attendance < ActiveRecord::Base
   def get_connection_strength(other_attendance)
     return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
   end
+
 end
