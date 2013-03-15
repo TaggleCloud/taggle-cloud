@@ -5,7 +5,10 @@
       All Conferences
     = link_to edit_conference_attendee_path(@conference, @user_attendance), :class => "btn" do
       %i.icon-edit
-      Edit Your Conference Bio
+      Edit Conference Bio
+    = link_to conference_attendee_path(@conference, @user_attendance), :class => "btn" do
+      %i.icon-user
+      Show Conference Profile      
   %h1
     = @conference.name
     %small= @conference.location
