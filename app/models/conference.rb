@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 
 class Conference < ActiveRecord::Base
   attr_accessible :name, :location, :attendances_attributes, :start_time, :end_time, :lock_date
@@ -9,6 +10,27 @@ class Conference < ActiveRecord::Base
   has_many :likes, :through => :attendances
 
   accepts_nested_attributes_for :attendances
+
+  def self.update_if_not_locked
+    # Run on all conferences - check if (truncated) lock date == (truncated) current date, if so, build_conf_connections for all connections (will still be inefficient...)
+    Conference.all.each do |conf|
+      if !conf.lock_date.nil?
+        # temp = conf.lock_date
+        # temp.change(:sec => 0)
+        # temp.change(:min => 0)
+        # temp.change(:hour => 0)
+        # current_date = DateTime.now
+        # current_date.change(:sec => 0)
+        # current_date.change(:min => 0)
+        # current_date.change(:hour => 0)
+        if DateTime.now.to_date === conf.lock_date.to_date
+          Connection.build_conf_connections(conf)
+          conf.location = "Worked...?!"
+          conf.save
+        end
+      end
+    end
+  end
 
   def upload(uploaded_io, current_user)
     attendances, abstracts = [], []

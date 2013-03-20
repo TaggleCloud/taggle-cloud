@@ -67,7 +67,7 @@ class ConferencesController < ApplicationController
       return redirect_to conference_path
     end
   end
-  
+
   def attendee
     @attendance = @conference.attendances.build
   end

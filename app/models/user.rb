@@ -10,9 +10,16 @@ class User < ActiveRecord::Base
   has_many :interests, :through => :user_interests
   has_many :coordinates
   has_many :likes
- 
+
   accepts_nested_attributes_for :abstracts
   accepts_nested_attributes_for :emails
+
+  def self.test_method
+    User.all.each do |usr|
+      usr.occupation = "Carnegie Mellon University student"
+      usr.save
+    end
+  end
 
   def coordinate (conference)
     self.coordinates.each do |c|
@@ -88,13 +95,13 @@ class User < ActiveRecord::Base
       return user
     end
   end
-  
+
   def create_bio
     @bio = Abstract.create(:user_id => self.id)
     @bio.is_bio = true
     @bio.save
   end
-  
+
   def attach_att(email_address)
     atts = Attendance.all
     atts.each do |a|

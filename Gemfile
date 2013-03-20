@@ -20,6 +20,7 @@ gem 'slim'
 gem 'activerecord-import'
 gem 'simple_form'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+gem 'whenever', :require => false
 
 group :development do
   gem 'sqlite3'

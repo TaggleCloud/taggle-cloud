@@ -1,14 +1,14 @@
 class Abstract < ActiveRecord::Base
   #after_commit :tagbuilder
   after_create :create_tags
-  after_update :refresh_connections
+  #after_update :refresh_connections
   attr_accessible :body, :user_id, :attendance_id, :is_bio
 
   belongs_to :user
   belongs_to :attendance
   has_many :abstract_tags, :dependent => :destroy
   has_many :tags, :through => :abstract_tags
-  
+
   def highlight_body(user, conf_id)
       current_att = user.attendances.where(:conference_id => conf_id).last
       result_body = ""
@@ -42,7 +42,7 @@ class Abstract < ActiveRecord::Base
             result_body += " #{word}"
           end
         end
-        
+
       end
       puts result_body
       return result_body
@@ -54,9 +54,9 @@ class Abstract < ActiveRecord::Base
   #   TagsetBuilder.perform_async(:id)
   #   attendance.make_connections
   # end
-  
+
   def create_tags
-    if self.body == nil 
+    if self.body == nil
       return
     end
     tags = self.body.downcase.gsub(/[^a-z\s]/, '').split(' ')
@@ -74,7 +74,7 @@ class Abstract < ActiveRecord::Base
       AbstractTag.find_by_abstract_id_and_tag_id(self.id, tag.id).delete if !tags.include?(tag.value)
     end
   end
-  
+
   def refresh_connections
     create_tags
     if self.user_id.nil?
@@ -83,9 +83,11 @@ class Abstract < ActiveRecord::Base
       usr = User.find(self.user_id)
       usr.attendances.all.each do |atnd|
         conf = Conference.find(atnd.conference_id)
-        Connection.refresh_conf_connections(conf, usr.id)
+        unless Conference.is_locked(conf)
+          Connection.refresh_conf_connections(conf, usr.id)
+        end
       end
     end
   end
-  
+
 end
