@@ -21,6 +21,7 @@ gem 'activerecord-import'
 gem 'simple_form'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'whenever', :require => false
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'sqlite3'
@@ -38,5 +39,4 @@ group :assets do
   gem 'compass-rails', '~> 1.0.3'
   gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
-  gem 'bootstrap-datepicker-rails'
 end

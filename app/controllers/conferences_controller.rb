@@ -75,7 +75,19 @@ class ConferencesController < ApplicationController
   # POST /conferences
   # POST /conferences.json
   def create
-    @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name])
+    start_time_conv = Date.new(params[:conference]["start_time(1i)"].to_i,
+                               params[:conference]["start_time(2i)"].to_i,
+                               params[:conference]["start_time(3i)"].to_i) if params[:conference]["start_time(1i)"] && params[:conference]["start_time(2i)"] && params[:conference]["start_time(3i)"]
+    end_time_conv = Date.new(params[:conference]["end_time(1i)"].to_i,
+                               params[:conference]["end_time(2i)"].to_i,
+                               params[:conference]["end_time(3i)"].to_i) if params[:conference]["end_time(1i)"] && params[:conference]["end_time(2i)"] && params[:conference]["end_time(3i)"]
+    lock_date_conv = Date.new(params[:conference]["lock_date(1i)"].to_i,
+                               params[:conference]["lock_date(2i)"].to_i,
+                               params[:conference]["lock_date(3i)"].to_i) if params[:conference]["lock_date(1i)"] && params[:conference]["lock_date(2i)"] && params[:conference]["lock_date(3i)"]
+
+    @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name], :start_time => start_time_conv, :end_time => end_time_conv, :lock_date => lock_date_conv)
+
+    # Rails.logger.debug("params[:conference][:start_time] = #{params[:conference][:start_time]}")
     @conference.upload(params[:conference][:csv], current_user)
     @email = params[:conference][:email]
 

@@ -21,10 +21,6 @@
 
 set :output, "../log/cron_log.log"
 
-every 1.day, :at => '1:20pm' do
+every 1.day, :at => '1:33pm' do
   runner "Conference.update_if_not_locked"
-end
-
-every 1.day, :at => '8:44pm' do
-  runner "User.test_method"
 end

@@ -3,7 +3,7 @@ class Connection < ActiveRecord::Base
 
   belongs_to :attendance, :class_name => "Attendance", :foreign_key => "attendance1_id"
   has_one :attendance, :class_name => "Attendance", :foreign_key => "attendance2_id"
-  
+
   def self.includes_user(user)
     return Attendance.find_by_id(self.attendance1_id).user == user || Attendance.find_by_id(self.attendance2_id).user == user
   end
@@ -20,23 +20,23 @@ class Connection < ActiveRecord::Base
     return 0 if shorter == 0
     return ((intersection.size * 1.0) / (tags1.size * 1.0)) * 100 # divides by current user's size instead of shorter
   end
-  
+
   def self.build_conf_connections(conf)
     atts = conf.attendances.all
     atts.each_with_index do |atnd, index|
       atts.each do |comp_atnd|
         next if atnd.id == comp_atnd.id
-        tagset1, tagset2 = [], []
+        tagset1bio, tagset1abs, tagset2 = [], [], []
         atnd.abstracts.all.each do |abstract|
           if !abstract.user_id.nil?
             # Include bio when comparing
             bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
             bio.abstract_tags.all.each do |bio_tag|
-              tagset1 << bio_tag.tag if bio_tag.tag
+              tagset1bio << bio_tag.tag if bio_tag.tag
             end
           end
           abstract.abstract_tags.all.each do |abstract_tag|
-            tagset1 << abstract_tag.tag if abstract_tag.tag
+            tagset1abs << abstract_tag.tag if abstract_tag.tag
             # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
           end
         end
@@ -54,28 +54,30 @@ class Connection < ActiveRecord::Base
           end
         end
         conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-        str = self.compare(tagset1, tagset2)
+        bio_str = self.compare(tagset1bio, tagset2)
+        abs_str = self.compare(tagset1abs, tagset2)
+        str = (bio_str * 0.6) + (abs_str * 0.4)
         conn.update_attribute(:strength, str)
       end
     end
   end
-  
+
   def self.refresh_conf_connections(conf, usr_id)
     atts = conf.attendances.all
     atnd = conf.attendances.where(:user_id => usr_id).first
     atts.each do |comp_atnd|
       next if atnd.id == comp_atnd.id
-      tagset1, tagset2 = [], []
+      tagset1bio, tagset1abs, tagset2 = [], [], []
       atnd.abstracts.all.each do |abstract|
         if !abstract.user_id.nil?
           # Include bio when comparing
           bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
           bio.abstract_tags.all.each do |bio_tag|
-            tagset1 << bio_tag.tag if bio_tag.tag
+            tagset1bio << bio_tag.tag if bio_tag.tag
           end
         end
         abstract.abstract_tags.all.each do |abstract_tag|
-          tagset1 << abstract_tag.tag if abstract_tag.tag
+          tagset1abs << abstract_tag.tag if abstract_tag.tag
           # self.my_logger.info("original atnd has #{abstract_tag.tag.value}") if abstract_tag.tag
         end
       end
@@ -93,9 +95,11 @@ class Connection < ActiveRecord::Base
         end
       end
       conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-      str = self.compare(tagset1, tagset2)
+      bio_str = self.compare(tagset1bio, tagset2)
+      abs_str = self.compare(tagset1abs, tagset2)
+      str = (bio_str * 0.8) + (abs_str * 0.2)
       conn.update_attribute(:strength, str)
     end
   end
-  
+
 end

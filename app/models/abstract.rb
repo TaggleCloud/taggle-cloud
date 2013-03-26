@@ -1,6 +1,7 @@
 class Abstract < ActiveRecord::Base
   #after_commit :tagbuilder
   after_create :create_tags
+  after_update :create_tags
   #after_update :refresh_connections
   attr_accessible :body, :user_id, :attendance_id, :is_bio
 

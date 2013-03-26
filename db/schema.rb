@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224031205) do
+ActiveRecord::Schema.define(:version => 20130320010744) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(:version => 20130224031205) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "lock_date"
+    t.date     "start_time"
+    t.date     "end_time"
+    t.date     "lock_date"
   end
 
   create_table "connections", :force => true do |t|
