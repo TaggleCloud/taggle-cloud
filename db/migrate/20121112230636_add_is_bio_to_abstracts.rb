@@ -2,7 +2,7 @@ class AddIsBioToAbstracts < ActiveRecord::Migration
   def change
     add_column :abstracts, :is_bio, :boolean, :default => false
   end
-  
+
   def up
     User.all.each do |usr|
       @bio = Abstract.new(:user_id => usr.id)

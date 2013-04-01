@@ -26,13 +26,22 @@ class Connection < ActiveRecord::Base
     atts.each_with_index do |atnd, index|
       atts.each do |comp_atnd|
         next if atnd.id == comp_atnd.id
-        tagset1bio, tagset1abs, tagset2 = [], [], []
+        tagset1keys, tagset1abs, tagset2 = [], [], [], []
         atnd.abstracts.all.each do |abstract|
           if !abstract.user_id.nil?
             # Include bio when comparing
-            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-            bio.abstract_tags.all.each do |bio_tag|
-              tagset1bio << bio_tag.tag if bio_tag.tag
+            # Bio no longer being used
+            # bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+            # if bio
+            #   bio.abstract_tags.all.each do |bio_tag|
+            #     tagset1bio << bio_tag.tag if bio_tag.tag
+            #   end
+            # end
+            keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+            if keys
+              keys.abstract_tags.all.each do |keys_tag|
+                tagset1keys << keys_tag.tag if keys_tag.tag
+              end
             end
           end
           abstract.abstract_tags.all.each do |abstract_tag|
@@ -43,9 +52,18 @@ class Connection < ActiveRecord::Base
         comp_atnd.abstracts.all.each do |abstract|
           if !abstract.user_id.nil?
             # Include bio when comparing
-            bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-            bio.abstract_tags.all.each do |bio_tag|
-              tagset2 << bio_tag.tag if bio_tag.tag
+            # Bio no longer being used
+            # bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+            # if bio
+            #   bio.abstract_tags.all.each do |bio_tag|
+            #     tagset2 << bio_tag.tag if bio_tag.tag
+            #   end
+            # end
+            keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+            if keys
+              keys.abstract_tags.all.each do |keys_tag|
+                tagset2 << keys_tag.tag if keys_tag.tag
+              end
             end
           end
           abstract.abstract_tags.all.each do |abstract_tag|
@@ -54,9 +72,11 @@ class Connection < ActiveRecord::Base
           end
         end
         conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-        bio_str = self.compare(tagset1bio, tagset2)
+        # Bio no longer being used
+        # bio_str = self.compare(tagset1bio, tagset2)
+        keys_str = self.compare(tagset1keys, tagset2)
         abs_str = self.compare(tagset1abs, tagset2)
-        str = (bio_str * 0.6) + (abs_str * 0.4)
+        str = (keys_str * 0.5) + (abs_str * 0.5)
         conn.update_attribute(:strength, str)
       end
     end
@@ -67,13 +87,22 @@ class Connection < ActiveRecord::Base
     atnd = conf.attendances.where(:user_id => usr_id).first
     atts.each do |comp_atnd|
       next if atnd.id == comp_atnd.id
-      tagset1bio, tagset1abs, tagset2 = [], [], []
+      tagset1keys, tagset1abs, tagset2 = [], [], [], []
       atnd.abstracts.all.each do |abstract|
         if !abstract.user_id.nil?
           # Include bio when comparing
-          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-          bio.abstract_tags.all.each do |bio_tag|
-            tagset1bio << bio_tag.tag if bio_tag.tag
+          # Bio no longer being used
+          # bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+          # if bio
+          #   bio.abstract_tags.all.each do |bio_tag|
+          #     tagset1bio << bio_tag.tag if bio_tag.tag
+          #   end
+          # end
+          keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+          if keys
+            keys.abstract_tags.all.each do |keys_tag|
+              tagset1keys << keys_tag.tag if keys_tag.tag
+            end
           end
         end
         abstract.abstract_tags.all.each do |abstract_tag|
@@ -84,9 +113,18 @@ class Connection < ActiveRecord::Base
       comp_atnd.abstracts.all.each do |abstract|
         if !abstract.user_id.nil?
           # Include bio when comparing
-          bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
-          bio.abstract_tags.all.each do |bio_tag|
-            tagset2 << bio_tag.tag if bio_tag.tag
+          # Bio no longer being used
+          # bio = Abstract.where(:user_id => abstract.user_id, :is_bio => true).first
+          # if bio
+          #   bio.abstract_tags.all.each do |bio_tag|
+          #     tagset2 << bio_tag.tag if bio_tag.tag
+          #   end
+          # end
+          keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+          if keys
+            keys.abstract_tags.all.each do |keys_tag|
+              tagset2 << keys_tag.tag if keys_tag.tag
+            end
           end
         end
         abstract.abstract_tags.all.each do |abstract_tag|
@@ -95,11 +133,12 @@ class Connection < ActiveRecord::Base
         end
       end
       conn = self.find_or_create_by_attendance1_id_and_attendance2_id(atnd.id, comp_atnd.id)
-      bio_str = self.compare(tagset1bio, tagset2)
+      # Bio no longer being used
+      # bio_str = self.compare(tagset1bio, tagset2)
+      keys_str = self.compare(tagset1keys, tagset2)
       abs_str = self.compare(tagset1abs, tagset2)
-      str = (bio_str * 0.8) + (abs_str * 0.2)
+      str = (keys_str * 0.5) + (abs_str * 0.5)
       conn.update_attribute(:strength, str)
     end
   end
-
 end

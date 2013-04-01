@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320010744) do
+ActiveRecord::Schema.define(:version => 20130331234647) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20130320010744) do
     t.integer  "user_id"
     t.integer  "attendance_id"
     t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.boolean  "is_bio"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "is_bio",        :default => false
+    t.boolean  "keywords",      :default => false
   end
 
   create_table "attendances", :force => true do |t|

@@ -3,7 +3,7 @@ class Abstract < ActiveRecord::Base
   after_create :create_tags
   after_update :create_tags
   #after_update :refresh_connections
-  attr_accessible :body, :user_id, :attendance_id, :is_bio
+  attr_accessible :body, :user_id, :attendance_id, :is_bio, :keywords
 
   belongs_to :user
   belongs_to :attendance
@@ -26,7 +26,7 @@ class Abstract < ActiveRecord::Base
           body_split.each do |word|
             #a.abstract_tags << user.abstracts.where(:is_bio => true).first.abstract_tags
             temp_tags = []
-            user.abstracts.where(:is_bio => true).first.abstract_tags.all.each do |t|
+            user.abstracts.where(:keywords => true).first.abstract_tags.all.each do |t|
               temp_tags.push(t)
             end
             a.abstract_tags.map do |t|

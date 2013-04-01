@@ -2,13 +2,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    # Bio no longer being used
+    # @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
     @conferences = @user.get_conferences
   end
 
   def edit
     @user = User.find(params[:id])
-    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    # Bio no longer being used
+    # @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
     #@user.emails.build
     unless @user.is_admin || @user == current_user
       flash[:notice] = "You have no right to edit this user"
@@ -18,7 +22,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @conferences = current_user.get_conferences
-    @bio = Abstract.where(:user_id => current_user.id, :is_bio => true).first
+    # Bio no longer being used
+    # @bio = Abstract.where(:user_id => current_user.id, :is_bio => true).first
     @like_count = Like.where("user_id = ?", current_user.id).count
   end
 
@@ -26,8 +31,11 @@ class UsersController < ApplicationController
   # PUT /conferences/1.json
   def update
     @user = current_user
-    @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
-    Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
+    # Bio no longer being used
+    # @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
+    # Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
+    Abstract.update(@keys.id, :body => params["user"]["abstract"]["body"])
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])

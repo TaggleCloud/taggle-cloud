@@ -11,6 +11,10 @@ class Conference < ActiveRecord::Base
 
   accepts_nested_attributes_for :attendances
 
+  validates_date :start_time
+  validates_date :end_time, :on_or_after => :start_time
+  validates_date :lock_date, :on_or_before => :start_time
+
   def self.update_if_not_locked
     # Run on all conferences - check if lock date == current date, if so, build_conf_connections for all connections (will still be inefficient...)
     Conference.all.each do |conf|

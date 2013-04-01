@@ -22,6 +22,7 @@ gem 'simple_form'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'whenever', :require => false
 gem 'bootstrap-datepicker-rails'
+gem 'validates_timeliness', '~> 3.0'
 
 group :development do
   gem 'sqlite3'

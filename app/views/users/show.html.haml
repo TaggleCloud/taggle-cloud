@@ -39,6 +39,11 @@
   = @bio.body
 %hr
 
+%h4 Keywords:
+- if @keys
+  = @keys.body
+%hr
+
 - unless @conferences.empty?
   %h3 Conferences you are attending
   %ul.thumbnails
@@ -57,5 +62,5 @@
           %h5.dblock.clear
             = conference.location
 - else
-  %h3.centered 
+  %h3.centered
     Looks like you aren't attending any conferences &#9785;

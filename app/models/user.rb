@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  after_create :create_bio
+  after_create :create_keywords
   attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes, :emails_attributes, :show_email, :is_admin
 
   has_many :abstracts
@@ -89,10 +89,19 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_bio
-    @bio = Abstract.create(:user_id => self.id)
-    @bio.is_bio = true
-    @bio.save
+  # Bio no longer being used
+  # def create_bio
+  #   @bio = Abstract.create(:user_id => self.id)
+  #   @bio.is_bio = true
+  #   @bio.keywords = false
+  #   @bio.save
+  # end
+
+  def create_keywords
+    @keys = Abstract.create(:user_id => self.id)
+    @keys.keywords = true
+    @keys.is_bio = false
+    @keys.save
   end
 
   def attach_att(email_address)
