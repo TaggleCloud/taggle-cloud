@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   after_create :create_keywords
-  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes, :emails_attributes, :show_email, :is_admin
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes, :emails_attributes, :show_email, :is_admin, :bio
 
   has_many :abstracts
   has_many :attendances

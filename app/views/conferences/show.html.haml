@@ -6,6 +6,8 @@
   %h1
     = @conference.name
     %small= @conference.location
+    %br
+    %small #{@conference.start_time.strftime("%b %d, %Y")} - #{@conference.end_time.strftime("%b %d, %Y")}
 
 - if @liked_count > 0
   %p.lead
@@ -60,7 +62,7 @@
           - if @user_attendance
             .progress.progress-striped
               .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
-                #{@user_attendance.get_connection_strength(attendee)}%  
+                #{@user_attendance.get_connection_strength(attendee)}%
 %hr
 
 - if @user_attendance

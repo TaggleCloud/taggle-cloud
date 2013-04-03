@@ -32,8 +32,8 @@ class Abstract < ActiveRecord::Base
             a.abstract_tags.map do |t|
               temp_tags.push(t)
             end
-            puts temp_tags.first.abstract_id.to_s + "\n-------------------------------\n"
-            puts user.id
+            # puts temp_tags.first.abstract_id.to_s + "\n-------------------------------\n"
+            # puts user.id
             temp_tags.map do |t|
               if(t.tag.value == word.downcase.gsub(/[^a-z\s]/, '')) # case and punctuation insensitive match with t.tag.value, then replace with word
                 word = "<span class='highlight'> " + word + " </span>"
@@ -45,7 +45,7 @@ class Abstract < ActiveRecord::Base
         end
 
       end
-      puts result_body
+      # puts result_body
       return result_body
     end
 

@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
     @like_count = Like.where("attendance_id = ? AND user_id = ?", @attendance.id, current_user.id).count
     if(@attendance.user_id)
       @user = User.find(@attendance.user_id)
-      @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+      @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
       @conferences = @user.get_conferences
     end
     if(current_user)

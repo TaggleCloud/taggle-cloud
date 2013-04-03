@@ -21,4 +21,12 @@ class Attendance < ActiveRecord::Base
   def get_connection_strength(other_attendance)
     return Connection.get_connection(self.id, other_attendance.id).first.strength if Connection.get_connection(self.id, other_attendance.id).first
   end
+
+  def get_abstract_strength(other_attendance)
+    return Connection.get_connection(self.id, other_attendance.id).first.abstract_strength if Connection.get_connection(self.id, other_attendance.id).first
+  end
+
+  def get_keyword_strength(other_attendance)
+    return Connection.get_connection(self.id, other_attendance.id).first.keyword_strength if Connection.get_connection(self.id, other_attendance.id).first
+  end
 end

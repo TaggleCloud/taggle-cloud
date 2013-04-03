@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331234647) do
+ActiveRecord::Schema.define(:version => 20130401162451) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -64,9 +64,11 @@ ActiveRecord::Schema.define(:version => 20130331234647) do
   create_table "connections", :force => true do |t|
     t.integer  "attendance1_id"
     t.integer  "attendance2_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "strength"
+    t.integer  "keyword_strength"
+    t.integer  "abstract_strength"
   end
 
   create_table "coordinates", :force => true do |t|
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20130331234647) do
     t.string   "last_name"
     t.boolean  "is_admin"
     t.boolean  "show_email"
+    t.text     "bio"
   end
 
 end

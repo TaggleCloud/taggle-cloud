@@ -1,5 +1,5 @@
 class Connection < ActiveRecord::Base
-  attr_accessible :attendance1_id, :attendance2_id, :strength
+  attr_accessible :attendance1_id, :attendance2_id, :strength, :abstract_strength, :keyword_strength
 
   belongs_to :attendance, :class_name => "Attendance", :foreign_key => "attendance1_id"
   has_one :attendance, :class_name => "Attendance", :foreign_key => "attendance2_id"
@@ -77,7 +77,7 @@ class Connection < ActiveRecord::Base
         keys_str = self.compare(tagset1keys, tagset2)
         abs_str = self.compare(tagset1abs, tagset2)
         str = (keys_str * 0.5) + (abs_str * 0.5)
-        conn.update_attribute(:strength, str)
+        conn.update_attributes(:strength => str, :abstract_strength => abs_str, :keyword_strength => keys_str)
       end
     end
   end
@@ -138,7 +138,7 @@ class Connection < ActiveRecord::Base
       keys_str = self.compare(tagset1keys, tagset2)
       abs_str = self.compare(tagset1abs, tagset2)
       str = (keys_str * 0.5) + (abs_str * 0.5)
-      conn.update_attribute(:strength, str)
+      conn.update_attributes(:strength => str, :abstract_strength => abs_str, :keyword_strength => keys_str)
     end
   end
 end

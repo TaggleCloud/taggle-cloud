@@ -1,7 +1,7 @@
 = stylesheet_link_tag "abstracts"
 
 %p#notice= notice
-    
+
 .pull-right
   = link_to conference_path(@conference), :class => "btn" do
     %i.icon-arrow-left
@@ -51,10 +51,25 @@
   .span12
     - if @attendance.project_name
       %h3= @attendance.project_name
+    -if(current_user)
+      %h4 Abstract match strength:
+      .span4
+        .progress.progress-striped
+          .bar{:style => "width: #{@user_attendance.get_abstract_strength(@attendance)}%"}
+            #{@user_attendance.get_abstract_strength(@attendance)}%
+      %br
+      %br
+      %h4 Keyword match strength:
+      .span4
+        .progress.progress-striped
+          .bar{:style => "width: #{@user_attendance.get_keyword_strength(@attendance)}%"}
+            #{@user_attendance.get_keyword_strength(@attendance)}%
+.row-fluid
+  .span12
     - @abstracts.each do |abstract|
       %h4
         Abstract:
-        .pull-right 
+        .pull-right
           %button{:id => "toggle", :class => "btn", :type => "button", :data => {:toggle => "button"}} Hide matched words
       - if(current_user)
         = abstract.highlight_body(current_user, @conference.id).html_safe
@@ -63,18 +78,10 @@
 .row-fluid
   .span12
     - if(@attendance.user_id)
-      %h4 Bio:
-      -if @bio
-        = @bio.highlight_body(current_user, @conference.id).html_safe
-.row-fluid
-  .span12
-    -if(current_user)
-      %h4 Connection strength:
-      .span4
-        .progress.progress-striped
-          .bar{:style => "width: #{@user_attendance.get_connection_strength(@attendance)}%"}
-            #{@user_attendance.get_connection_strength(@attendance)}%
-            
+      %h4 Keywords:
+      -if @keys
+        = @keys.highlight_body(current_user, @conference.id).html_safe
+
 - if @conferences && @conferences.count > 1
   .row
     .span12
@@ -97,7 +104,7 @@
                     = conference.attendances.count
                 %h5.dblock.clear
                   = conference.location
-    
+
 %br
 %br
 :javascript
@@ -112,4 +119,4 @@
       checked = true;
     }
   })
-  
+
