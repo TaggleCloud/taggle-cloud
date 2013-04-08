@@ -55,15 +55,15 @@
       %h4 Abstract match strength:
       .span4
         .progress.progress-striped
-          .bar{:style => "width: #{@user_attendance.get_abstract_strength(@attendance)}%"}
-            #{@user_attendance.get_abstract_strength(@attendance)}%
-      %br
-      %br
-      %h4 Keyword match strength:
-      .span4
-        .progress.progress-striped
           .bar{:style => "width: #{@user_attendance.get_keyword_strength(@attendance)}%"}
             #{@user_attendance.get_keyword_strength(@attendance)}%
+      / %br
+      / %br
+      / %h4 Keyword match strength:
+      / .span4
+      /   .progress.progress-striped
+      /     .bar{:style => "width: #{@user_attendance.get_keyword_strength(@attendance)}%"}
+      /       #{@user_attendance.get_keyword_strength(@attendance)}%
 .row-fluid
   .span12
     - @abstracts.each do |abstract|
@@ -78,9 +78,9 @@
 .row-fluid
   .span12
     - if(@attendance.user_id)
-      %h4 Keywords:
-      -if @keys
-        = @keys.highlight_body(current_user, @conference.id).html_safe
+      %h4 Bio:
+      -if @bio
+        = @bio.highlight_body(current_user, @conference.id).html_safe
 
 - if @conferences && @conferences.count > 1
   .row

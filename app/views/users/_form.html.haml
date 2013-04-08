@@ -8,7 +8,7 @@
   = f.input :bio
 
   = f.fields_for :abstract, @keys do |b|
-    = b.input :body, :label => "Keywords"
+    = b.input :body, :label => "I am looking for collaborators with the following attributes"
 
   = f.fields_for :emails do |e|
     = render "email_fields", :f => e

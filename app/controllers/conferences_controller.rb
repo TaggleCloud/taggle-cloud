@@ -26,7 +26,7 @@ class ConferencesController < ApplicationController
     end
     @liked_count = @likes.count
     if @user_attendance
-      @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'strength DESC')
+      @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'keyword_strength DESC')
       @attendees = []
       @connections.each do |c|
         @attendees << Attendance.find(c.attendance2_id)

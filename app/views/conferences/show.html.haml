@@ -61,8 +61,8 @@
             %h5.no-org No Project Specified
           - if @user_attendance
             .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
-                #{@user_attendance.get_connection_strength(attendee)}%
+              .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
+                #{@user_attendance.get_keyword_strength(attendee)}%
 %hr
 
 - if @user_attendance

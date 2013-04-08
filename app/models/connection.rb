@@ -59,12 +59,12 @@ class Connection < ActiveRecord::Base
             #     tagset2 << bio_tag.tag if bio_tag.tag
             #   end
             # end
-            keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
-            if keys
-              keys.abstract_tags.all.each do |keys_tag|
-                tagset2 << keys_tag.tag if keys_tag.tag
-              end
-            end
+            # keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+            # if keys
+            #   keys.abstract_tags.all.each do |keys_tag|
+            #     tagset2 << keys_tag.tag if keys_tag.tag
+            #   end
+            # end
           end
           abstract.abstract_tags.all.each do |abstract_tag|
             tagset2 << abstract_tag.tag if abstract_tag.tag
@@ -120,12 +120,12 @@ class Connection < ActiveRecord::Base
           #     tagset2 << bio_tag.tag if bio_tag.tag
           #   end
           # end
-          keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
-          if keys
-            keys.abstract_tags.all.each do |keys_tag|
-              tagset2 << keys_tag.tag if keys_tag.tag
-            end
-          end
+          # keys = Abstract.where(:user_id => abstract.user_id, :keywords => true).first
+          # if keys
+          #   keys.abstract_tags.all.each do |keys_tag|
+          #     tagset2 << keys_tag.tag if keys_tag.tag
+          #   end
+          # end
         end
         abstract.abstract_tags.all.each do |abstract_tag|
           tagset2 << abstract_tag.tag if abstract_tag.tag
