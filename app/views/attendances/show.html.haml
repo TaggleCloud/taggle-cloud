@@ -52,7 +52,7 @@
     - if @attendance.project_name
       %h3= @attendance.project_name
     -if(current_user)
-      %h4 Abstract match strength:
+      %h4 Abstract matches the attributes you're looking for:
       .span4
         .progress.progress-striped
           .bar{:style => "width: #{@user_attendance.get_keyword_strength(@attendance)}%"}
@@ -78,9 +78,9 @@
 .row-fluid
   .span12
     - if(@attendance.user_id)
-      %h4 Bio:
-      -if @bio
-        = @bio.highlight_body(current_user, @conference.id).html_safe
+      -if @user.bio
+        %h4 Bio:
+        = @user.bio
 
 - if @conferences && @conferences.count > 1
   .row
