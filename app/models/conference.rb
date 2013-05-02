@@ -26,6 +26,10 @@ class Conference < ActiveRecord::Base
     end
   end
 
+  def update_conference
+    Connection.build_conf_connections(self)
+  end
+
   def upload(uploaded_io, current_user)
     attendances, abstracts = [], []
     CSV.parse(uploaded_io.read) do |row|

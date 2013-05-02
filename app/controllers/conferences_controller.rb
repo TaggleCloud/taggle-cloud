@@ -107,6 +107,7 @@ class ConferencesController < ApplicationController
   def update
     @conference = Conference.find(params[:id])
     puts params
+    @conference.update_conference
 
     respond_to do |format|
       if @conference.update_attributes(params[:conference])

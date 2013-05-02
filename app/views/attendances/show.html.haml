@@ -51,12 +51,18 @@
   .span12
     - if @attendance.project_name
       %h3= @attendance.project_name
-    -if(current_user)
+    -if(current_user && @user_attendance.get_keyword_strength(@attendance) > 0)
       %h4 Abstract matches the attributes you're looking for:
       .span4
         .progress.progress-striped
           .bar{:style => "width: #{@user_attendance.get_keyword_strength(@attendance)}%"}
             #{@user_attendance.get_keyword_strength(@attendance)}%
+    -elsif current_user
+      %h4 Abstract matches your abstract:
+      .span4
+        .progress.progress-striped
+          .bar{:style => "width: #{@user_attendance.get_abstract_strength(@attendance)}%"}
+            #{@user_attendance.get_abstract_strength(@attendance)}%
       / %br
       / %br
       / %h4 Keyword match strength:

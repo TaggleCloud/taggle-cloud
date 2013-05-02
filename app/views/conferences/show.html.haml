@@ -29,10 +29,14 @@
             %h5= truncate(attendee.project_name, :length => 45)
           - else
             %h5.no-org No Project Specified
-          - if @user_attendance
+          - if @user_attendance && @user_attendance.get_keyword_strength(attendee) > 0
             .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_connection_strength(attendee)}%"}
-                #{@user_attendance.get_connection_strength(attendee)}%
+              .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
+                #{@user_attendance.get_keyword_strength(attendee)}%
+          - elsif @user_attendance
+            .progress.progress-striped
+              .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
+                #{@user_attendance.get_abstract_strength(attendee)}%
 
 %p.lead
   - if @user_attendance
@@ -59,10 +63,16 @@
             %h5= truncate(attendee.project_name, :length => 45)
           - else
             %h5.no-org No Project Specified
-          - if @user_attendance
+          - if @user_attendance && @user_attendance.get_keyword_strength(attendee) > 0
+            Keyword match:
             .progress.progress-striped
               .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
                 #{@user_attendance.get_keyword_strength(attendee)}%
+          - elsif @user_attendance
+            Abstract match:
+            .progress.progress-striped
+              .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
+                #{@user_attendance.get_abstract_strength(attendee)}%
 %hr
 
 - if @user_attendance
