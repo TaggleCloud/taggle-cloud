@@ -75,15 +75,25 @@ class ConferencesController < ApplicationController
   # POST /conferences
   # POST /conferences.json
   def create
-    start_time_conv = Date.new(params[:conference]["start_time(1i)"].to_i,
-                               params[:conference]["start_time(2i)"].to_i,
-                               params[:conference]["start_time(3i)"].to_i) if params[:conference]["start_time(1i)"] && params[:conference]["start_time(2i)"] && params[:conference]["start_time(3i)"]
-    end_time_conv = Date.new(params[:conference]["end_time(1i)"].to_i,
-                               params[:conference]["end_time(2i)"].to_i,
-                               params[:conference]["end_time(3i)"].to_i) if params[:conference]["end_time(1i)"] && params[:conference]["end_time(2i)"] && params[:conference]["end_time(3i)"]
-    lock_date_conv = Date.new(params[:conference]["lock_date(1i)"].to_i,
-                               params[:conference]["lock_date(2i)"].to_i,
-                               params[:conference]["lock_date(3i)"].to_i) if params[:conference]["lock_date(1i)"] && params[:conference]["lock_date(2i)"] && params[:conference]["lock_date(3i)"]
+    # Convert times from date picker. First split then call Date.new
+    if params[:conference]["start_time"]
+      start_time_split = params[:conference]["start_time"].split('-')
+      start_time_conv = Date.new(start_time_split[0].to_i,
+                                 start_time_split[1].to_i,
+                                 start_time_split[2].to_i)
+    end
+    if params[:conference]["end_time"]
+      end_time_split = params[:conference]["end_time"].split('-')
+      end_time_conv = Date.new(end_time_split[0].to_i,
+                               end_time_split[1].to_i,
+                               end_time_split[2].to_i)
+    end
+    if params[:conference]["lock_date"]
+      lock_date_split = params[:conference]["lock_date"].split('-')
+      lock_date_conv = Date.new(lock_date_split[0].to_i,
+                                lock_date_split[1].to_i,
+                                lock_date_split[2].to_i)
+    end
 
     @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name], :start_time => start_time_conv, :end_time => end_time_conv, :lock_date => lock_date_conv)
 

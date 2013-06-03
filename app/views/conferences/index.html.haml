@@ -3,6 +3,8 @@
 
 .row
   .span12
+    - if @conferences.size == 0
+      %h4.dblock No Conferences
     %ul.thumbnails
       - @conferences.each do |conf|
         %li.span4

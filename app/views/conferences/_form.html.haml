@@ -2,9 +2,12 @@
 
   = f.input :name
   = f.input :location
-  = f.input :start_time, :as => :date
-  = f.input :end_time, :as => :date
-  = f.input :lock_date, :as => :date
+  = f.input :start_time do
+    = f.text_field :start_time, :class => 'datepicker'
+  = f.input :end_time do
+    = f.text_field :end_time, :class => 'datepicker'
+  = f.input :lock_date do
+    = f.text_field :lock_date, :class => 'datepicker'
   - if f.object.new_record?
     = f.input :csv, :as => :file, :inline_label => "Attendee list (csv file)"
 
@@ -23,7 +26,8 @@
 
 :javascript
   $(function() {
-  	$('.datepicker').datepicker(
-      format: 'mm-dd-yyyy'
-    );
+  	$('.datepicker').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    });
   });

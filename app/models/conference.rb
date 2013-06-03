@@ -11,7 +11,6 @@ class Conference < ActiveRecord::Base
 
   accepts_nested_attributes_for :attendances
 
-  validates_date :start_time
   validates_date :end_time, :on_or_after => :start_time, :on_or_after_message => "Must be on or after Start time"
   validates_date :lock_date, :on_or_before => :start_time, :on_or_before_message => "Must be on or before Start time"
 
