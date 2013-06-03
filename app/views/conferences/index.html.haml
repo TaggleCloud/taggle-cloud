@@ -21,6 +21,8 @@
             %h5.dblock.clear
               = conf.location
     - if current_user.is_admin
+      %h2 Admin Actions
+      %hr
       = link_to new_coordinate_path, :class => "btn" do
         %i.icon-plus-sign
         Add a new coordinator

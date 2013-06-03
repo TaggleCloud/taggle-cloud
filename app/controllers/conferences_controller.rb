@@ -19,6 +19,10 @@ class ConferencesController < ApplicationController
   def show
     @conference = Conference.find(params[:id])
     @user_attendance = current_user.attendances.where(:conference_id => @conference.id).last if current_user
+    @user_abstract = current_user.abstracts.where(:attendance_id => @user_attendance.id).last if current_user
+    # Choose whether to sort by keyword or abstract
+    @sort_by_keyword = @user_abstract.keywords if @user_abstract
+
     @likes = current_user.likes.where(:conference_id => @conference.id).all
     @liked_attendees = []
     @likes.each do |like|
@@ -26,7 +30,11 @@ class ConferencesController < ApplicationController
     end
     @liked_count = @likes.count
     if @user_attendance
-      @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'keyword_strength DESC')
+      if @sort_by_keyword
+        @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'keyword_strength DESC')
+      else
+        @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'abstract_strength DESC')
+      end
       @attendees = []
       @connections.each do |c|
         @attendees << Attendance.find(c.attendance2_id)

@@ -19,7 +19,7 @@
           - if attendee.user_id
             %h4.blue= attendee.user.name
           - else
-            %h4= attendee.name
+            %h4= attendee
           - if attendee.organization
             %h5.bmargin
             = truncate(attendee.organization, :length => 50)
