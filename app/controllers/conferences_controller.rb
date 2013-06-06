@@ -3,7 +3,11 @@ class ConferencesController < ApplicationController
   # GET /conferences.json
   def index
     if current_user
-      @conferences = current_user.get_conferences
+      if current_user.is_admin
+        @conferences = Conference.all
+      else
+        @conferences = current_user.get_conferences
+      end
     else
       return redirect_to root_path
     end
@@ -19,7 +23,7 @@ class ConferencesController < ApplicationController
   def show
     @conference = Conference.find(params[:id])
     @user_attendance = current_user.attendances.where(:conference_id => @conference.id).last if current_user
-    @user_abstract = current_user.abstracts.where(:attendance_id => @user_attendance.id).last if current_user
+    @user_abstract = current_user.abstracts.where(:attendance_id => @user_attendance.id).last if current_user && @user_attendance
     # Choose whether to sort by keyword or abstract
     @sort_by_keyword = @user_abstract.keywords if @user_abstract
 

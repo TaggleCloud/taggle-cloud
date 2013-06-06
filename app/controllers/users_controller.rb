@@ -22,8 +22,19 @@ class UsersController < ApplicationController
 
   def dashboard
     @conferences = current_user.get_conferences
+    @past_attendances = []
+    @curr_attendances = []
+    current_user.attendances.all.each do |att|
+      conf = Conference.find_by_id(att.conference_id)
+      if (conf.end_time < Date.today) 
+        @past_attendances << att
+      else
+        @curr_attendances << att
+      end
+    end
     # Bio no longer being used
     # @bio = Abstract.where(:user_id => current_user.id, :is_bio => true).first
+    
     @like_count = Like.where("user_id = ?", current_user.id).count
   end
 
