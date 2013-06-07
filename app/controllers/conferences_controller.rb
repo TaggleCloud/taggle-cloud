@@ -8,6 +8,15 @@ class ConferencesController < ApplicationController
       else
         @conferences = current_user.get_conferences
       end
+      @past_conferences = []
+      @curr_conferences = []
+      @conferences.each do |conf|
+        if (conf.end_time < Date.today) 
+          @past_conferences << conf
+        else
+          @curr_conferences << conf
+        end
+      end
     else
       return redirect_to root_path
     end
@@ -88,37 +97,44 @@ class ConferencesController < ApplicationController
   # POST /conferences.json
   def create
     # Convert times from date picker. First split then call Date.new
-    if params[:conference]["start_time"]
+    if params[:conference]["start_time"] && params[:conference]["start_time"].length > 0
       start_time_split = params[:conference]["start_time"].split('-')
       start_time_conv = Date.new(start_time_split[0].to_i,
                                  start_time_split[1].to_i,
                                  start_time_split[2].to_i)
     end
-    if params[:conference]["end_time"]
+    if params[:conference]["end_time"] && params[:conference]["start_time"].length > 0
       end_time_split = params[:conference]["end_time"].split('-')
       end_time_conv = Date.new(end_time_split[0].to_i,
                                end_time_split[1].to_i,
                                end_time_split[2].to_i)
     end
-    if params[:conference]["lock_date"]
+    if params[:conference]["lock_date"] && params[:conference]["start_time"].length > 0
       lock_date_split = params[:conference]["lock_date"].split('-')
       lock_date_conv = Date.new(lock_date_split[0].to_i,
                                 lock_date_split[1].to_i,
                                 lock_date_split[2].to_i)
     end
 
+    
     @conference = Conference.create(:location => params[:conference][:location], :name => params[:conference][:name], :start_time => start_time_conv, :end_time => end_time_conv, :lock_date => lock_date_conv)
 
     # Rails.logger.debug("params[:conference][:start_time] = #{params[:conference][:start_time]}")
-    @conference.upload(params[:conference][:csv], current_user)
+    if params[:conference][:csv]
+      @conference.upload(params[:conference][:csv], current_user)
+    end
     @email = params[:conference][:email]
 
     respond_to do |format|
-      if @conference.save
+      if params[:conference][:csv] && @conference.save
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
-        format.html { render action: "new" }
+        @conference.destroy
+        format.html {
+          flash[:error] = 'csv not uploaded'
+          render action: "new"
+        }
         format.json { render json: @conference.errors, status: :unprocessable_entity }
       end
     end

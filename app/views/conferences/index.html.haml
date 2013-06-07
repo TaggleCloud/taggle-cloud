@@ -3,10 +3,10 @@
 
 .row
   .span12
-    - if @conferences.size == 0
+    - if @curr_conferences.size == 0
       %h4.dblock No Conferences
     %ul.thumbnails
-      - @conferences.each do |conf|
+      - @curr_conferences.each do |conf|
         %li.span4
           = link_to conf, :class => "thumbnail card cbutton" do
             %h4.dblock
@@ -20,6 +20,28 @@
                 = conf.attendances.count
             %h5.dblock.clear
               = conf.location
+  .span12
+    %h1 Past Conferences
+    %hr
+    - if @past_conferences.size == 0
+      %h4.dblock No Conferences
+    %ul.thumbnails
+      - @past_conferences.each do |conf|
+        %li.span4
+          = link_to conf, :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = conf.name
+            .pull-right
+              .iconblock
+                %i.icon-star
+                = conf.likes(current_user.id)
+              .iconblock
+                %i.icon-user
+                = conf.attendances.count
+            %h5.dblock.clear
+              = conf.location
+  
+  .span12
     - if current_user.is_admin
       %h2 Admin Actions
       %hr

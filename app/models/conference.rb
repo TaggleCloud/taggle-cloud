@@ -10,9 +10,11 @@ class Conference < ActiveRecord::Base
   has_many :likes, :through => :attendances
 
   accepts_nested_attributes_for :attendances
-
-  validates_date :end_time, :on_or_after => :start_time, :on_or_after_message => "Must be on or after Start time"
-  validates_date :lock_date, :on_or_before => :start_time, :on_or_before_message => "Must be on or before Start time"
+  
+  validates_presence_of :name
+  validates_date :start_time, :invalid_date_message => "can't be blank"
+  validates_date :end_time, :on_or_after => :start_time, :on_or_after_message => "Must be on or after Start time", :invalid_date_message => "can't be blank"
+  validates_date :lock_date, :on_or_before => :start_time, :on_or_before_message => "Must be on or before Start time", :invalid_date_message => "can't be blank"
 
   def self.update_if_not_locked
     # Run on all conferences - check if lock date == current date, if so, build_conf_connections for all connections (will still be inefficient...)
