@@ -18,8 +18,6 @@
   .span10
     .vcenter
       %h3= @user.name
-      - if @emails
-        GOT EM
       - if current_user.id == @user.id        
         - if @user.show_email
           - @user.emails.all.each do |email|
@@ -47,7 +45,10 @@
       -else
         = @user.location
 %h4 Bio:
-= @user.bio
+- if @user.bio.empty?
+  No Bio, Edit Profile to set new Bio
+- else
+  = @user.bio
 %hr
 
 %h4 Looking for collaborators with these attributes:
