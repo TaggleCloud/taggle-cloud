@@ -12,7 +12,10 @@ class User < ActiveRecord::Base
   has_many :likes
 
   accepts_nested_attributes_for :abstracts
-  accepts_nested_attributes_for :emails
+  accepts_nested_attributes_for :emails, :allow_destroy => true
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name  
 
   def coordinate (conference)
     self.coordinates.each do |c|

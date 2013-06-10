@@ -132,7 +132,7 @@ class ConferencesController < ApplicationController
       else
         @conference.destroy
         format.html {
-          flash[:error] = 'csv not uploaded'
+          flash.now[:error] = 'csv not uploaded'
           render action: "new"
         }
         format.json { render json: @conference.errors, status: :unprocessable_entity }

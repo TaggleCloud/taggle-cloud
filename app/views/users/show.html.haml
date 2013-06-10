@@ -1,4 +1,4 @@
--if current_user.id == @user.id
+- if current_user.id == @user.id
   .pull-right
     = link_to edit_user_path(@user), :class => "btn" do
       %i.icon-edit
@@ -18,11 +18,23 @@
   .span10
     .vcenter
       %h3= @user.name
-      - if @user.show_email
-        - @user.emails.all.each do |email|
-          %strong= "Email:"
-          = mail_to email.mail_address
+      - if @emails
+        GOT EM
+      - if current_user.id == @user.id        
+        - if @user.show_email
+          - @user.emails.all.each do |email|
+            %strong= "Email:"
+            = mail_to email.mail_address
+            %br
+        - else 
+          Hidden: 
           %br
+          - @user.emails.all.each do |email|
+            %strong= "Email:"
+            = mail_to email.mail_address
+            %br
+          %br
+          
       %strong Occupation:
       -if @user.occupation.blank?
         Not available
