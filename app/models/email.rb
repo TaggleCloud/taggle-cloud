@@ -3,6 +3,6 @@ class Email < ActiveRecord::Base
   
   belongs_to :user
   
-  # validates_format_of :mail_address, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "is not a valid format"
+  validates_format_of :mail_address, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "is not a valid format"
   
 end

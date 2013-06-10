@@ -9,10 +9,15 @@
 
   = f.fields_for :abstract, @keys do |b|
     = b.input :body, :label => "I am looking for collaborators with the following attributes"
-
+    
+  - count = 0
   = f.fields_for :emails do |e|
-    = render "email_fields", :f => e
-
+    = e.input :mail_address
+    - if count > 0
+      .remove-mail-address
+        = e.link_to_remove "X"
+    - count += 1
+    
   = link_to_add_fields "Add an email address", f, :emails
 
   .pull-right
