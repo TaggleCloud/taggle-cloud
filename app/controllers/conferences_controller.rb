@@ -8,13 +8,16 @@ class ConferencesController < ApplicationController
       else
         @conferences = current_user.get_conferences
       end
-      @past_conferences = []
       @curr_conferences = []
+      @upcoming_conferences = []
+      @past_conferences = []
       @conferences.each do |conf|
-        if (conf.end_time < Date.today) 
-          @past_conferences << conf
-        else
+        if (conf.start_time <= Date.today) && (conf.end_time >= Date.today)
           @curr_conferences << conf
+        elsif (conf.start_time > Date.today) 
+          @upcoming_conferences << conf
+        elsif (conf.end_time < Date.today) 
+          @past_conferences << conf
         end
       end
     else
@@ -34,7 +37,7 @@ class ConferencesController < ApplicationController
     @user_attendance = current_user.attendances.where(:conference_id => @conference.id).last if current_user
     @user_abstract = current_user.abstracts.where(:attendance_id => @user_attendance.id).last if current_user && @user_attendance
     # Choose whether to sort by keyword or abstract
-    @sort_by_keyword = @user_abstract.keywords if @user_abstract
+    @sort_by_keyword = !current_user.abstracts.first.body.to_s.empty?
 
     @likes = current_user.likes.where(:conference_id => @conference.id).all
     @liked_attendees = []
@@ -45,15 +48,31 @@ class ConferencesController < ApplicationController
     if @user_attendance
       if @sort_by_keyword
         @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'keyword_strength DESC')
+        # Set variable for showing a notice about setting better keywords:
+        @trivial_keywords = @connections.select { |c| c.keyword_strength if (c.keyword_strength == 100) }.count / (1.0 * @connections.count)
       else
         @connections = Connection.find(:all, :conditions => "attendance1_id = #{@user_attendance.id}", :order => 'abstract_strength DESC')
       end
       @attendees = []
+      @attendees_unmatched = []
       @connections.each do |c|
-        @attendees << Attendance.find(c.attendance2_id)
+        # Filter out keyword strength 0
+        if @sort_by_keyword 
+          if @sort_by_keyword && (c.keyword_strength == 0)
+            @attendees_unmatched << Attendance.find(c.attendance2_id)
+          else
+            @attendees << Attendance.find(c.attendance2_id)
+          end
+        else
+          @attendees << Attendance.find(c.attendance2_id)
+        end
+      end
+      if !@attendees_unmatched.empty?
+        @attendees_unmatched.sort! { |a,b| b.get_abstract_strength(@user_attendance) <=> a.get_abstract_strength(@user_attendance) } if @user_attendance
       end
     else
       @attendees = @conference.attendances
+      @attendees_unmatched = []
     end
     respond_to do |format|
       format.html # show.html.erb

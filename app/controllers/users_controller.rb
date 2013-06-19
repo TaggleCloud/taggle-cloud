@@ -22,14 +22,19 @@ class UsersController < ApplicationController
 
   def dashboard
     @conferences = current_user.get_conferences
-    @past_attendances = []
     @curr_attendances = []
+    @upcoming_attendances = []
+    @past_attendances = []
     current_user.attendances.all.each do |att|
       conf = Conference.find_by_id(att.conference_id)
-      if (conf.end_time < Date.today) 
-        @past_attendances << att
-      else
-        @curr_attendances << att
+      if conf
+        if (conf.start_time <= Date.today) && (conf.end_time >= Date.today)
+          @curr_attendances << att
+        elsif (conf.start_time > Date.today) 
+          @upcoming_attendances << att
+        elsif (conf.end_time < Date.today) 
+          @past_attendances << att
+        end
       end
     end
     # Bio no longer being used

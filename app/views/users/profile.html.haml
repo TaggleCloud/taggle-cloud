@@ -3,6 +3,9 @@
     .row-fluid
       -if current_user.image
         = image_tag(current_user.image) if current_user.image.length > 0
+      - else 
+        = image_tag("user_placeholder.png", :class => "size")
+      
     %hr
     .row-fluid
       = link_to edit_user_path(current_user), :class => "btn" do

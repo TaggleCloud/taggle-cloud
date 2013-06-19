@@ -45,7 +45,7 @@
       -else
         = @user.location
 %h4 Bio:
-- if @user.bio.empty?
+- if @user.bio && @user.bio.empty?
   No Bio, Edit Profile to set new Bio
 - else
   = @user.bio

@@ -1,9 +1,20 @@
 .page-header
+  - if @trivial_keywords
+    - if @trivial_keywords > 0.5
+      .alert
+        & <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Too Many Perfect Matches with your Keywords. 
+        = link_to "Would you like to change them?", edit_user_path(current_user)
+        
   .pull-right
+    - if (current_user.is_admin || current_user.coordinate(@conference))
+      = link_to edit_conference_path(@conference), :class => "btn" do
+        %i.icon-edit
+        Edit Conference
     = link_to conferences_path, :class => "btn" do
       %i.icon-th-list
       All Conferences
-  %h1
+  %h1    
     = @conference.name
     %small= @conference.location
     %br
@@ -49,21 +60,27 @@
     - if !@liked_attendees.include?(attendee)
       %li.span4
         = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
-          - if attendee.user_id
-            %h4.blue
-              = attendee.user.name
-          - else
-            %h4= attendee.name
-          - if attendee.organization
-            %h5.bmargin
-            = truncate(attendee.organization, :length => 50)
-          - else
-            %h5.no-org No Organization Specified
-          - if attendee.project_name
-            %h5= truncate(attendee.project_name, :length => 45)
-          - else
-            %h5.no-org No Project Specified
-          - if @user_attendance && @user_attendance.get_keyword_strength(attendee) > 0
+          %div.info
+            - if attendee.user_id
+              - if attendee.user.image
+                = image_tag(attendee.user.image, :class => "pull-left")
+              - else 
+                = image_tag("user_placeholder.png", :class => "pull-left")
+              %h4.blue
+                = attendee.user.name
+            - else
+              = image_tag("user_placeholder.png", :class => "pull-left")
+              %h4= attendee.name
+            - if attendee.organization
+              %h5.bmargin
+              = truncate(attendee.organization, :length => 50)
+            - else
+              %h5.no-org No Organization Specified
+            - if attendee.project_name
+              %h5= truncate(attendee.project_name, :length => 45)
+            - else
+              %h5.no-org No Project Specified
+          - if @user_attendance && @sort_by_keyword
             Keyword match:
             .progress.progress-striped
               .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
@@ -74,17 +91,43 @@
               .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
                 #{@user_attendance.get_abstract_strength(attendee)}%
 %hr
+- if !@attendees_unmatched.empty?
+  %p.lead
+    Abstract to Abstract Matches
+
+  %ul.thumbnails
+    - @attendees_unmatched.each do |attendee|
+      - if !@liked_attendees.include?(attendee)
+        %li.span4
+          = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
+            - if attendee.user_id
+              %h4.blue
+                = attendee.user.name
+            - else
+              %h4= attendee.name
+            - if attendee.organization
+              %h5.bmargin
+              = truncate(attendee.organization, :length => 50)
+            - else
+              %h5.no-org No Organization Specified
+            - if attendee.project_name
+              %h5= truncate(attendee.project_name, :length => 45)
+            - else
+              %h5.no-org No Project Specified
+            Abstract match:
+            .progress.progress-striped
+              .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
+                #{@user_attendance.get_abstract_strength(attendee)}%
+  %hr
+
 
 - if @user_attendance
   - @user_attendance.abstracts.all.each do |abs|
     %p.lead
       Your abstract
     = abs.body
-
-%hr
+%br
 %br
 
-- if (current_user.is_admin || current_user.coordinate(@conference))
-  = link_to edit_conference_path(@conference), :class => "btn" do
-    %i.icon-edit
-    Edit Conference
+
+

@@ -12,3 +12,22 @@
 
 .form
   = render 'form'
+  
+%hr
+%h2 Edit Attendees
+- @conference.attendances.each do |attendee|
+  %hr
+  %div.user-list
+    - if attendee.user
+      - if attendee.user.image
+        = image_tag(attendee.user.image, :class => "small pull-left")
+      - else 
+        = image_tag("user_placeholder.png", :class => "small pull-left")
+    - else
+      = image_tag("user_placeholder.png", :class => "small pull-left")    
+    %h4 #{attendee.name}
+    %p 
+      = attendee.organization
+      = "-"
+      = attendee.project_name
+    = link_to "Delete Attendee", conference_attendee_path(@conference, attendee), :confirm => "Are you sure you want to delete this attendee?", :method => :delete

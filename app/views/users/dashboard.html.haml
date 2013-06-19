@@ -29,6 +29,25 @@
             %h5.dblock.clear
               = att.conference.location
     %br
+    %h2 Upcoming Conferences
+    - if @upcoming_attendances.empty?
+      %h4 No Conferences
+    %ul.thumbnails
+      - @upcoming_attendances.each do |att|
+        %li.span4
+          = link_to att.conference, :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = att.conference.name
+            .pull-right
+              .iconblock
+                %i.icon-star
+                = att.conference.likes(current_user)
+              .iconblock
+                %i.icon-user
+                = att.conference.attendances.count
+            %h5.dblock.clear
+              = att.conference.location
+    %br
     %h2 Past Conferences
     - if @past_attendances.empty?
       %h4 No Conferences

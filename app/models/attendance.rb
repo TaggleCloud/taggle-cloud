@@ -3,8 +3,8 @@ class Attendance < ActiveRecord::Base
 
   belongs_to :conference
   belongs_to :user
-  belongs_to :connection
-  has_many :connections, :dependent => :destroy, :class_name => "Connection", :foreign_key => "attendance1_id"
+  belongs_to :connection, :dependent => :delete
+  has_many :connections, :dependent => :delete_all, :class_name => "Connection", :foreign_key => "attendance1_id"
   has_many :abstracts, :dependent => :destroy
   has_many :likes, :dependent => :destroy
 

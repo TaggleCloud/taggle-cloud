@@ -60,3 +60,26 @@ textarea {
 @import "users";
 
 @import "bootstrap-responsive";
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  .thumbnail .info {
+    height: 200px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .thumbnail .info {
+    height: 250px;
+  }
+}
+.thumbnail .info {
+  min-height: 130px;
+}
+  .thumbnail .info img {
+    width: 100px;
+    height: 100px;
+    margin: 0 20px 20px 10px;
+  }
+img.small {
+  width: 100px;
+  height: 100px;
+}

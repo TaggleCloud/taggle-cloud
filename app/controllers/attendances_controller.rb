@@ -95,12 +95,19 @@ class AttendancesController < ApplicationController
     #TODO Jbender will fix this later to use destroy instead of delete
     @attendance = Attendance.find(params[:id])
     @conference = Conference.find(@attendance.conference_id)
+    # Delete connected connections
+    @attendance.connections.delete_all
+    @connections = Connection.find(:all, :conditions => "attendance2_id = #{@attendance.id}")
+    @connections.each do |c|
+      c.delete
+    end
+    
     @attendance.delete
     @attendees = @conference.attendances
 
     respond_to do |format|
-      format.html {render action: "index"}
-      format.json { render json: @attendees }
+      format.html { redirect_to @conference, notice: 'Attendance successfully deleted' }
+      format.json { render json: @conference }
     end
   end
 end
