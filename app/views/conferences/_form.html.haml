@@ -1,33 +1,38 @@
-= simple_form_for @conference, :html => {:class => 'form-horizontal'} do |f|
-
-  = f.input :name
-  = f.input :location
-  = f.input :start_time do
-    = f.text_field :start_time, :class => 'datepicker'
-  = f.input :end_time do
-    = f.text_field :end_time, :class => 'datepicker'
-  = f.input :lock_date do
-    = f.text_field :lock_date, :class => 'datepicker'
-  - if f.object.new_record?
-    = f.input :csv, :as => :file, :inline_label => "Attendee list (csv file)"
-
+.span4
+  %h2 Edit Information
   %hr
+  = simple_form_for @conference, :html => {:class => 'form-horizontal'} do |f|
 
-  %h3 Add Attendees
-  = link_to_add_fields "Add Attendee", f, :attendances
+    = f.input :name
+    = f.input :location
+    = f.input :start_time do
+      = f.text_field :start_time, :class => 'datepicker'
+    = f.input :end_time do
+      = f.text_field :end_time, :class => 'datepicker'
+    = f.input :lock_date do
+      = f.text_field :lock_date, :class => 'datepicker'
+    - if f.object.new_record?
+      = f.input :csv, :as => :file, :inline_label => "Attendee list (csv file)"
 
-  %hr
+    
+    //  %hr
+     
+    //  %h3 Add Attendees
+    //  = link_to_add_fields "Add Attendee", f, :attendances
 
-  = f.button :submit
-  - if !f.object.new_record?
-    // = link_to @conference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" do
-    //   %i.icon-trash.icon-white
-    //   Delete Conference
+    %hr
 
-:javascript
-  $(function() {
-  	$('.datepicker').datepicker({
-      format: 'yyyy-mm-dd',
-      autoclose: true
+    .text-center
+      = f.button :submit
+    - if !f.object.new_record?
+      // = link_to @conference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger pull-right" do
+      //   %i.icon-trash.icon-white
+      //   Delete Conference
+
+  :javascript
+    $(function() {
+    	$('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true
+      });
     });
-  });

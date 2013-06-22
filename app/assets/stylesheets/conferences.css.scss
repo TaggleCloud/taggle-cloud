@@ -59,6 +59,9 @@
 .form {
   padding-top: 10px;
 }
+  .form-horizontal .control-label{
+    text-align: left;
+  }
 
 .buttons {
   @extend h1;
