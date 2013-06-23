@@ -30,7 +30,8 @@
                   = image_tag("user_placeholder.png", :class => "small")
               - else
                 = image_tag("user_placeholder.png", :class => "small")    
-              %h4 #{attendee.name}
+              %h4 
+                = link_to attendee.name, conference_attendee_path(@conference, attendee)
               %p 
               // = attendee.organization
               //  = "-"
