@@ -27,39 +27,6 @@
     - @liked_attendees.each do |attendee|
       %li.span4
         = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
-          - if attendee.user_id
-            %h4.blue= attendee.user.name
-          - else
-            %h4= attendee
-          - if attendee.organization
-            %h5.bmargin
-            = truncate(attendee.organization, :length => 50)
-          - else
-            %h5.no-org No Organization Specified
-          - if attendee.project_name
-            %h5= truncate(attendee.project_name, :length => 45)
-          - else
-            %h5.no-org No Project Specified
-          - if @user_attendance && @user_attendance.get_keyword_strength(attendee) > 0
-            .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
-                #{@user_attendance.get_keyword_strength(attendee)}%
-          - elsif @user_attendance
-            .progress.progress-striped
-              .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
-                #{@user_attendance.get_abstract_strength(attendee)}%
-
-%p.lead
-  - if @user_attendance
-    Your Matches
-  - else
-    All Attendees
-
-%ul.thumbnails
-  - @attendees.each do |attendee|
-    - if !@liked_attendees.include?(attendee)
-      %li.span4
-        = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
           %div.info
             - if attendee.user_id
               - if attendee.user.image
@@ -90,6 +57,71 @@
             .progress.progress-striped
               .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
                 #{@user_attendance.get_abstract_strength(attendee)}%
+  %hr
+
+
+.row
+  .span8
+    %p.lead
+      - if @user_attendance
+        Your Matches
+      - else
+        All Attendees
+    %ul.thumbnails
+      - @attendees.each do |attendee|
+        - if !@liked_attendees.include?(attendee)
+          %li.span4
+            = link_to conference_attendee_path(@conference, attendee), :class => "thumbnail card cbutton" do
+              %div.info
+                - if attendee.user_id
+                  - if attendee.user.image
+                    = image_tag(attendee.user.image, :class => "pull-left")
+                  - else 
+                    = image_tag("user_placeholder.png", :class => "pull-left")
+                  %h4.blue
+                    = attendee.user.name
+                - else
+                  = image_tag("user_placeholder.png", :class => "pull-left")
+                  %h4= attendee.name
+                - if attendee.organization
+                  %h5.bmargin
+                  = truncate(attendee.organization, :length => 50)
+                - else
+                  %h5.no-org No Organization Specified
+                - if attendee.project_name
+                  %h5= truncate(attendee.project_name, :length => 45)
+                - else
+                  %h5.no-org No Project Specified
+              - if @user_attendance && @sort_by_keyword
+                Keyword match:
+                .progress.progress-striped
+                  .bar{:style => "width: #{@user_attendance.get_keyword_strength(attendee)}%"}
+                    #{@user_attendance.get_keyword_strength(attendee)}%
+              - elsif @user_attendance
+                Abstract match:
+                .progress.progress-striped
+                  .bar{:style => "width: #{@user_attendance.get_abstract_strength(attendee)}%"}
+                    #{@user_attendance.get_abstract_strength(attendee)}%
+  .span4.similar-matches
+    %p.lead.text-center
+      Others who had similar matches
+    - @attendees.take(5).each do |attendee|
+      .span4        
+        %br
+        - if attendee.user_id
+          - if attendee.user.image
+            = image_tag(attendee.user.image, :class =>"pull-left", :size => "50x50")
+          - else 
+            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+          %h4.blue
+            = attendee.user.name
+        - else
+          = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+          %h4.blue.pull-left
+            = "&nbsp;".html_safe
+            = attendee.name        
+          
+      
 %hr
 - if !@attendees_unmatched.empty?
   %p.lead
