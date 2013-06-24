@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       if conf
         # Place holder
         @attendees = conf.attendances
+        @conference = conf
         
         if (conf.start_time <= Date.today) && (conf.end_time >= Date.today)
           @curr_attendances << att

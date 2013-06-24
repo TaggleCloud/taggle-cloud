@@ -75,6 +75,7 @@
   .span4.requests
     %p.lead.text-center
       Wants to collaborate with you
+    // Temporary Selection of people, placeholder        
     - if @attendees
       - @attendees.take(5).each do |attendee|
         .span4        
@@ -86,12 +87,12 @@
               - else 
                 = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
               %h4.blue
-                = attendee.user.name
+                = link_to attendee.user.name, conference_attendee_path(@conference, attendee)
           - else
             %br
             = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
             %h4.blue.pull-left
-              = attendee.name
+              = link_to attendee.name, conference_attendee_path(@conference, attendee)
 
       %p.lead.text-center        
         = link_to "", :class => "btn" do
@@ -101,25 +102,27 @@
     %p.lead.text-center   
       You requested to collaborate with
             
+    // Temporary Selection of people, placeholder        
     - if @attendees
-      - @attendees.take(5).each do |attendee|
-        .span4        
-          - if attendee.user_id
-            - if attendee.user_id != current_user.id
+      - if @attendees[-4..-1]
+        - @attendees[-4..-1].each do |attendee|
+          .span4        
+            - if attendee.user_id
+              - if attendee.user_id != current_user.id
+                %br
+                - if attendee.user.image
+                  = image_tag(attendee.user.image, :class =>"pull-left", :size => "50x50")
+                - else 
+                  = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+                %h4.blue
+                  = link_to attendee.user.name, conference_attendee_path(@conference, attendee)
+            - else
               %br
-              - if attendee.user.image
-                = image_tag(attendee.user.image, :class =>"pull-left", :size => "50x50")
-              - else 
-                = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-              %h4.blue
-                = attendee.user.name
-          - else
-            %br
-            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-            %h4.blue.pull-left
-              = attendee.name        
-      %p.lead.text-center        
-        = link_to "", :class => "btn" do
-          %i.icon-eye-open
-          See All
+              = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+              %h4.blue.pull-left
+                = link_to attendee.name, conference_attendee_path(@conference, attendee)
+        %p.lead.text-center        
+          = link_to "", :class => "btn" do
+            %i.icon-eye-open
+            See All
     
