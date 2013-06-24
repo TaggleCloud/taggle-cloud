@@ -9,7 +9,7 @@
   to ensure the best possible matches for you.
 
 .row
-  .span12
+  .span8
     %h2 Current Conferences
     - if @curr_attendances.empty?
       %h4 No Conferences
@@ -71,3 +71,55 @@
       %p
         If you signed up for a conference and it isn't showing up, you may have signed up with a different email address. You can add additional email addresses by
         = link_to "updating your profile.", edit_user_path(current_user)
+        
+  .span4.requests
+    %p.lead.text-center
+      Wants to collaborate with you
+    - if @attendees
+      - @attendees.take(5).each do |attendee|
+        .span4        
+          - if attendee.user_id
+            - if attendee.user_id != current_user.id
+              %br
+              - if attendee.user.image
+                = image_tag(attendee.user.image, :class =>"pull-left", :size => "50x50")
+              - else 
+                = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+              %h4.blue
+                = attendee.user.name
+          - else
+            %br
+            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+            %h4.blue.pull-left
+              = attendee.name
+
+      %p.lead.text-center        
+        = link_to "", :class => "btn" do
+          %i.icon-eye-open
+          See All
+    %hr
+    %p.lead.text-center   
+      You requested to collaborate with
+            
+    - if @attendees
+      - @attendees.take(5).each do |attendee|
+        .span4        
+          - if attendee.user_id
+            - if attendee.user_id != current_user.id
+              %br
+              - if attendee.user.image
+                = image_tag(attendee.user.image, :class =>"pull-left", :size => "50x50")
+              - else 
+                = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+              %h4.blue
+                = attendee.user.name
+          - else
+            %br
+            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
+            %h4.blue.pull-left
+              = attendee.name        
+      %p.lead.text-center        
+        = link_to "", :class => "btn" do
+          %i.icon-eye-open
+          See All
+    

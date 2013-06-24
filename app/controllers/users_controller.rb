@@ -28,6 +28,9 @@ class UsersController < ApplicationController
     current_user.attendances.all.each do |att|
       conf = Conference.find_by_id(att.conference_id)
       if conf
+        # Place holder
+        @attendees = conf.attendances
+        
         if (conf.start_time <= Date.today) && (conf.end_time >= Date.today)
           @curr_attendances << att
         elsif (conf.start_time > Date.today) 
