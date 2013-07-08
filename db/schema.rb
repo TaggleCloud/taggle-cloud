@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20130707165002) do
 
   create_table "requests", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "receiver"
+    t.integer  "inviter"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.boolean  "invitee_registered"

@@ -121,9 +121,9 @@ class User < ActiveRecord::Base
   end
   
   def attach_request(email_address)
-    requests = Request.where("email = ? AND invitee_registered = ? AND receiver is null", email_address, false).all
+    requests = Request.where("email = ? AND invitee_registered = ? AND user_id is null", email_address, false).all
     requests.each do |r|
-      r.receiver = self.id
+      r.user_id = self.id
       r.invitee_registered = true
       r.save
     end

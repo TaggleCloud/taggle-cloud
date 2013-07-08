@@ -1,5 +1,10 @@
 class RequestsController < ApplicationController
   
+  def index
+    @user = current_user
+    @requests = @user.requests
+  end
+  
   def new
     @user = current_user
     @attendance = Attendance.find(params[:attendance_id])
@@ -15,10 +20,10 @@ class RequestsController < ApplicationController
     @user = current_user
     @attendance = Attendance.find(params[:attendance_id])
     if @attendance.user_id
-      @request = Request.create(:user_id => @user.id, :receiver => params[:attendance_id],
+      @request = Request.create(:inviter => @user.id, :user_id => params[:attendance_id],
                                 :invitee_registered => true, :body => params[:request][:body])
     else
-      @request = Request.create(:user_id => @user.id, :email => @attendance.registered_email,
+      @request = Request.create(:inviter => @user.id, :email => @attendance.registered_email,
                                 :invitee_registered => false, :body => params[:request][:body])
     end
     respond_to do |format|

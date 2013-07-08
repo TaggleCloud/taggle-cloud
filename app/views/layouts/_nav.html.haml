@@ -18,6 +18,12 @@
                 %i.icon-user.icon-white
                 = "#{current_user.name}"
             %li
+              = link_to requests_path do
+                %i.icon-comment.icon-white
+                Requests
+                - if current_user.requests.count > 0
+                  = "( #{current_user.requests.count} )"
+            %li
               = link_to "Sign Out", signout_path
           - else
             %li.dropdown
