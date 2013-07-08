@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :interests, :through => :user_interests
   has_many :coordinates
   has_many :likes
+  has_many :requests
 
   accepts_nested_attributes_for :abstracts
   accepts_nested_attributes_for :emails, :allow_destroy => true
@@ -111,10 +112,20 @@ class User < ActiveRecord::Base
     atts = Attendance.all
     atts.each do |a|
       if a.registered_email == email_address
-        a.user_id = self.id
-        a.save
+        if a.user_id.nil?          
+          a.user_id = self.id
+          a.save
+        end
       end
     end
   end
-
+  
+  def attach_request(email_address)
+    requests = Request.where("email = ? AND invitee_registered = ? AND receiver is null", email_address, false).all
+    requests.each do |r|
+      r.receiver = self.id
+      r.invitee_registered = true
+      r.save
+    end
+  end
 end

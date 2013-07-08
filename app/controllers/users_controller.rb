@@ -53,14 +53,28 @@ class UsersController < ApplicationController
     @user = current_user
     # Bio no longer being used
     # @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
+    @abstracts = Abstract.where(:user_id => @user.id)
+    @abstracts.each do |abs|
+      if abs.body.blank?
+        Abstract.update(abs.id, :body => params["user"]["bio"])
+      end
+    end
+    
     @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
     # Abstract.update(@bio.id, :body => params["user"]["abstract"]["body"])
     Abstract.update(@keys.id, :body => params["user"]["abstract"]["body"])
+    
+    @emails = Email.where(:user_id => @user.id)
+    
     params["user"].delete("abstract")
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        @emails.each do |e|
+          @user.attach_att(e.mail_address)
+          @user.attach_request(e.mail_address)
+        end
         format.html { redirect_to user_path(@user.id), notice: 'Profile has been successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @email }
       else
         format.html { render action: "edit" }
         format.json { render json: @conference.errors, status: :unprocessable_entity }

@@ -7,7 +7,9 @@
   Remember to
   = link_to "keep your profile updated", edit_user_path(current_user)
   to ensure the best possible matches for you.
-
+  -if @curr_attendances.empty? && @upcoming_attendances.empty? && @past_attendances.empty?
+    %br
+    You aren't registered for any conferences. Add new emails in your profile to find more conferences.
 .row
   .span8
     %h2 Current Conferences

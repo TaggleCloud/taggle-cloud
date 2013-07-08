@@ -3,6 +3,7 @@ require 'sidekiq/web'
 TaggleCloud::Application.routes.draw do
 
   resources :likes
+  resources :requests
 
   resources :conferences do
     match "connections" => "conferences#connections"

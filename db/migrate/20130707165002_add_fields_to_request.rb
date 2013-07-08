@@ -1,0 +1,7 @@
+class AddFieldsToRequest < ActiveRecord::Migration
+  def change
+    add_column :requests, :invitee_registered, :boolean
+    add_column :requests, :email, :string
+    add_column :requests, :body, :string
+  end
+end
