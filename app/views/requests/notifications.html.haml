@@ -1,0 +1,24 @@
+.page-header
+  %h1 Notifications
+
+.request-list
+  - @notifications.each do |n|
+    - if n
+      - u = User.find(n.inviter)
+      -if u.image
+        = image_tag(u.image, :class => 'pull-left', :width => 100, :height => 100)
+      -else
+        = image_tag("user_placeholder.png", :class => 'pull-left', :width => 100, :height => 100)
+      .pull-left
+        = link_to u.name, user_path(n.inviter)
+        %br
+        = n.reply
+      .pull-left
+
+        = link_to edit_request_path(n), :class => "btn" do
+          %i.icon-edit
+          Reply
+
+      .clearfix
+      %hr
+

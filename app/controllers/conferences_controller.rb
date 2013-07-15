@@ -163,7 +163,6 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
-    puts params
     @conference.update_conference
 
     respond_to do |format|

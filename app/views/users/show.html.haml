@@ -1,11 +1,12 @@
 - if current_user.id == @user.id
-  .pull-right
+  %h1
+    My Profile
+  .pull-left
     = link_to edit_user_path(@user), :class => "btn" do
       %i.icon-edit
       Edit Profile
-  %h1
-    My Profile
-
+  
+  %br
   %hr
 .row-fluid
   .span2

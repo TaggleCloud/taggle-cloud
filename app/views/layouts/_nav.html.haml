@@ -16,7 +16,13 @@
             %li
               = link_to user_path(current_user.id) do
                 %i.icon-user.icon-white
-                = "#{current_user.name}"
+                My Profile
+            %li
+              = link_to notifications_path do
+                %i.icon-globe.icon-white
+                Notifications
+                - if current_user.get_notifications.count > 0
+                  = "( #{current_user.get_notifications.count} )"
             %li
               = link_to requests_path do
                 %i.icon-comment.icon-white

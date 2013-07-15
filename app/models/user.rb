@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
     @keys.is_bio = false
     @keys.save
   end
+  
+  def get_notifications
+    notifications = Request.where('inviter = ? AND reply IS NOT NULL', self.id)
+  end
 
   def attach_att(email_address)
     atts = Attendance.all

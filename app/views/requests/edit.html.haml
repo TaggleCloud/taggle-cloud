@@ -1,4 +1,6 @@
-= form_for @request, :url => {:action => 'create', :controller => 'requests', :attendance_id => @attendance.id} do |f|
+%h1 Send Reply
+
+= form_for @request, :url => {:action => 'update', :controller => 'requests'} do |f|
   - if @request.errors.any?
     #error_explanation
       %h2= "#{pluralize(@request.errors.count, "error")} prohibited this request from being sent:"
@@ -7,7 +9,8 @@
           %li= msg
 
   .field
-    = f.label :body
-    = f.text_area(:body, :size => '50x10')
+    = f.text_area(:reply, :size => '50x10')
   .actions
-    = f.submit 'Send Request', :class => "btn"    
+    = f.submit 'Send Reply', :class => "btn"    
+
+= link_to 'Back', requests_path

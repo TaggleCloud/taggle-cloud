@@ -5,6 +5,11 @@ class RequestsController < ApplicationController
     @requests = @user.requests
   end
   
+  def notifications
+    @user = current_user
+    @notifications = @user.get_notifications
+  end
+  
   def new
     @user = current_user
     @attendance = Attendance.find(params[:attendance_id])
@@ -37,6 +42,67 @@ class RequestsController < ApplicationController
         else
           render json: @request.errors, status: :unprocessable_entity
         end
+      }
+    end
+  end
+  
+  def edit
+    @user = current_user
+    @request = Request.find(params[:id])
+    if @request.user_id != @user.id
+      flash[:notice] = "You have no right to edit this request"
+      return redirect_to requests_path
+    end
+  end
+  
+  def update
+    @request = Request.find(params[:id])
+
+    respond_to do |format|
+      if @request.update_attributes(params[:request])
+        format.html { redirect_to requests_path, notice: 'Reply was successfully sent.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # Response Actions: Accept, reply, ignore
+  
+  def accept
+    @user = current_user
+    flash[:notice] = "You have accepted a request from #{User.find(params[:id]).name}"
+    @request = Request.where('user_id = ? AND inviter = ?', @user.id, params[:id]).first    
+    @request.accepted = true
+    @request.save
+    respond_to do |format|
+      format.html {
+        redirect_to requests_path
+      }
+    end
+  end
+  
+  def reply
+    @user = current_user
+    flash[:notice] = "REPLY"
+    respond_to do |format|
+      format.html {
+        redirect_to requests_path
+      }
+    end
+  end
+  
+  def ignore
+    @user = current_user
+    flash[:notice] = "You have ignored a request from #{User.find(params[:id]).name}"
+    @request = Request.where('user_id = ? AND inviter = ?', @user.id, params[:id]).first    
+    @request.accepted = false
+    @request.save
+    respond_to do |format|
+      format.html {
+        redirect_to requests_path
       }
     end
   end

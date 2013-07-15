@@ -3,7 +3,15 @@ require 'sidekiq/web'
 TaggleCloud::Application.routes.draw do
 
   resources :likes
-  resources :requests
+  
+  get '/requests/notifications', to: 'requests#notifications', as: 'notifications'
+  resources :requests do
+    member do
+      post 'accept'
+      post 'reply'
+      post 'ignore'
+    end
+  end
 
   resources :conferences do
     match "connections" => "conferences#connections"
@@ -23,7 +31,7 @@ TaggleCloud::Application.routes.draw do
   scope :constraints => lambda{ |req| !req.session[:user_id].blank? } do
     root :to => "users#dashboard", :as => :dashboard
   end
-
+  
   match "/credits" => "landings#credits"
   root :to => "landings#home"
   
