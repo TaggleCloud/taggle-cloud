@@ -26,10 +26,10 @@ class RequestsController < ApplicationController
     @attendance = Attendance.find(params[:attendance_id])
     if @attendance.user_id
       @request = Request.create(:inviter => @user.id, :user_id => params[:attendance_id],
-                                :invitee_registered => true, :body => params[:request][:body])
+                                :invitee_registered => true, :body => params[:request][:body], :accepted => false)
     else
       @request = Request.create(:inviter => @user.id, :email => @attendance.registered_email,
-                                :invitee_registered => false, :body => params[:request][:body])
+                                :invitee_registered => false, :body => params[:request][:body], :accepted => false)
     end
     respond_to do |format|
       format.html {

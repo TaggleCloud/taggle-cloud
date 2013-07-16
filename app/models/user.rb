@@ -111,6 +111,19 @@ class User < ActiveRecord::Base
   def get_notifications
     notifications = Request.where('inviter = ? AND reply IS NOT NULL', self.id)
   end
+  
+  def get_accepted
+    Request.where('((inviter = ? AND user_id IS NOT NULL) OR (inviter IS NOT NULL AND user_id = ?)) AND accepted = ?', self.id, self.id, true)
+  end
+
+  def get_invites
+    Request.where('user_id = ? AND accepted = ?', self.id, false)
+  end
+  
+  def get_requests
+    Request.where('inviter = ? AND accepted = ?', self.id, false)
+  end
+
 
   def attach_att(email_address)
     atts = Attendance.all

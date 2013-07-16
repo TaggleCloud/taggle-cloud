@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
     @conferences = current_user.get_conferences
     @curr_attendances = []
     @upcoming_attendances = []
