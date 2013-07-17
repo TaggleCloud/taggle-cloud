@@ -1,0 +1,23 @@
+%h1 Send Reply
+
+= form_for @request, :url => {:action => 'update', :controller => 'requests'} do |f|
+  - if @request.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@request.errors.count, "error")} prohibited this request from being sent:"
+      %ul
+        - @request.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.hidden_field :accepted, :value => true
+  
+  .actions
+    = f.submit 'Add Contact Info', :class => "btn"    
+
+= link_to 'Back', requests_path

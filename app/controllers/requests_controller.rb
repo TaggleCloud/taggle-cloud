@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     @notifications = @user.get_notifications
   end
   
-  def new
+  def new    
     @user = current_user
     @attendance = Attendance.find(params[:attendance_id])
     @request = Request.new
@@ -26,23 +26,20 @@ class RequestsController < ApplicationController
     @attendance = Attendance.find(params[:attendance_id])
     if @attendance.user_id
       @request = Request.create(:inviter => @user.id, :user_id => params[:attendance_id],
-                                :invitee_registered => true, :body => params[:request][:body], :accepted => false)
+                                :invitee_registered => true, :body => params[:request][:body])
     else
       @request = Request.create(:inviter => @user.id, :email => @attendance.registered_email,
-                                :invitee_registered => false, :body => params[:request][:body], :accepted => false)
+                                :invitee_registered => false, :body => params[:request][:body])
     end
     respond_to do |format|
-      format.html {
-        @request.save
-        redirect_to conference_attendee_path(@attendance.conference_id, params[:attendance_id])
-      }
-      format.json {
-        if (@request.save)
-          render json: @request, status: :created, location: @request
-        else
-          render json: @request.errors, status: :unprocessable_entity
-        end
-      }
+      if (@request.save) 
+        format.html { redirect_to conference_attendee_path(@attendance.conference_id, params[:attendance_id]) }
+        format.json { render json: @request, status: :created, location: @request }
+      else
+        flash[:notice] = "Already sent request to this user"
+        format.html { redirect_to conference_attendee_path(@attendance.conference_id, params[:attendance_id]) }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
     end
   end
   
@@ -60,10 +57,10 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
-        format.html { redirect_to requests_path, notice: 'Reply was successfully sent.' }
+        format.html { redirect_to requests_path, notice: 'Successfully updated request' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "accept" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
@@ -73,20 +70,18 @@ class RequestsController < ApplicationController
   
   def accept
     @user = current_user
-    flash[:notice] = "You have accepted a request from #{User.find(params[:id]).name}"
-    @request = Request.where('user_id = ? AND inviter = ?', @user.id, params[:id]).first    
-    @request.accepted = true
-    @request.save
-    respond_to do |format|
-      format.html {
-        redirect_to requests_path
-      }
-    end
+    @request = Request.find(params[:id])
+    # @request.accepted = true
+    # @request.save
+    # respond_to do |format|
+    #   format.html {
+    #     redirect_to requests_path
+    #   }
+    # end
   end
   
   def reply
     @user = current_user
-    flash[:notice] = "REPLY"
     respond_to do |format|
       format.html {
         redirect_to requests_path
@@ -96,8 +91,8 @@ class RequestsController < ApplicationController
   
   def ignore
     @user = current_user
-    flash[:notice] = "You have ignored a request from #{User.find(params[:id]).name}"
-    @request = Request.where('user_id = ? AND inviter = ?', @user.id, params[:id]).first    
+    @request = Request.find(params[:id])
+    flash[:notice] = "You have ignored a request from #{User.find(@request.inviter).name}"
     @request.accepted = false
     @request.save
     respond_to do |format|

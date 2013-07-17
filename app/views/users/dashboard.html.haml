@@ -76,21 +76,24 @@
         
   .span4.requests
     %p.lead.text-center
-      Accepted Meetings
+      Accepted Your Requests
     - if @user.get_accepted.count > 0
       - @user.get_accepted.each do |a|
-        - if a.user_id = @user.id  
-          - user = User.find(a.inviter)
-        - else
-          - user = a.user
-        .span4            
+        - user = a.user
+        .span4    
+          %h4.blue
+            = link_to user.name, user_path(user)
           - if user.image
             = image_tag(user.image, :class =>"pull-left", :size => "50x50")
           - else 
             = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-            
-            %h4.blue
-              = link_to user.name, user_path(user)
+          - if a.phone
+            = a.phone
+            %br
+          - if a.email
+            = a.email
+            %br
+          
   
     %p.lead.text-center        
       = link_to requests_path, :class => "btn" do
@@ -101,22 +104,10 @@
     %p.lead.text-center
       People who want to meet you
     - if @user.get_invites.count > 0
-      - @user.get_invites.each do |a|
-        - user = User.find(a.inviter)
-        .span4
-
-          - if user.image
-            = image_tag(user.image, :class =>"pull-left", :size => "50x50")
-          - else 
-            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-
-            %h4.blue
-              = link_to user.name, user_path(user)
-        %p.lead.text-center        
-          = link_to requests_path, :class => "btn" do
-            %i.icon-eye-open
-            See All
-        
+      %p.lead.text-center        
+        = link_to requests_path, :class => "btn" do
+          %i.icon-eye-open
+          See All
     -else
       .text-center
         %h4 No Invites at the moment 
@@ -125,21 +116,10 @@
     %p.lead.text-center   
       You requested to collaborate with   
     - if @user.get_requests.count > 0
-      - @user.get_requests.each do |a|
-        - user = a.user
-        .span4
-          - if user.image
-            = image_tag(user.image, :class =>"pull-left", :size => "50x50")
-          - else 
-            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-
-            %h4.blue
-              = link_to user.name, user_path(user)
-        %p.lead.text-center        
-          = link_to notifications_path, :class => "btn" do
-            %i.icon-eye-open
-            See All
-
+      %p.lead.text-center        
+        = link_to notifications_path, :class => "btn" do
+          %i.icon-eye-open
+          See All
     -else
       .text-center
         %h4 No Invites at the moment 

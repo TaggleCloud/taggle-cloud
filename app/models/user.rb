@@ -113,7 +113,7 @@ class User < ActiveRecord::Base
   end
   
   def get_accepted
-    Request.where('((inviter = ? AND user_id IS NOT NULL) OR (inviter IS NOT NULL AND user_id = ?)) AND accepted = ?', self.id, self.id, true)
+    Request.where('inviter = ? AND user_id IS NOT NULL AND accepted = ?', self.id, true)
   end
 
   def get_invites
