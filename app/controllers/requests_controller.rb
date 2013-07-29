@@ -2,12 +2,15 @@ class RequestsController < ApplicationController
   
   def index
     @user = current_user
-    @requests = @user.requests
+    # Don't show requests older than 30 days
+    @requests = @user.requests.where('created_at > ?', 30.days.ago)
   end
   
   def notifications
     @user = current_user
     @notifications = @user.get_notifications
+    @sent_requests = Request.where('inviter = ?', @user.id)
+    @accepted = Request.where('inviter = ? AND accepted = ?', @user.id, true)
   end
   
   def new    
@@ -25,7 +28,7 @@ class RequestsController < ApplicationController
     @user = current_user
     @attendance = Attendance.find(params[:attendance_id])
     if @attendance.user_id
-      @request = Request.create(:inviter => @user.id, :user_id => params[:attendance_id],
+      @request = Request.create(:inviter => @user.id, :user_id => @attendance.user_id,
                                 :invitee_registered => true, :body => params[:request][:body])
     else
       @request = Request.create(:inviter => @user.id, :email => @attendance.registered_email,
@@ -47,9 +50,9 @@ class RequestsController < ApplicationController
   def edit
     @user = current_user
     @request = Request.find(params[:id])
-    if @request.user_id != @user.id
+    if @request.inviter != @user.id
       flash[:notice] = "You have no right to edit this request"
-      return redirect_to requests_path
+      return redirect_to notifications_path
     end
   end
   
@@ -58,7 +61,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
-        format.html { redirect_to requests_path, notice: 'Successfully updated request' }
+        format.html { redirect_to dashboard_path, notice: 'Successfully updated request' }
         format.json { head :no_content }
       else
         format.html { render action: "accept" }
@@ -83,10 +86,10 @@ class RequestsController < ApplicationController
   
   def reply
     @user = current_user
-    respond_to do |format|
-      format.html {
-        redirect_to requests_path
-      }
+    @request = Request.find(params[:id])
+    if @request.user_id != @user.id
+      flash[:notice] = "You have no right to edit this request"
+      return redirect_to requests_path
     end
   end
   

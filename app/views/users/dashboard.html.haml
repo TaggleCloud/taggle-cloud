@@ -76,7 +76,7 @@
         
   .span4.requests
     %p.lead.text-center
-      Accepted Your Requests
+      Accepted Requests
     - if @user.get_accepted.count > 0
       - @user.get_accepted.each do |a|
         - user = a.user
@@ -87,23 +87,48 @@
             = image_tag(user.image, :class =>"pull-left", :size => "50x50")
           - else 
             = image_tag("user_placeholder.png", :class =>"pull-left", :size => "50x50")
-          - if a.phone
+          - if !a.phone.blank?
+            Phone:
             = a.phone
             %br
-          - if a.email
+          - if !a.email.blank?
+            Email:
             = a.email
+            %br
+          - if !a.reply.blank?
+            Note:
+            = a.reply
             %br
           
   
-    %p.lead.text-center        
-      = link_to requests_path, :class => "btn" do
-        %i.icon-eye-open
-        See All
+    .clearfix
     %hr
 
     %p.lead.text-center
-      People who want to meet you
+      People Who Want to Meet You
     - if @user.get_invites.count > 0
+      - @user.get_invites.take(4).each do |a|
+        - user = a.user
+        .span4    
+          - if user.image
+            = image_tag(user.image, :class =>"pull-left", :size => "100x100")
+          - else 
+            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "100x100")
+          %h4
+            = link_to user.name, user_path(user)
+          - if !a.phone.blank?
+            Phone:
+            = a.phone
+            %br
+          - if !a.email.blank?
+            Email:
+            = a.email
+            %br
+          - if !a.reply.blank?
+            Note:
+            = a.reply
+            %br
+      
       %p.lead.text-center        
         = link_to requests_path, :class => "btn" do
           %i.icon-eye-open
@@ -114,8 +139,30 @@
       
     %hr
     %p.lead.text-center   
-      You requested to collaborate with   
+      People You Want to Meet
     - if @user.get_requests.count > 0
+      - @user.get_requests.take(4).each do |a|
+        - user = a.user
+        .span4    
+          - if user.image
+            = image_tag(user.image, :class =>"pull-left", :size => "100x100")
+          - else 
+            = image_tag("user_placeholder.png", :class =>"pull-left", :size => "100x100")
+          %h4
+            = link_to user.name, user_path(user)
+          - if !a.phone.blank?
+            Phone:
+            = a.phone
+            %br
+          - if !a.email.blank?
+            Email:
+            = a.email
+            %br
+          - if !a.reply.blank?
+            Note:
+            = a.reply
+            %br
+    
       %p.lead.text-center        
         = link_to notifications_path, :class => "btn" do
           %i.icon-eye-open

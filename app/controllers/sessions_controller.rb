@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     user = User.create_with_omniauth(auth)
     user.emails.each do |e|
       user.attach_att(e.mail_address)
+      user.attach_request(e.mail_address)
     end
     session[:user_id] = user.id
     redirect_to root_url

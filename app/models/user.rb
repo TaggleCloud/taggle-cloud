@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
   end
   
   def get_notifications
-    notifications = Request.where('inviter = ? AND reply IS NOT NULL', self.id)
+    notifications = Request.where('inviter = ? AND (reply IS NOT NULL OR accepted = ?)', self.id, true)
   end
   
   def get_accepted
@@ -117,11 +117,11 @@ class User < ActiveRecord::Base
   end
 
   def get_invites
-    Request.where('user_id = ? AND accepted = ?', self.id, false)
+    Request.where('user_id = ? AND accepted IS NULL', self.id)
   end
   
   def get_requests
-    Request.where('inviter = ? AND accepted = ?', self.id, false)
+    Request.where('inviter = ? AND accepted IS NULL', self.id)
   end
 
 

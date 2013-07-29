@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707165002) do
+ActiveRecord::Schema.define(:version => 20130717174910) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -107,6 +107,9 @@ ActiveRecord::Schema.define(:version => 20130707165002) do
     t.boolean  "invitee_registered"
     t.string   "email"
     t.string   "body"
+    t.string   "reply"
+    t.boolean  "accepted"
+    t.string   "phone"
   end
 
   create_table "sessions", :force => true do |t|

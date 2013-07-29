@@ -143,7 +143,9 @@ class ConferencesController < ApplicationController
       @conference.upload(params[:conference][:csv], current_user)
     end
     @email = params[:conference][:email]
-
+    @conference.attendances.each do |a|
+      UserMailer.conference_email(a, @conference).deliver
+    end
     respond_to do |format|
       if params[:conference][:csv] && @conference.save
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
