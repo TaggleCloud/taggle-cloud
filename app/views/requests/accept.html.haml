@@ -1,4 +1,4 @@
-%h1 Send Reply
+%h1 Accept Request
 
 = form_for @request, :url => {:action => 'update', :controller => 'requests'} do |f|
   - if @request.errors.any?
@@ -21,6 +21,6 @@
     = f.hidden_field :accepted, :value => true
   
   .actions
-    = f.submit 'Add Contact Info', :class => "btn"    
+    = f.submit 'Send', :class => "btn"    
 
 = link_to 'Back', requests_path

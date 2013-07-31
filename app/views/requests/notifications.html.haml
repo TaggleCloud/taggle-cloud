@@ -7,46 +7,48 @@
   / This list shows the requests with replies or have been accepted
   .span8
     .request-list
-      - @notifications.each do |n|
-        - if n
-          - if n.accepted || n.accepted.nil?
-            - u = User.find(n.user_id)
-            -if u.image
-              = image_tag(u.image, :class => 'pull-left', :width => 100, :height => 100)
-            -else
-              = image_tag("user_placeholder.png", :class => 'pull-left', :width => 100, :height => 100)
-            .pull-left
-              - if n.accepted
-                = link_to u.name, user_path(n.user_id)
-                has accepted your request
-                - if !n.phone.blank?
-                  %br
-                  Phone:
-                  = n.phone
-                - if !n.email.blank?
-                  %br
-                  Email:
-                  = n.email
-                - if !n.reply.blank?
-                  %br
-                  Note:
-                  = n.reply
+      - if @notifications.count > 0 
+        - @notifications.each do |n|
+          - if n
+            - if n.accepted || n.accepted.nil?
+              - u = User.find(n.user_id)
+              -if u.image
+                = image_tag(u.image, :class => 'pull-left', :width => 100, :height => 100)
+              -else
+                = image_tag("user_placeholder.png", :class => 'pull-left', :width => 100, :height => 100)
+              .pull-left
+                - if n.accepted
+                  = link_to u.name, user_path(n.user_id)
+                  has accepted your request
+                  - if !n.phone.blank?
+                    %br
+                    Phone:
+                    = n.phone
+                  - if !n.email.blank?
+                    %br
+                    Email:
+                    = n.email
+                  - if !n.reply.blank?
+                    %br
+                    Note:
+                    = n.reply
             
-              - else 
-                = link_to u.name, user_path(n.user_id)
-                %br
-                = n.reply
-            .pull-left
-              - if n.accepted
-              - else
-                = link_to edit_request_path(n), :class => "btn" do
-                  %i.icon-edit
-                  Reply
-            .pull-right
-              = "#{time_ago_in_words(n.updated_at)} ago" 
-            .clearfix
-            %hr
-
+                - else
+                  = link_to u.name, user_path(n.user_id)
+                  %br
+                  = n.reply
+              .pull-left
+                - if n.accepted
+                - else
+                  = link_to edit_request_path(n), :class => "btn" do
+                    %i.icon-edit
+                    Reply
+              .pull-right
+                = "#{time_ago_in_words(n.updated_at)} ago" 
+              .clearfix
+              %hr
+      - else
+        %h4 No Notifications At the Moment
 
 
   / This list shows the requests the current user has sent

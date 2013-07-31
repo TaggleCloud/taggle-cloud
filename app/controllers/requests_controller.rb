@@ -33,7 +33,8 @@ class RequestsController < ApplicationController
     else
       @request = Request.create(:inviter => @user.id, :email => @attendance.registered_email,
                                 :invitee_registered => false, :body => params[:request][:body])
-      UserMailer.request_email(@attendance).deliver
+      # Commented out to stop spam. This will send an email to anyone receiving a request
+      # UserMailer.request_email(@attendance).deliver
     end
     respond_to do |format|
       if (@request.save) 

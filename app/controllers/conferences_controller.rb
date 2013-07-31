@@ -58,13 +58,15 @@ class ConferencesController < ApplicationController
       @connections.each do |c|
         # Filter out keyword strength 0
         if @sort_by_keyword 
-          if @sort_by_keyword && (c.keyword_strength == 0)
+          if c.keyword_strength == 0
             @attendees_unmatched << Attendance.find(c.attendance2_id)
           else
             @attendees << Attendance.find(c.attendance2_id)
           end
         else
-          @attendees << Attendance.find(c.attendance2_id)
+          if c.abstract_strength > 0
+            @attendees << Attendance.find(c.attendance2_id)
+          end
         end
       end
       if !@attendees_unmatched.empty?
@@ -143,9 +145,21 @@ class ConferencesController < ApplicationController
       @conference.upload(params[:conference][:csv], current_user)
     end
     @email = params[:conference][:email]
-    @conference.attendances.each do |a|
-      UserMailer.conference_email(a, @conference).deliver
+
+    @attendances = @conference.attendances
+    @attendances.each do |a|
+      a.abstracts.each do |abs|
+        if a.user_id && abs.body.blank?
+          Abstract.update(abs.id, :body => a.user.bio)
+        end
+      end
     end
+
+
+    # This is the commented out emailer that emails everyone when they are registered for a conference
+    # @conference.attendances.each do |a|
+    #       UserMailer.conference_email(a, @conference).deliver
+    #     end
     respond_to do |format|
       if params[:conference][:csv] && @conference.save
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }

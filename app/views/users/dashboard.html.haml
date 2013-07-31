@@ -108,7 +108,7 @@
       People Who Want to Meet You
     - if @user.get_invites.count > 0
       - @user.get_invites.take(4).each do |a|
-        - user = a.user
+        - user = User.find(a.inviter)
         .span4    
           - if user.image
             = image_tag(user.image, :class =>"pull-left", :size => "100x100")
