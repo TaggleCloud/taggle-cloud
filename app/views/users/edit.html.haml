@@ -1,10 +1,31 @@
-.page-header
-  .pull-right
-    = link_to user_path(@user), :class => "btn" do
-      %i.icon-arrow-left
-      Back
-  %h1 Edit Profile
+= simple_nested_form_for @user, :html => {:class => "form-horizontal"} do |f|
+  .page-header
+    %h1 Edit Profile
+    .pull-left
+      = link_to user_path(@user), :class => "btn" do
+        %i.icon-arrow-left
+        Back
+      = f.submit :class => "btn", :value => "Save Profile"
+    %br
+    %br
   
-  - if @email
-    = @email
-= render 'form'
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :occupation
+  = f.input :location
+  = f.input :show_email
+
+  = f.input :bio
+
+  = f.fields_for :abstract, @keys do |b|
+    = b.input :body, :label => "I am looking for collaborators with the following attributes"
+
+  - count = 0
+  = f.fields_for :emails do |e|
+    = e.input :mail_address
+    - if count > 0
+      .remove-mail-address
+        = e.link_to_remove "X"
+    - count += 1
+
+  = link_to_add_fields "Add an email address", f, :emails

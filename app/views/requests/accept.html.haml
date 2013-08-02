@@ -16,7 +16,7 @@
     = f.text_field :email
   .field
     = f.label "Note"
-    = f.text_field :reply
+    = f.text_area(:reply, :size => '50x10')    
   .field
     = f.hidden_field :accepted, :value => true
   

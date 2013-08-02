@@ -16,13 +16,14 @@
       All Conferences
   %h1    
     = @conference.name
-    %small= @conference.location
+    %br
+    %small= "in #{@conference.location}"
     %br
     %small #{@conference.start_time.strftime("%b %d, %Y")} - #{@conference.end_time.strftime("%b %d, %Y")}
 
 - if @liked_count > 0
   %p.lead
-    Your Saved Matches
+    Your Bookmarks
   %ul.thumbnails
     - @liked_attendees.each do |attendee|
       %li.span4

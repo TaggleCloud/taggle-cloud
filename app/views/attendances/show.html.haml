@@ -2,22 +2,11 @@
 
 %p#notice= notice
 
-= @request
+= @request  
 .pull-right
   = link_to conference_path(@conference), :class => "btn" do
     %i.icon-arrow-left
-    = @conference.name
-  -if @like_count == 0
-    = link_to likes_path(:attendance_id => @attendance.id), :method => :post, :class => "btn" do
-      %i.icon-star
-      Save
-  -else
-    = link_to like_path(@like), :method => :delete, :class => "btn" do
-      %i.icon-star-empty
-      Unsave
-  = link_to new_request_path(:attendance_id => @attendance.id), :class => "btn" do
-    %i.icon-comment
-    Request
+    = "Back to #{@conference.name}"      
 .row-fluid
   - if @user
     .row-fluid
@@ -28,6 +17,8 @@
               = image_tag(@user.image, :class => "size")
             -else
               = image_tag("user_placeholder.png", :class => "size")
+      .span2.pull-left
+  
       .span10
         %h2= @user.name
         - if @user.show_email
@@ -35,6 +26,19 @@
             %strong= "Email:"
             = mail_to email.mail_address
             %br
+        -if @like_count == 0
+          = link_to likes_path(:attendance_id => @attendance.id), :method => :post, :class => "btn" do
+            %i.icon-star
+            Bookmark
+        -else
+          = link_to like_path(@like), :method => :delete, :class => "btn" do
+            %i.icon-star-empty
+            Unbookmark
+        = link_to new_request_path(:attendance_id => @attendance.id), :class => "btn" do
+          %i.icon-comment
+          Request Meeting
+        %br
+        %br
         %strong Occupation:
         -if @user.occupation.blank?
           Not available
@@ -46,10 +50,9 @@
           Not available
         -else
           = @user.location
+        %h4= @attendance.organization
   - else
     %h2= @attendance.name
-.row-fluid
-  %h4= @attendance.organization
 %hr
 .row-fluid
   .span12
