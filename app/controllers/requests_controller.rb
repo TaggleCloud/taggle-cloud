@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
   def notifications
     @user = current_user
     @notifications = @user.get_notifications
-    @sent_requests = Request.where('inviter = ?', @user.id)
+    @sent_requests = Request.where('inviter = ? AND accepted IS NULL', @user.id)
     @accepted = Request.where('inviter = ? AND accepted = ?', @user.id, true)
   end
   
