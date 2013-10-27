@@ -1,4 +1,4 @@
-= form_for @attendance do |f|
+= form_for [@conference, @attendance], :url => new_conference_attendee_path(@conference) do |f|
   - if @attendance.errors.any?
     #error_explanation
       %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this attendance from being saved:"
@@ -6,14 +6,23 @@
         - @attendance.errors.full_messages.each do |msg|
           %li= msg
 
+  - if @user
+    - if @user.is_admin
+      = f.label :user_id
+      = collection_select(:user, :id, @users, :id, :name, :prompt => true)
+    - else
+      = f.hidden_field :user_id, :value => @user.id
+      
+  = f.hidden_field :conference_id, :value => @conference.id
+
   .field
-    = f.label :user_id
-    = f.text_field :user_id
+    = f.label :organization
+    = f.text_field :organization
   .field
-    = f.label :conference_id
-    = f.text_field :conference_id
+    = f.label :project_name
+    = f.text_field :project_name
   .field
-    = f.label :registered_email
-    = f.text_field :registered_email
+    = f.label 'Abstract Body'
+    = f.text_area 'abstract_body'
   .actions
     = f.submit 'Save'

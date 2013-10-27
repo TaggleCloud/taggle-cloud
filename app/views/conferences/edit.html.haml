@@ -16,7 +16,12 @@
       = render 'form'
   
   .span8
+    .pull-right.buttons
+      = link_to new_conference_attendee_path(@conference), :class => "btn" do
+        %i.icon-edit
+        Add
     %h2 Edit Attendees
+    
     %hr
     .row
       - @conference.attendances.each do |attendee|

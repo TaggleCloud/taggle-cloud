@@ -44,8 +44,13 @@ class AttendancesController < ApplicationController
   # GET /attendances/new
   # GET /attendances/new.json
   def new
+    @conference = Conference.find(params[:conference_id]);
     @attendance = Attendance.new
-
+    @user = current_user
+    if @user.is_admin
+      @users = User.all
+    end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @attendance }
