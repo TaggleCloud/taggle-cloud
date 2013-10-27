@@ -65,12 +65,20 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
-    @attendance = Attendance.create(params[:attendance])
+    @conference = Conference.find(params[:conference_id])
+    @user = User.find(params[:user][:id])
+    @attendance = Attendance.create(:registered_email => @user.emails.first, :conference_id => @conference.id,
+                                    :first_name => @user.first_name, :last_name => @user.last_name, 
+                                    :organization => params[:attendance][:organization],
+                                    :project_name => params[:attendance][:project_name])
+
+    abstract = params[:attendance][:abstract_body]
+    Abstract.create(:body => abstract, :attendance_id => @attendance.id, :user_id => @attendance.user_id, :is_bio => false) if abstract
     
     respond_to do |format|
       if @attendance.save          
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }
-        format.json { render json: @attendance, status: :created, location: @attendance }
+        format.html { redirect_to edit_conference_path(@conference), notice: "#{@user.name} was successfully deleted" }
+        format.json { render json: @conference, status: :created, location: @conference }
       else
         format.html { render action: "new" }
         format.json { render json: @attendance.errors, status: :unprocessable_entity }
@@ -99,6 +107,7 @@ class AttendancesController < ApplicationController
   def destroy
     #TODO Jbender will fix this later to use destroy instead of delete
     @attendance = Attendance.find(params[:id])
+    @name = @attendance.first_name + " " + @attendance.last_name
     @conference = Conference.find(@attendance.conference_id)
     # Delete connected connections
     @attendance.connections.delete_all
@@ -111,7 +120,7 @@ class AttendancesController < ApplicationController
     @attendees = @conference.attendances
 
     respond_to do |format|
-      format.html { redirect_to @conference, notice: 'Attendance successfully deleted' }
+      format.html { redirect_to edit_conference_path(@conference), notice: "#{@name} was successfully deleted" }
       format.json { render json: @conference }
     end
   end

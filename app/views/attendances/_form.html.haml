@@ -1,4 +1,4 @@
-= form_for [@conference, @attendance], :url => new_conference_attendee_path(@conference) do |f|
+= form_for [@conference, @attendance], :url => conference_attendees_path(@conference) do |f|
   - if @attendance.errors.any?
     #error_explanation
       %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this attendance from being saved:"
@@ -8,8 +8,18 @@
 
   - if @user
     - if @user.is_admin
-      = f.label :user_id
-      = collection_select(:user, :id, @users, :id, :name, :prompt => true)
+      .field
+        = f.label :user_id
+        = collection_select(:user, :id, @users, :id, :name, :prompt => true)
+      .field
+        = f.label :first_name
+        = f.text_field :first_name, :value => "leave blank if user specified"
+      .field
+        = f.label :last_name
+        = f.text_field :last_name, :value => "leave blank if user specified"
+      .field
+        = f.label :registered_email
+        = f.text_field :registered_email, :value => "leave blank if user specified"
     - else
       = f.hidden_field :user_id, :value => @user.id
       
@@ -24,5 +34,14 @@
   .field
     = f.label 'Abstract Body'
     = f.text_area 'abstract_body'
+  - if @user  
+    .field
+      = f.label 'User Exists?'
+      = f.check_box :user_exists, :checked => true
+  - else 
+    .field
+      = f.label 'User Exists?'
+      = f.check_box :user_exists
+  
   .actions
-    = f.submit 'Save'
+    = f.submit :class => "btn", :value => "Add Attendee"
