@@ -1,11 +1,18 @@
 - if current_user.id == @user.id
   %h1
     My Profile
+    - if current_user.is_admin
+      \- Admin
+    - elsif current_user.is_conf_admin
+      \- Conference Admin
   .pull-left
     = link_to edit_user_path(@user), :class => "btn" do
       %i.icon-edit
       Edit Profile
-  
+    -if current_user.is_admin
+      = link_to user_promote_path(@user), :class => "btn" do
+        %i.icon-hand-up
+        Promote Users
   %br
   %hr
 .row-fluid

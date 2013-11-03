@@ -62,8 +62,10 @@
               = conf.location
   
   .span12
-    - if current_user.is_admin
+    - if current_user.is_admin || (current_user.is_conf_admin && current_user.conferences_left > 0)
       %h2 Admin Actions
+      - if current_user.is_conf_admin
+        %h3 Conferences Left: #{current_user.conferences_left}
       %hr
       /
         = link_to new_coordinate_path, :class => "btn" do

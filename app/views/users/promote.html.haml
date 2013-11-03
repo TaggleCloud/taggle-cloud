@@ -1,0 +1,23 @@
+= form_for @user, :html => {:class => "form-horizontal" }, :url => user_promote_user_path(@user) do |f|
+  .page-header
+    %h1 Promote User
+    .pull-left
+      = link_to user_path(@user), :class => "btn" do
+        %i.icon-arrow-left
+        Back
+      = f.submit :class => "btn", :value => "Promote"
+    %br
+    %br
+  
+  .field
+    = f.label :user_id
+    = collection_select(:user, :id, @users, :id, :name, :prompt => true)
+  
+  = f.hidden_field :is_conf_admin, :value => true
+  %br
+  .field
+    = f.label :conf_left, 'Conference Limit'
+    = f.text_field :conf_left
+
+
+    

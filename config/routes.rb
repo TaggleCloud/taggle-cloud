@@ -21,6 +21,8 @@ TaggleCloud::Application.routes.draw do
   resources :coordinates
   
   resources :users do
+    match 'promote' => 'users#promote'
+    match 'promote_user' => 'users#promote_user'
     resources :abstracts
   end
 

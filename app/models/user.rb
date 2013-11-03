@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   after_create :create_keywords
-  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes, :emails_attributes, :show_email, :is_admin, :bio
+  attr_accessible :first_name, :last_name, :image, :location, :occupation, :abstracts_attributes, 
+                  :emails_attributes, :show_email, :is_admin, :is_conf_admin, :conf_left, :bio
 
   has_many :abstracts
   has_many :attendances
@@ -17,6 +18,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name
   validates_presence_of :last_name  
+
+  def conferences_left
+    self.conf_left - self.coordinates.length
+  end
 
   def coordinate (conference)
     self.coordinates.each do |c|

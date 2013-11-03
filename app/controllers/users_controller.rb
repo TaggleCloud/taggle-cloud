@@ -19,6 +19,37 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     end
   end
+  
+  def promote
+    # form
+    @user = User.find(params[:user_id])
+    @users = User.all
+    unless @user.is_admin
+      flash[:notice] = "You have no right to edit this user"
+      redirect_to user_path(@user)
+    end
+  end
+  
+  def promote_user
+    # actual action
+    @user = User.find(params[:user][:id])
+    @users = User.all
+    respond_to do |format|
+      if (params[:user][:conf_left].blank?)   
+        format.html { 
+          flash[:notice] = 'Conference Limit left blank'
+          render action: "promote"
+        }   
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      elsif @user.update_attributes(params[:user])  
+        format.html { redirect_to @user, notice: 'User was successfully promoted.' }
+        format.json { render json: @user }  
+      else
+        format.html { render action: "promote" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def dashboard
     @user = current_user
@@ -75,10 +106,10 @@ class UsersController < ApplicationController
           @user.attach_request(e.mail_address)
         end
         format.html { redirect_to user_path(@user.id), notice: 'Profile has been successfully updated.' }
-        format.json { render json: @email }
+        format.json { render json: @user }
       else
         format.html { render action: "edit" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

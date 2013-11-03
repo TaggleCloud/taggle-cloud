@@ -91,7 +91,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/new.json
   def new
     @conference = Conference.new
-    unless current_user.is_admin
+    unless current_user.is_admin || (current_user.is_conf_admin && current_user.conferences_left > 0)
       flash[:notice] = "You have no right to create a conference"
       return redirect_to conferences_path
     end

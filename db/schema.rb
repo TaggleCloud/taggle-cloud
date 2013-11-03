@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717174910) do
+ActiveRecord::Schema.define(:version => 20131102172858) do
 
   create_table "abstract_tags", :force => true do |t|
     t.integer  "abstract_id"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20130717174910) do
     t.string   "last_name"
     t.string   "organization"
     t.string   "project_name"
+    t.string   "abstract_body"
+    t.boolean  "user_exists"
   end
 
   create_table "authentications", :force => true do |t|
@@ -136,8 +138,8 @@ ActiveRecord::Schema.define(:version => 20130717174910) do
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "image"
     t.string   "location"
     t.string   "occupation"
@@ -146,6 +148,8 @@ ActiveRecord::Schema.define(:version => 20130717174910) do
     t.boolean  "is_admin"
     t.boolean  "show_email"
     t.text     "bio"
+    t.boolean  "is_conf_admin"
+    t.integer  "conf_left"
   end
 
 end
