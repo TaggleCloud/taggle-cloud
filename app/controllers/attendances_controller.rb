@@ -28,11 +28,12 @@ class AttendancesController < ApplicationController
     end
     if (current_user)
       @user_attendance = Attendance.where(:conference_id => @conference.id, :user_id => current_user.id).first
-      if @user_attendance.nil? && !current_user.is_admin
-        flash[:notice] = "You have no right to view this attendee"
-        return redirect_to conferences_path
-      end
-      @connection = Connection.where(:attendance1_id => @user_attendance.id, :attendance2_id => params[:id]).first
+      if !current_user.is_admin      
+        if @user_attendance.nil?
+          flash[:notice] = "You have no right to view this attendee"
+          return redirect_to conferences_path
+        end
+        @connection = Connection.where(:attendance1_id => @user_attendance.id, :attendance2_id => params[:id]).first
     end
 
     respond_to do |format|
