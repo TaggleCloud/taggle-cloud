@@ -27,6 +27,8 @@ gem 'validates_timeliness', '~> 3.0'
 group :development do
   gem 'sqlite3'
   gem 'rails-erd'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do
