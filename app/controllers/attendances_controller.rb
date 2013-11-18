@@ -16,18 +16,19 @@ class AttendancesController < ApplicationController
   def show
     @conference = Conference.find(params[:conference_id])
     @attendance = Attendance.find(params[:id])
+    
     @abstracts = @attendance.abstracts
     @like = Like.where("attendance_id = ? AND user_id = ?", @attendance.id, current_user.id).first
     @like_count = Like.where("attendance_id = ? AND user_id = ?", @attendance.id, current_user.id).count
-    if (@attendance.user_id || current_user.is_admin) 
+    if (@attendance.user_id) 
       @user = User.find(@attendance.user_id)
       # @keys = Abstract.where(:user_id => @user.id, :keywords => true).first
       @bio = Abstract.where(:user_id => @user.id, :is_bio => true).first
       @conferences = @user.get_conferences
     end
-    if(current_user)
+    if (current_user)
       @user_attendance = Attendance.where(:conference_id => @conference.id, :user_id => current_user.id).first
-      if @user_attendance.nil?
+      if @user_attendance.nil? && !current_user.is_admin
         flash[:notice] = "You have no right to view this attendee"
         return redirect_to conferences_path
       end
