@@ -3,11 +3,8 @@ class ConferencesController < ApplicationController
   # GET /conferences.json
   def index
     if current_user
-      if current_user.is_admin
-        @conferences = Conference.all
-      else
-        @conferences = current_user.get_conferences
-      end
+      @conferences = Conference.all
+      @user_conferences = current_user.get_conferences
       @curr_conferences = []
       @upcoming_conferences = []
       @past_conferences = []

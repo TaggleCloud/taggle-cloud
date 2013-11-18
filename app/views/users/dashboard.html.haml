@@ -12,6 +12,25 @@
     You aren't registered for any conferences. Add new emails in your profile to find more conferences.
 .row
   .span8
+    %h2 My Conferences
+    - if @user_conferences.empty?
+      %h4 No Conferences
+    %ul.thumbnails
+      - @user_conferences.each do |conf|
+        %li.span4
+          = link_to conf, :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = conf.name
+            .pull-right
+              .iconblock
+                %i.icon-star
+                = conf.likes(current_user)
+              .iconblock
+                %i.icon-user
+                = conf.attendances.count
+            %h5.dblock.clear
+              = conf.location
+    %br
     %h2 Current Conferences
     - if @curr_attendances.empty?
       %h4 No Conferences
@@ -170,4 +189,3 @@
     -else
       .text-center
         %h4 No Invites at the moment 
-    

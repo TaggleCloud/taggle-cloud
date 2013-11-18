@@ -1,8 +1,27 @@
-%h1 Current Conferences
-%hr
-
 .row
   .span12
+    %h1 My Conferences
+    %hr
+    - if @user_conferences.size == 0
+      %h4.dblock No Conferences
+    %ul.thumbnails
+      - @user_conferences.each do |conf|
+        %li.span4
+          = link_to conf, :class => "thumbnail card cbutton" do
+            %h4.dblock
+              = conf.name
+            .pull-right
+              .iconblock
+                %i.icon-star
+                = conf.likes(current_user.id)
+              .iconblock
+                %i.icon-user
+                = conf.attendances.count
+            %h5.dblock.clear
+              = conf.location
+  .span12
+    %h1 Current Conferences
+    %hr
     - if @curr_conferences.size == 0
       %h4.dblock No Conferences
     %ul.thumbnails
