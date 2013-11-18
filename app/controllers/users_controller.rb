@@ -53,13 +53,15 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = current_user
-    @conferences = current_user.get_conferences
+    @user_conferences = current_user.get_conferences
+    @conferences = Conference.all.reject{|conf| @user_conferences.include? conf}
+    
     @curr_attendances = []
     @upcoming_attendances = []
     @past_attendances = []
     current_user.attendances.all.each do |att|
       conf = Conference.find_by_id(att.conference_id)
-      if conf
+      if (conf && !@user_conferences.include?(conf)) # filters out Users current conferences from main list
         # Place holder
         @attendees = conf.attendances
         @conference = conf
