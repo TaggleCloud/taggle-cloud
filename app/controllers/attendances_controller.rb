@@ -34,6 +34,7 @@ class AttendancesController < ApplicationController
           return redirect_to conferences_path
         end
         @connection = Connection.where(:attendance1_id => @user_attendance.id, :attendance2_id => params[:id]).first
+      end
     end
 
     respond_to do |format|
